@@ -1,6 +1,6 @@
-//Ver:1.2.0
+//Ver:1.2.0(develop)
 //Author:Nishisonic
-//LastUpdate:2015/03/08
+//LastUpdate:2015/03/17
 
 /*
  * ソースコードを大幅に書換（前のソースコード見辛かった）
@@ -24,7 +24,7 @@ var ERROR         = "ERROR";
  * 外国艦…そのまま(アルファベット)
  * ※ただし、Верныйは日本艦と同じようにする
  * 
- * 無改造　…そのまま
+ * 無改造                  …そのまま
  * 艦娘名 + 改             …定数名に「_R」を付与(艦娘名 + _R)
  * 艦娘名 + (改二 or zwei) …定数名に「_R2」を付与(艦娘名 + _R2)
  * 艦娘名 + (改三 or drei) …定数名に「_R3」を付与(艦娘名 + _R3)
@@ -475,75 +475,6 @@ var KASUMI_R2O      = "霞改二乙";        //ID:470
 
 var word = "id_";
 var func_obj = [];
-var ID_LIST = [
-              /* 小口径主砲 */
-                 2 //12.7cm単装砲
-              , 63 //12.7cm連装砲B型改二
-              ,122 //10cm高角砲＋高射装置
-              /* 中口径主砲 */
-              ,  4 //14cm単装砲
-              ,119 //14cm連装砲
-              , 65 //15.2cm連装砲
-              ,139 //15.2cm連装砲改
-              ,  5 //15.5cm三連装砲
-              ,  6 //20.3cm連装砲
-              , 90 //20.3cm(2号)連装砲
-              , 50 //20.3cm(3号)連装砲
-              /* 大口径主砲 */
-              ,  7 //35.6cm連装砲
-              , 76 //38cm連装砲
-              ,107 //試製35.6cm三連装砲
-              ,104 //35.6cm連装砲(ダズル迷彩)
-              ,114 //38cm連装砲改
-              ,133 //381mm/50 三連装砲
-              ,137 //381mm/50 三連装砲改
-              ,  8 //41cm連装砲
-              ,105 //試製41cm三連装砲
-              ,117 //試製46cm連装砲
-              ,  9 //46cm三連装砲
-              ,128 //試製51cm連装砲
-              /* 副砲 */
-              ,135 //90mm単装高角砲
-              , 11 //15.2cm単装砲
-              ,134 //OTO 152mm三連装速射砲
-              /* 魚雷 */
-              , 13 //61cm三連装魚雷
-              ,125 //61cm三連装(酸素)魚雷
-              , 14 //61cm四連装魚雷
-              , 15 //61cm四連装(酸素)魚雷
-              , 58 //61cm五連装(酸素)魚雷
-              /* 水上偵察機 */
-              , 59 //零式水上観測機
-              ,163 //Ro.43水偵
-              /* 電探 */
-              , 27 //13号対空電探
-              ,106 //13号対空電探改
-              , 28 //22号対水上電探
-              , 88 //22号対水上電探改四
-              , 30 //21号対空電探
-              , 89 //21号対空電探改
-              , 31 //32号対水上電探
-              ,141 //32号対水上電探改
-              /* ソナー */
-              , 46 //九三式水中聴音機
-              , 47 //三式水中探信儀
-              ,149 //四式水中聴音機
-              /* 爆雷 */
-              , 44 //九四式爆雷投射機
-              , 45 //三式爆雷投射機
-              /* 対艦強化弾 */
-              , 36 //九一式徹甲弾
-              ,116 //一式徹甲弾
-              /* 対空機銃 */
-              , 39 //25mm連装機銃
-              , 40 //25mm三連装機銃
-              /* 高射装置 */
-              ,120 //91式高射装置
-              ,121 //94式高射装置
-              /* 探照灯 */
-              , 74 //探照灯
-              ,140 //96式150cm探照灯
-              ];
 
 function header() {
     return [ "今日の改修工廠" ];
@@ -558,28 +489,31 @@ function body(data) {
 
 function end() { }
 
-//2番艦を取得します(下のfunc_obj.id??? から取得)
+//2番艦を取得します
 function getSecondShip( dayOfWeek, itemId){
-    for(var i = 0;i < ID_LIST.length;i++){
-        if(ID_LIST[i] == itemId){
-            return toLineOfArray(func_obj[word + ID_LIST[i]](dayOfWeek));
+    try{
+        for(var i = 1;i < 501;i++){
+            if(i == itemId){
+                return toLineOfArray(func_obj[word + i](dayOfWeek));
+            }
         }
+    }catch(e){
+        return NONE;
     }
-    return NONE;
 }
 
 //String配列を一行のStringの値に変える
 function toLineOfArray(array){
-	var result = "";
-	var i;
-	
-	if(array.length < 2) return array[0];
-	for(i = 0;i < array.length - 1;i++){
-		result += array[i] + SEP;
-	}
-	result += array[i];
-	
-	return result;
+    var result = "";
+    var i;
+    
+    if(array.length < 2) return array[0];
+    for(i = 0;i < array.length - 1;i++){
+        result += array[i] + SEP;
+    }
+    result += array[i];
+    
+    return result;
 }
 
 /* 小口径主砲 */
