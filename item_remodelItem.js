@@ -1,11 +1,6 @@
-//Ver:1.2.0(develop)
+//Ver:1.3.0
 //Author:Nishisonic
 //LastUpdate:2015/03/17
-
-/*
- * ソースコードを大幅に書換（前のソースコード見辛かった）
- * wikiの改修表と同じように変更
- */
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
