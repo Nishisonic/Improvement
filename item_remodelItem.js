@@ -1,6 +1,6 @@
-//Ver:1.3.0
+//Ver:1.3.1
 //Author:Nishisonic
-//LastUpdate:2015/03/17
+//LastUpdate:2015/03/18
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -686,7 +686,7 @@ func_obj.id_7 = function(dayOfWeek){
 }
 
 //試製35.6cm三連装砲
-func_obj.id_107 = function(dayOfWeek){
+func_obj.id_103 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [YAMASHIRO_R2];
         case Calendar.MONDAY:    return [NONE];
@@ -957,6 +957,20 @@ func_obj.id_58 = function(dayOfWeek){
 
 /* 水上偵察機 */
 
+//零式水上偵察機
+func_obj.id_25 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [AKITSUSHIMA_R,MIZUHO];
+        case Calendar.MONDAY:    return [MIZUHO];
+        case Calendar.TUESDAY:   return [MIZUHO];
+        case Calendar.WEDNESDAY: return [CHIYODA_K];
+        case Calendar.THURSDAY:  return [CHIYODA_K,AKITSUSHIMA_R];
+        case Calendar.FRIDAY:    return [CHITOSE_K,AKITSUSHIMA_R,MIZUHO];
+        case Calendar.SATURDAY:  return [CHITOSE_K,AKITSUSHIMA_R,MIZUHO];
+        default :                return [ERROR];
+    }
+}
+
 //零式水上観測機
 func_obj.id_59 = function(dayOfWeek){
     switch(dayOfWeek){
@@ -1205,12 +1219,26 @@ func_obj.id_116 = function(dayOfWeek){
 
 /* 対空機銃 */
 
+//25mm単装機銃
+func_obj.id_49 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [SATSUKI];
+        case Calendar.MONDAY:    return [NONE];
+        case Calendar.TUESDAY:   return [NONE];
+        case Calendar.WEDNESDAY: return [NONE];
+        case Calendar.THURSDAY:  return [NONE];
+        case Calendar.FRIDAY:    return [SATSUKI];
+        case Calendar.SATURDAY:  return [SATSUKI];
+        default :                return [ERROR];
+    }
+}
+
 //25mm連装機銃
 func_obj.id_39 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ISUZU_R2];
-        case Calendar.MONDAY:    return [NONE];
-        case Calendar.TUESDAY:   return [NONE];
+        case Calendar.MONDAY:    return [SATSUKI];
+        case Calendar.TUESDAY:   return [SATSUKI];
         case Calendar.WEDNESDAY: return [NONE];
         case Calendar.THURSDAY:  return [NONE];
         case Calendar.FRIDAY:    return [NONE];
@@ -1223,10 +1251,10 @@ func_obj.id_39 = function(dayOfWeek){
 func_obj.id_40 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MAYA_R2];
-        case Calendar.MONDAY:    return [ISUZU_R2];
+        case Calendar.MONDAY:    return [ISUZU_R2,MAYA_R2];
         case Calendar.TUESDAY:   return [ISUZU_R2,MAYA];
-        case Calendar.WEDNESDAY: return [ISUZU_R2,MAYA];
-        case Calendar.THURSDAY:  return [MAYA];
+        case Calendar.WEDNESDAY: return [ISUZU_R2,MAYA,SATSUKI_R2];
+        case Calendar.THURSDAY:  return [MAYA,SATSUKI_R2];
         case Calendar.FRIDAY:    return [MAYA_R2];
         case Calendar.SATURDAY:  return [MAYA_R2];
         default :                return [ERROR];
