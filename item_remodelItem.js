@@ -471,21 +471,21 @@ var KASUMI_R2O      = "霞改二乙";        //ID:470
 var word = "id_";
 var func_obj = [];
 
-function header() {
+function header(){
     return [ "二番艦" ];
 }
 
-function begin() { }
+function begin(){ }
 
-function body(data) {
+function body(data){
     var dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
     return toComparable([ String(getSecondShip( dayOfWeek, data.getInfo().getId())) ]);
 }
 
-function end() { }
+function end(){ }
 
 //2番艦を取得します
-function getSecondShip( dayOfWeek, itemId){
+function getSecondShip(dayOfWeek, itemId){
     try{
         return toLineOfArray(func_obj[word + itemId](dayOfWeek));
     }catch(e){
