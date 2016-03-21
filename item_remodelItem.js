@@ -1,6 +1,6 @@
-//Ver:1.3.1
+//Ver:1.3.2
 //Author:Nishisonic
-//LastUpdate:2015/03/18
+//LastUpdate:2015/03/21
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -472,7 +472,7 @@ var word = "id_";
 var func_obj = [];
 
 function header() {
-    return [ "今日の改修工廠" ];
+    return [ "二番艦" ];
 }
 
 function begin() { }
@@ -1225,10 +1225,10 @@ func_obj.id_49 = function(dayOfWeek){
         case Calendar.SUNDAY:    return [SATSUKI];
         case Calendar.MONDAY:    return [NONE];
         case Calendar.TUESDAY:   return [NONE];
-        case Calendar.WEDNESDAY: return [NONE];
-        case Calendar.THURSDAY:  return [NONE];
-        case Calendar.FRIDAY:    return [SATSUKI];
-        case Calendar.SATURDAY:  return [SATSUKI];
+        case Calendar.WEDNESDAY: return [FUMIDUKI];
+        case Calendar.THURSDAY:  return [FUMIDUKI];
+        case Calendar.FRIDAY:    return [SATSUKI,FUMIDUKI];
+        case Calendar.SATURDAY:  return [SATSUKI,FUMIDUKI];
         default :                return [ERROR];
     }
 }
@@ -1236,9 +1236,9 @@ func_obj.id_49 = function(dayOfWeek){
 //25mm連装機銃
 func_obj.id_39 = function(dayOfWeek){
     switch(dayOfWeek){
-        case Calendar.SUNDAY:    return [ISUZU_R2];
-        case Calendar.MONDAY:    return [SATSUKI];
-        case Calendar.TUESDAY:   return [SATSUKI];
+        case Calendar.SUNDAY:    return [ISUZU_R2,FUMIDUKI];
+        case Calendar.MONDAY:    return [SATSUKI,FUMIDUKI];
+        case Calendar.TUESDAY:   return [SATSUKI,FUMIDUKI];
         case Calendar.WEDNESDAY: return [NONE];
         case Calendar.THURSDAY:  return [NONE];
         case Calendar.FRIDAY:    return [NONE];
