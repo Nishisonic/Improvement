@@ -1,4 +1,4 @@
-//Ver:1.3.2
+//Ver:1.4.0
 //Author:Nishisonic
 //LastUpdate:2015/03/21
 
@@ -487,11 +487,7 @@ function end() { }
 //2番艦を取得します
 function getSecondShip( dayOfWeek, itemId){
     try{
-        for(var i = 1;i < 501;i++){
-            if(i == itemId){
-                return toLineOfArray(func_obj[word + i](dayOfWeek));
-            }
-        }
+        return toLineOfArray(func_obj[word + itemId](dayOfWeek));
     }catch(e){
         return NONE;
     }
