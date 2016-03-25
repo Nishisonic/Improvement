@@ -1,6 +1,7 @@
-//Ver:1.4.0
+//Ver:1.4.1
 //Author:Nishisonic
-//LastUpdate:2015/03/21
+//LastUpdate:2015/03/26
+//次回修正箇所:94式高射装置,特二式内火艇
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -541,10 +542,10 @@ func_obj.id_63 = function(dayOfWeek){
 func_obj.id_122 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [TERUDUKI];
-        case Calendar.MONDAY:    return [AKIDUKI];
-        case Calendar.TUESDAY:   return [AKIDUKI];
-        case Calendar.WEDNESDAY: return [AKIDUKI];
-        case Calendar.THURSDAY:  return [AKIDUKI,TERUDUKI];
+        case Calendar.MONDAY:    return [AKIDUKI,HATSUDUKI];
+        case Calendar.TUESDAY:   return [AKIDUKI,HATSUDUKI];
+        case Calendar.WEDNESDAY: return [AKIDUKI,HATSUDUKI];
+        case Calendar.THURSDAY:  return [AKIDUKI,TERUDUKI,HATSUDUKI];
         case Calendar.FRIDAY:    return [TERUDUKI];
         case Calendar.SATURDAY:  return [TERUDUKI];
         default :                return [ERROR];
@@ -1283,6 +1284,36 @@ func_obj.id_121 = function(dayOfWeek){
         case Calendar.THURSDAY:  return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
         case Calendar.FRIDAY:    return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
         case Calendar.SATURDAY:  return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
+        default :                return [ERROR];
+    }
+}
+
+/* 上陸用舟艇 */
+
+//大発動艇
+func_obj.id_68 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2];
+        case Calendar.MONDAY:    return [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2];
+        case Calendar.TUESDAY:   return [AKITSUMARU,SATSUKI_R2];
+        case Calendar.WEDNESDAY: return [AKITSUMARU,SATSUKI_R2];
+        case Calendar.THURSDAY:  return [AKITSUMARU];
+        case Calendar.FRIDAY:    return [AKITSUMARU,ABUKUMA_R2];
+        case Calendar.SATURDAY:  return [AKITSUMARU,ABUKUMA_R2];
+        default :                return [ERROR];
+    }
+}
+
+//大発動艇(八九式中戦車＆陸戦隊)
+func_obj.id_166 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [AKITSUMARU];
+        case Calendar.MONDAY:    return [AKITSUMARU];
+        case Calendar.TUESDAY:   return [ABUKUMA_R2];
+        case Calendar.WEDNESDAY: return [ABUKUMA_R2];
+        case Calendar.THURSDAY:  return [SATSUKI_R2,ABUKUMA_R2];
+        case Calendar.FRIDAY:    return [AKITSUMARU,SATSUKI_R2];
+        case Calendar.SATURDAY:  return [AKITSUMARU,SATSUKI_R2];
         default :                return [ERROR];
     }
 }
