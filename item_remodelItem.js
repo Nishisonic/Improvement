@@ -1,7 +1,6 @@
-//Ver:1.4.1
+//Ver:1.4.2
 //Author:Nishisonic
-//LastUpdate:2015/03/26
-//次回修正箇所:94式高射装置,特二式内火艇
+//LastUpdate:2015/03/29
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -1277,13 +1276,13 @@ func_obj.id_120 = function(dayOfWeek){
 //94式高射装置
 func_obj.id_121 = function(dayOfWeek){
     switch(dayOfWeek){
-        case Calendar.SUNDAY:    return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
+        case Calendar.SUNDAY:    return [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2];
         case Calendar.MONDAY:    return [AKIDUKI,TERUDUKI];
         case Calendar.TUESDAY:   return [AKIDUKI,TERUDUKI];
         case Calendar.WEDNESDAY: return [AKIDUKI,TERUDUKI];
         case Calendar.THURSDAY:  return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
-        case Calendar.FRIDAY:    return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
-        case Calendar.SATURDAY:  return [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2];
+        case Calendar.FRIDAY:    return [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2];
+        case Calendar.SATURDAY:  return [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2];
         default :                return [ERROR];
     }
 }
@@ -1314,6 +1313,20 @@ func_obj.id_166 = function(dayOfWeek){
         case Calendar.THURSDAY:  return [SATSUKI_R2,ABUKUMA_R2];
         case Calendar.FRIDAY:    return [AKITSUMARU,SATSUKI_R2];
         case Calendar.SATURDAY:  return [AKITSUMARU,SATSUKI_R2];
+        default :                return [ERROR];
+    }
+}
+
+//特二式内火艇
+func_obj.id_167 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [I58];
+        case Calendar.MONDAY:    return [I58,I401];
+        case Calendar.TUESDAY:   return [I401];
+        case Calendar.WEDNESDAY: return [I8,I401];
+        case Calendar.THURSDAY:  return [I8,I401];
+        case Calendar.FRIDAY:    return [I58,I8];
+        case Calendar.SATURDAY:  return [I58,I8];
         default :                return [ERROR];
     }
 }
