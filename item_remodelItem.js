@@ -1,9 +1,10 @@
-//Ver:1.4.2
+//Ver:1.4.3
 //Author:Nishisonic
-//LastUpdate:2015/03/29
+//LastUpdate:2015/04/17
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
+JavaString = Java.type("java.lang.String");
 
 /* 定数リスト */
 var DEFAULT       = "デフォルト";
@@ -13,6 +14,7 @@ var ERROR         = "ERROR";
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
+ * IDだけでも良かったですが、物凄く可読性が落ちるのでこの形にしています。
  * 
  * 【仕様】
  * 日本艦…ローマ字
@@ -236,6 +238,7 @@ var HAGURO_R2       = "羽黒改二";        //ID:194
 var AYANAMI_R2      = "綾波改二";        //ID:195
 var HIRYU_R2        = "飛龍改二";        //ID:196
 var SORYU_R2        = "蒼龍改二";        //ID:197
+var OSHIO_R2        = "大潮改二";        //ID:199
 var ABUKUMA_R2      = "阿武隈改二";      //ID:200
 var FUBUKI_R        = "吹雪改";          //ID:201
 var SHIRAYUKI_R     = "白雪改";          //ID:202
@@ -469,7 +472,7 @@ var ZUIKAKU_R2K     = "瑞鶴改二甲";      //ID:467
 var KASUMI_R2O      = "霞改二乙";        //ID:470
 
 var word = "id_";
-var func_obj = [];
+var func_item = [];
 
 function header(){
     return [ "二番艦" ];
@@ -487,30 +490,16 @@ function end(){ }
 //2番艦を取得します
 function getSecondShip(dayOfWeek, itemId){
     try{
-        return toLineOfArray(func_obj[word + itemId](dayOfWeek));
+        return JavaString.join(SEP,func_item[word + itemId](dayOfWeek));
     }catch(e){
         return NONE;
     }
 }
 
-//String配列を一行のStringの値に変える
-function toLineOfArray(array){
-    var result = "";
-    var i;
-    
-    if(array.length < 2) return array[0];
-    for(i = 0;i < array.length - 1;i++){
-        result += array[i] + SEP;
-    }
-    result += array[i];
-    
-    return result;
-}
-
 /* 小口径主砲 */
 
 //12.7cm単装砲
-func_obj.id_2 = function(dayOfWeek){
+func_item.id_2 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [DEFAULT];
         case Calendar.MONDAY:    return [DEFAULT];
@@ -524,7 +513,7 @@ func_obj.id_2 = function(dayOfWeek){
 }
 
 //12.7cm連装砲B型改二
-func_obj.id_63 = function(dayOfWeek){
+func_item.id_63 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [YUDACHI_R2,AYANAMI_R2];
@@ -538,7 +527,7 @@ func_obj.id_63 = function(dayOfWeek){
 }
 
 //10cm高角砲+高射装置
-func_obj.id_122 = function(dayOfWeek){
+func_item.id_122 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [TERUDUKI];
         case Calendar.MONDAY:    return [AKIDUKI,HATSUDUKI];
@@ -554,7 +543,7 @@ func_obj.id_122 = function(dayOfWeek){
 /* 中口径主砲 */
 
 //14cm単装砲
-func_obj.id_4 = function(dayOfWeek){
+func_item.id_4 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [DEFAULT];
         case Calendar.MONDAY:    return [DEFAULT];
@@ -568,7 +557,7 @@ func_obj.id_4 = function(dayOfWeek){
 }
 
 //14cm連装砲
-func_obj.id_119 = function(dayOfWeek){
+func_item.id_119 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [YUBARI];
@@ -582,7 +571,7 @@ func_obj.id_119 = function(dayOfWeek){
 }
 
 //15.2cm連装砲
-func_obj.id_65 = function(dayOfWeek){
+func_item.id_65 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NOSHIRO];
         case Calendar.MONDAY:    return [NOSHIRO,YAHAGI];
@@ -596,7 +585,7 @@ func_obj.id_65 = function(dayOfWeek){
 }
 
 //15.2cm連装砲改
-func_obj.id_139 = function(dayOfWeek){
+func_item.id_139 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [SAKAWA];
         case Calendar.MONDAY:    return [SAKAWA];
@@ -610,7 +599,7 @@ func_obj.id_139 = function(dayOfWeek){
 }
 
 //15.5cm三連装砲
-func_obj.id_5 = function(dayOfWeek){
+func_item.id_5 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [OYODO];
         case Calendar.MONDAY:    return [OYODO];
@@ -624,7 +613,7 @@ func_obj.id_5 = function(dayOfWeek){
 }
 
 //20.3cm連装砲
-func_obj.id_6 = function(dayOfWeek){
+func_item.id_6 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AOBA,KINUGASA];
         case Calendar.MONDAY:    return [KINUGASA];
@@ -638,7 +627,7 @@ func_obj.id_6 = function(dayOfWeek){
 }
 
 //20.3cm(2号)連装砲
-func_obj.id_90 = function(dayOfWeek){
+func_item.id_90 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MYOKO];
         case Calendar.MONDAY:    return [MYOKO];
@@ -652,7 +641,7 @@ func_obj.id_90 = function(dayOfWeek){
 }
 
 //20.3cm(3号)連装砲
-func_obj.id_50 = function(dayOfWeek){
+func_item.id_50 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -668,7 +657,7 @@ func_obj.id_50 = function(dayOfWeek){
 /* 大口径主砲 */
 
 //35.6cm連装砲
-func_obj.id_7 = function(dayOfWeek){
+func_item.id_7 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [FUSO];
         case Calendar.MONDAY:    return [NONE];
@@ -682,7 +671,7 @@ func_obj.id_7 = function(dayOfWeek){
 }
 
 //試製35.6cm三連装砲
-func_obj.id_103 = function(dayOfWeek){
+func_item.id_103 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [YAMASHIRO_R2];
         case Calendar.MONDAY:    return [NONE];
@@ -696,7 +685,7 @@ func_obj.id_103 = function(dayOfWeek){
 }
 
 //35.6cm連装砲(ダズル迷彩)
-func_obj.id_104 = function(dayOfWeek){
+func_item.id_104 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [HARUNA_R2];
         case Calendar.MONDAY:    return [HARUNA_R2];
@@ -710,7 +699,7 @@ func_obj.id_104 = function(dayOfWeek){
 }
 
 //38cm連装砲
-func_obj.id_76 = function(dayOfWeek){
+func_item.id_76 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -724,7 +713,7 @@ func_obj.id_76 = function(dayOfWeek){
 }
 
 //38cm連装砲改
-func_obj.id_114 = function(dayOfWeek){
+func_item.id_114 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [BISMARCK];
         case Calendar.MONDAY:    return [BISMARCK];
@@ -738,7 +727,7 @@ func_obj.id_114 = function(dayOfWeek){
 }
 
 //381mm/50 三連装砲
-func_obj.id_133 = function(dayOfWeek){
+func_item.id_133 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ROMA];
         case Calendar.MONDAY:    return [ROMA];
@@ -752,7 +741,7 @@ func_obj.id_133 = function(dayOfWeek){
 }
 
 //381mm/50 三連装砲改
-func_obj.id_137 = function(dayOfWeek){
+func_item.id_137 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [LITTORIO];
         case Calendar.MONDAY:    return [LITTORIO];
@@ -766,7 +755,7 @@ func_obj.id_137 = function(dayOfWeek){
 }
 
 //41cm連装砲
-func_obj.id_8 = function(dayOfWeek){
+func_item.id_8 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MUTSU];
         case Calendar.MONDAY:    return [MUTSU];
@@ -780,7 +769,7 @@ func_obj.id_8 = function(dayOfWeek){
 }
 
 //試製41cm三連装砲
-func_obj.id_105 = function(dayOfWeek){
+func_item.id_105 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NAGATO_R];
         case Calendar.MONDAY:    return [NAGATO_R];
@@ -794,7 +783,7 @@ func_obj.id_105 = function(dayOfWeek){
 }
 
 //試製46cm連装砲
-func_obj.id_117 = function(dayOfWeek){
+func_item.id_117 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [YAMATO];
         case Calendar.MONDAY:    return [YAMATO];
@@ -808,7 +797,7 @@ func_obj.id_117 = function(dayOfWeek){
 }
 
 //46cm三連装砲
-func_obj.id_9 = function(dayOfWeek){
+func_item.id_9 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MUSASHI];
         case Calendar.MONDAY:    return [MUSASHI];
@@ -822,7 +811,7 @@ func_obj.id_9 = function(dayOfWeek){
 }
 
 //試製51cm連装砲
-func_obj.id_128 = function(dayOfWeek){
+func_item.id_128 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [YAMATO_R,MUSASHI_R];
@@ -838,7 +827,7 @@ func_obj.id_128 = function(dayOfWeek){
 /* 副砲 */
 
 //90mm単装高角砲
-func_obj.id_135 = function(dayOfWeek){
+func_item.id_135 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ROMA];
         case Calendar.MONDAY:    return [LITTORIO];
@@ -852,7 +841,7 @@ func_obj.id_135 = function(dayOfWeek){
 }
 
 //15.2cm単装砲
-func_obj.id_11 = function(dayOfWeek){
+func_item.id_11 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AGANO,KONGO];
         case Calendar.MONDAY:    return [AGANO,KONGO,YAMASHIRO];
@@ -866,7 +855,7 @@ func_obj.id_11 = function(dayOfWeek){
 }
 
 //OTO 152mm三連装速射砲
-func_obj.id_134 = function(dayOfWeek){
+func_item.id_134 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [LITTORIO,ROMA];
         case Calendar.MONDAY:    return [ROMA];
@@ -882,7 +871,7 @@ func_obj.id_134 = function(dayOfWeek){
 /* 魚雷 */
 
 //61cm三連装魚雷
-func_obj.id_13 = function(dayOfWeek){
+func_item.id_13 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MURAKUMO];
         case Calendar.MONDAY:    return [MURAKUMO];
@@ -896,7 +885,7 @@ func_obj.id_13 = function(dayOfWeek){
 }
 
 //61cm三連装(酸素)魚雷
-func_obj.id_125 = function(dayOfWeek){
+func_item.id_125 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -910,7 +899,7 @@ func_obj.id_125 = function(dayOfWeek){
 }
 
 //61cm四連装魚雷
-func_obj.id_14 = function(dayOfWeek){
+func_item.id_14 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [DEFAULT];
         case Calendar.MONDAY:    return [DEFAULT];
@@ -924,7 +913,7 @@ func_obj.id_14 = function(dayOfWeek){
 }
 
 //61cm四連装(酸素)魚雷
-func_obj.id_15 = function(dayOfWeek){
+func_item.id_15 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [OI,KITAKAMI];
         case Calendar.MONDAY:    return [OI,KITAKAMI];
@@ -938,7 +927,7 @@ func_obj.id_15 = function(dayOfWeek){
 }
 
 //61cm五連装(酸素)魚雷
-func_obj.id_58 = function(dayOfWeek){
+func_item.id_58 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -954,7 +943,7 @@ func_obj.id_58 = function(dayOfWeek){
 /* 水上偵察機 */
 
 //零式水上偵察機
-func_obj.id_25 = function(dayOfWeek){
+func_item.id_25 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AKITSUSHIMA_R,MIZUHO];
         case Calendar.MONDAY:    return [MIZUHO];
@@ -968,7 +957,7 @@ func_obj.id_25 = function(dayOfWeek){
 }
 
 //零式水上観測機
-func_obj.id_59 = function(dayOfWeek){
+func_item.id_59 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MIZUHO];
         case Calendar.MONDAY:    return [MIZUHO];
@@ -982,7 +971,7 @@ func_obj.id_59 = function(dayOfWeek){
 }
 
 //Ro.43水偵
-func_obj.id_163 = function(dayOfWeek){
+func_item.id_163 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ITALIA];
         case Calendar.MONDAY:    return [ZARA_R];
@@ -998,7 +987,7 @@ func_obj.id_163 = function(dayOfWeek){
 /* 電探 */
 
 //13号対空電探
-func_obj.id_27 = function(dayOfWeek){
+func_item.id_27 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [SHIGURE_R2,ISUZU_R2];
         case Calendar.MONDAY:    return [ISUZU_R2,TERUDUKI];
@@ -1012,7 +1001,7 @@ func_obj.id_27 = function(dayOfWeek){
 }
 
 //13号対空電探改
-func_obj.id_106 = function(dayOfWeek){
+func_item.id_106 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [HATSUSHIMO_R2,YUKIKAZE];
         case Calendar.MONDAY:    return [YUKIKAZE];
@@ -1026,7 +1015,7 @@ func_obj.id_106 = function(dayOfWeek){
 }
 
 //22号対水上電探
-func_obj.id_28 = function(dayOfWeek){
+func_item.id_28 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [HYUGA];
         case Calendar.MONDAY:    return [HYUGA,YUGUMO];
@@ -1040,7 +1029,7 @@ func_obj.id_28 = function(dayOfWeek){
 }
 
 //22号対水上電探改四
-func_obj.id_88 = function(dayOfWeek){
+func_item.id_88 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MYOKO_R2,HAGURO_R2];
         case Calendar.MONDAY:    return [HAGURO_R2];
@@ -1054,7 +1043,7 @@ func_obj.id_88 = function(dayOfWeek){
 }
 
 //21号対空電探
-func_obj.id_30 = function(dayOfWeek){
+func_item.id_30 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ISE];
         case Calendar.MONDAY:    return [ISE];
@@ -1068,7 +1057,7 @@ func_obj.id_30 = function(dayOfWeek){
 }
 
 //21号対空電探改
-func_obj.id_89 = function(dayOfWeek){
+func_item.id_89 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [YAMATO];
         case Calendar.MONDAY:    return [NONE];
@@ -1082,7 +1071,7 @@ func_obj.id_89 = function(dayOfWeek){
 }
 
 //32号対水上電探
-func_obj.id_31 = function(dayOfWeek){
+func_item.id_31 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [HYUGA];
         case Calendar.MONDAY:    return [HYUGA];
@@ -1096,7 +1085,7 @@ func_obj.id_31 = function(dayOfWeek){
 }
 
 //32号対水上電探改
-func_obj.id_141 = function(dayOfWeek){
+func_item.id_141 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ISE];
         case Calendar.MONDAY:    return [ISE];
@@ -1112,7 +1101,7 @@ func_obj.id_141 = function(dayOfWeek){
 /* ソナー */
 
 //九三式水中聴音機
-func_obj.id_46 = function(dayOfWeek){
+func_item.id_46 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [YUBARI,SHIGURE_R2,KATORI_R];
         case Calendar.MONDAY:    return [ISUZU_R2];
@@ -1126,7 +1115,7 @@ func_obj.id_46 = function(dayOfWeek){
 }
 
 //三式水中探信儀
-func_obj.id_47 = function(dayOfWeek){
+func_item.id_47 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ISUZU_R2];
         case Calendar.MONDAY:    return [NONE];
@@ -1140,7 +1129,7 @@ func_obj.id_47 = function(dayOfWeek){
 }
 
 //四式水中聴音機
-func_obj.id_149 = function(dayOfWeek){
+func_item.id_149 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AKIDUKI];
         case Calendar.MONDAY:    return [KATORI_R];
@@ -1156,7 +1145,7 @@ func_obj.id_149 = function(dayOfWeek){
 /* 爆雷 */
 
 //九四式爆雷投射機
-func_obj.id_44 = function(dayOfWeek){
+func_item.id_44 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -1170,7 +1159,7 @@ func_obj.id_44 = function(dayOfWeek){
 }
 
 //三式爆雷投射機
-func_obj.id_45 = function(dayOfWeek){
+func_item.id_45 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [NONE];
         case Calendar.MONDAY:    return [NONE];
@@ -1186,7 +1175,7 @@ func_obj.id_45 = function(dayOfWeek){
 /* 対艦強化弾 */
 
 //九一式徹甲弾
-func_obj.id_36 = function(dayOfWeek){
+func_item.id_36 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [KIRISHIMA];
         case Calendar.MONDAY:    return [KIRISHIMA];
@@ -1200,7 +1189,7 @@ func_obj.id_36 = function(dayOfWeek){
 }
 
 //一式徹甲弾
-func_obj.id_116 = function(dayOfWeek){
+func_item.id_116 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [KONGO];
         case Calendar.MONDAY:    return [HARUNA];
@@ -1216,7 +1205,7 @@ func_obj.id_116 = function(dayOfWeek){
 /* 対空機銃 */
 
 //25mm単装機銃
-func_obj.id_49 = function(dayOfWeek){
+func_item.id_49 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [SATSUKI];
         case Calendar.MONDAY:    return [NONE];
@@ -1230,7 +1219,7 @@ func_obj.id_49 = function(dayOfWeek){
 }
 
 //25mm連装機銃
-func_obj.id_39 = function(dayOfWeek){
+func_item.id_39 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [ISUZU_R2,FUMIDUKI];
         case Calendar.MONDAY:    return [SATSUKI,FUMIDUKI];
@@ -1244,7 +1233,7 @@ func_obj.id_39 = function(dayOfWeek){
 }
 
 //25mm三連装機銃
-func_obj.id_40 = function(dayOfWeek){
+func_item.id_40 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MAYA_R2];
         case Calendar.MONDAY:    return [ISUZU_R2,MAYA_R2];
@@ -1260,7 +1249,7 @@ func_obj.id_40 = function(dayOfWeek){
 /* 高射装置 */
 
 //91式高射装置
-func_obj.id_120 = function(dayOfWeek){
+func_item.id_120 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [MAYA,AKIDUKI,TERUDUKI];
         case Calendar.MONDAY:    return [MAYA,AKIDUKI];
@@ -1274,7 +1263,7 @@ func_obj.id_120 = function(dayOfWeek){
 }
 
 //94式高射装置
-func_obj.id_121 = function(dayOfWeek){
+func_item.id_121 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2];
         case Calendar.MONDAY:    return [AKIDUKI,TERUDUKI];
@@ -1290,7 +1279,7 @@ func_obj.id_121 = function(dayOfWeek){
 /* 上陸用舟艇 */
 
 //大発動艇
-func_obj.id_68 = function(dayOfWeek){
+func_item.id_68 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2];
         case Calendar.MONDAY:    return [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2];
@@ -1304,7 +1293,7 @@ func_obj.id_68 = function(dayOfWeek){
 }
 
 //大発動艇(八九式中戦車＆陸戦隊)
-func_obj.id_166 = function(dayOfWeek){
+func_item.id_166 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [AKITSUMARU];
         case Calendar.MONDAY:    return [AKITSUMARU];
@@ -1318,7 +1307,7 @@ func_obj.id_166 = function(dayOfWeek){
 }
 
 //特二式内火艇
-func_obj.id_167 = function(dayOfWeek){
+func_item.id_167 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [I58];
         case Calendar.MONDAY:    return [I58,I401];
@@ -1334,7 +1323,7 @@ func_obj.id_167 = function(dayOfWeek){
 /* 探照灯 */
 
 //探照灯
-func_obj.id_74 = function(dayOfWeek){
+func_item.id_74 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [JINTSU];
         case Calendar.MONDAY:    return [AOBA,AYANAMI];
@@ -1348,7 +1337,7 @@ func_obj.id_74 = function(dayOfWeek){
 }
 
 //96式150cm探照灯
-func_obj.id_140 = function(dayOfWeek){
+func_item.id_140 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [HIEI];
         case Calendar.MONDAY:    return [HIEI];
