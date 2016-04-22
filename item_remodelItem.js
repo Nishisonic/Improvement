@@ -1,6 +1,6 @@
-//Ver:1.4.4
+//Ver:1.4.5
 //Author:Nishisonic
-//LastUpdate:2016/04/19
+//LastUpdate:2016/04/22
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -10,6 +10,7 @@ var DEFAULT       = "デフォルト";
 var SEP           = ",";
 var NONE          = "";
 var ERROR         = "ERROR";
+var UNKNOWN       = "不明";
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -467,7 +468,7 @@ var KASHIMA         = "鹿島";            //ID:465
 var SHOKAKU_R2K     = "翔鶴改二甲";      //ID:466
 var ZUIKAKU_R2K     = "瑞鶴改二甲";      //ID:467
 //var NULL          = "NULL";            //ID:468
-//var NULL          = "NULL";            //ID:469
+var KAWAKAZE_R2     = "江風改二";        //ID:469
 var KASUMI_R2O      = "霞改二乙";        //ID:470
 
 var word = "id_";
@@ -481,7 +482,7 @@ function begin(){ }
 
 function body(data){
     var dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-    return toComparable([ String(getSecondShip( dayOfWeek, data.getInfo().getId())) ]);
+    return toComparable([ getSecondShip( dayOfWeek, data.getInfo().getId()) ]);
 }
 
 function end(){ }
@@ -965,6 +966,20 @@ func_item.id_59 = function(dayOfWeek){
         case Calendar.THURSDAY:  return [MUSASHI];
         case Calendar.FRIDAY:    return [MUSASHI];
         case Calendar.SATURDAY:  return [MIZUHO,MUSASHI];
+        default :                return [ERROR];
+    }
+}
+
+//九八式水上偵察機(夜偵)
+func_item.id_102 = function(dayOfWeek){
+    switch(dayOfWeek){
+        case Calendar.SUNDAY:    return [UNKNOWN];
+        case Calendar.MONDAY:    return [UNKNOWN];
+        case Calendar.TUESDAY:   return [UNKNOWN];
+        case Calendar.WEDNESDAY: return [UNKNOWN];
+        case Calendar.THURSDAY:  return [UNKNOWN];
+        case Calendar.FRIDAY:    return [SENDAI];
+        case Calendar.SATURDAY:  return [UNKNOWN];
         default :                return [ERROR];
     }
 }
