@@ -1,10 +1,9 @@
-//Ver:1.4.3
+//Ver:1.4.4
 //Author:Nishisonic
-//LastUpdate:2015/04/17
+//LastUpdate:2016/04/19
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
-JavaString = Java.type("java.lang.String");
 
 /* 定数リスト */
 var DEFAULT       = "デフォルト";
@@ -187,7 +186,7 @@ var MUSASHI         = "武蔵";            //ID:143
 var YUDACHI_R2      = "夕立改二";        //ID:144
 var SHIGURE_R2      = "時雨改二";        //ID:145
 var KISO_R2         = "木曾改二";        //ID:146
-var VERUNUI         = "Верный";    //ID:147
+var VERUNUI         = "Верный";          //ID:147
 var MUSASHI_R       = "武蔵改";          //ID:148
 var KONGO_R2        = "金剛改二";        //ID:149
 var HIEI_R2         = "比叡改二";        //ID:150
@@ -490,7 +489,7 @@ function end(){ }
 //2番艦を取得します
 function getSecondShip(dayOfWeek, itemId){
     try{
-        return JavaString.join(SEP,func_item[word + itemId](dayOfWeek));
+        return func_item[word + itemId](dayOfWeek).join(SEP);
     }catch(e){
         return NONE;
     }
