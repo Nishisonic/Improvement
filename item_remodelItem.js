@@ -1,6 +1,6 @@
-//Ver:1.4.6
+//Ver:1.4.6.1
 //Author:Nishisonic
-//LastUpdate:2016/04/22
+//LastUpdate:2016/04/24
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -973,13 +973,13 @@ func_item.id_59 = function(dayOfWeek){
 //九八式水上偵察機(夜偵)
 func_item.id_102 = function(dayOfWeek){
     switch(dayOfWeek){
-        case Calendar.SUNDAY:    return [UNKNOWN];
+        case Calendar.SUNDAY:    return [SENDAI_R2];
         case Calendar.MONDAY:    return [UNKNOWN];
         case Calendar.TUESDAY:   return [UNKNOWN];
         case Calendar.WEDNESDAY: return [UNKNOWN];
         case Calendar.THURSDAY:  return [UNKNOWN];
         case Calendar.FRIDAY:    return [SENDAI_R2];
-        case Calendar.SATURDAY:  return [UNKNOWN];
+        case Calendar.SATURDAY:  return [SENDAI_R2];
         default :                return [ERROR];
     }
 }
