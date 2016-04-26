@@ -1,6 +1,6 @@
-//Ver:1.4.6.1
+//Ver:1.4.6.2
 //Author:Nishisonic
-//LastUpdate:2016/04/24
+//LastUpdate:2016/04/27
 
 load("script/utils.js");
 Calendar = Java.type("java.util.Calendar");
@@ -974,9 +974,9 @@ func_item.id_59 = function(dayOfWeek){
 func_item.id_102 = function(dayOfWeek){
     switch(dayOfWeek){
         case Calendar.SUNDAY:    return [SENDAI_R2];
-        case Calendar.MONDAY:    return [UNKNOWN];
-        case Calendar.TUESDAY:   return [UNKNOWN];
-        case Calendar.WEDNESDAY: return [UNKNOWN];
+        case Calendar.MONDAY:    return [SENDAI_R2];
+        case Calendar.TUESDAY:   return [NONE];
+        case Calendar.WEDNESDAY: return [NONE];
         case Calendar.THURSDAY:  return [UNKNOWN];
         case Calendar.FRIDAY:    return [SENDAI_R2];
         case Calendar.SATURDAY:  return [SENDAI_R2];
