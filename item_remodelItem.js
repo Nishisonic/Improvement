@@ -1,4 +1,4 @@
-//Ver:1.4.6.2
+//Ver:1.4.7
 //Author:Nishisonic
 //LastUpdate:2016/04/27
 
@@ -977,7 +977,7 @@ func_item.id_102 = function(dayOfWeek){
         case Calendar.MONDAY:    return [SENDAI_R2];
         case Calendar.TUESDAY:   return [NONE];
         case Calendar.WEDNESDAY: return [NONE];
-        case Calendar.THURSDAY:  return [UNKNOWN];
+        case Calendar.THURSDAY:  return [SENDAI_R2];
         case Calendar.FRIDAY:    return [SENDAI_R2];
         case Calendar.SATURDAY:  return [SENDAI_R2];
         default :                return [ERROR];
