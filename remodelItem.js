@@ -1,3 +1,7 @@
+//Ver:2.0.0
+//Author:Nishisonic
+//LastUpdate:2016/05/28
+
 Calendar = Java.type("java.util.Calendar");
 
 /* 定数リスト */

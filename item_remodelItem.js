@@ -1,6 +1,5 @@
 //Ver:2.0.0
 //Author:Nishisonic
-//LastUpdate:2016/05/05
 
 load("script/utils.js");
 load("script/remodelItem.js");
