@@ -1,6 +1,6 @@
-//Ver:2.0.0
+//Ver:2.0.1
 //Author:Nishisonic
-//LastUpdate:2016/05/28
+//LastUpdate:2016/06/15
 
 Calendar = Java.type("java.util.Calendar");
 

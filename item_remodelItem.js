@@ -1,9 +1,10 @@
-//Ver:2.0.0
+//Ver:2.0.1
 //Author:Nishisonic
 
 load("script/utils.js");
 load("script/remodelItem.js");
 Calendar = Java.type("java.util.Calendar");
+TimeZone = Java.type("java.util.TimeZone");
 Item = Java.type("logbook.internal.Item");
 
 function header(){
@@ -13,7 +14,7 @@ function header(){
 function begin(){ }
 
 function body(data){
-    var dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+    var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK);
     return toComparable([ getSecondShip( dayOfWeek, data.getInfo().getId()) ]);
 }
 

@@ -1,4 +1,4 @@
-﻿//Ver:2.0.0
+﻿//Ver:2.0.1
 //Author:Nishisonic
 
 //script読み込み
@@ -12,6 +12,7 @@ SWT = Java.type("org.eclipse.swt.SWT");
 SWTResourceManager = Java.type("org.eclipse.wb.swt.SWTResourceManager");
 RGB = Java.type("org.eclipse.swt.graphics.RGB");
 Calendar = Java.type("java.util.Calendar");
+TimeZone = Java.type("java.util.TimeZone");
 Item = Java.type("logbook.internal.Item");
 GlobalContext = Java.type("logbook.data.context.GlobalContext");
 AppConstants = Java.type("logbook.constants.AppConstants");
@@ -178,7 +179,7 @@ function create(table, data, index) {
 function end() { }
 
 function isRemodelItem(itemId){
-	var dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+	var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK);
 	return remodelItemData[String(word + itemId)] != null && remodelItemData[String(word + itemId)].helperShip[getDayOfWeek(dayOfWeek)] != NONE;
 }
 
@@ -231,7 +232,7 @@ function _getRemodelItemData(itemData){
 	var thursday  = itemData.helperShip.THURSDAY != NONE;
 	var friday    = itemData.helperShip.FRIDAY != NONE;
 	var saturday  = itemData.helperShip.SATURDAY != NONE;
-	var dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+	var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK);
 	var helperShip = itemData.helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
 	var material = itemData.MATERIAL;
 	var fuel    = prefix(material[0],3);
