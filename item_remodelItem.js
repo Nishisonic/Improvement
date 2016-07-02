@@ -1,11 +1,10 @@
-//Ver:2.0.1
+//Ver:2.0.2
 //Author:Nishisonic
 
 load("script/utils.js");
 load("script/remodelItem.js");
 Calendar = Java.type("java.util.Calendar");
 TimeZone = Java.type("java.util.TimeZone");
-Item = Java.type("logbook.internal.Item");
 
 function header(){
     return [ "二番艦" ];

@@ -1,6 +1,6 @@
-//Ver:2.0.1
+//Ver:2.0.2
 //Author:Nishisonic
-//LastUpdate:2016/06/15
+//LastUpdate:2016/07/02
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -10,6 +10,10 @@ var SEP           = ",";
 var NONE          = "";
 var ERROR         = "ERROR";
 var UNKNOWN       = "不明";
+var NOT_R2        = function(name){ return name + "(改二は除く)"; };
+var NOT_F         = function(name){ return name + "(航以降は不可)"; };
+var NO_DATA       = ["?? ","?? "];
+var C_NO_DATA     = {ID:UNKNOWN,NUM:"?"};
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -128,7 +132,7 @@ var KIRISHIMA       = "霧島";            //ID:85
 var HIEI            = "比叡";            //ID:86
 var HYUGA           = "日向";            //ID:87
 var HYUGA_R         = "日向改";          //ID:88
-var HOSYO           = "鳳翔";            //ID:89
+var HOSHO           = "鳳翔";            //ID:89
 var SORYU           = "蒼龍";            //ID:90
 var HIRYU           = "飛龍";            //ID:91
 var JUNYO           = "隼鷹";            //ID:92
@@ -465,12 +469,12 @@ var KAWAKAZE        = "江風";            //ID:459
 var HAYASUI         = "速吸";            //ID:460
 var SHOKAKU_R2      = "翔鶴改二";        //ID:461
 var ZUIKAKU_R2      = "瑞鶴改二";        //ID:462
-//var NULL          = "NULL";            //ID:463
+var ASASHIO_R2      = "朝潮改二";        //ID:463
 var KASUMI_R2       = "霞改二";          //ID:464
 var KASHIMA         = "鹿島";            //ID:465
 var SHOKAKU_R2K     = "翔鶴改二甲";      //ID:466
 var ZUIKAKU_R2K     = "瑞鶴改二甲";      //ID:467
-//var NULL          = "NULL";            //ID:468
+var ASASHIO_R2T     = "朝潮改二丁";      //ID:468
 var KAWAKAZE_R2     = "江風改二";        //ID:469
 var KASUMI_R2O      = "霞改二乙";        //ID:470
 var KAMIKAZE        = "神風";            //ID:471
@@ -1116,6 +1120,62 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    /** 16inch三連装砲 Mk.7 */
+    id_161:{
+        ID:161,
+        MATERIAL:[ 45,450,750,100],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [IOWA],
+            FRIDAY:   [IOWA],
+            SATURDAY: [IOWA],
+        },
+        star0to6:{
+            RESEARCH:[10,15],
+            SCREW:   [ 6, 8],
+            consumes:{ID:  8,NUM:3}, //41cm連装砲*3
+        },
+        star6toMax:{
+            RESEARCH:[16,24],
+            SCREW:   [ 8,12],
+            consumes:{ID:  9,NUM:3}, //46cm三連装砲*3
+        },
+        upgrade:{
+            RESEARCH:[20,28],
+            SCREW:   [12,20],
+            consumes:{ID: 31,NUM:2}, //32号対水上電探*2
+            ID:183, //16inch三連装砲 Mk.7＋GFCS
+            STAR:0,
+        },
+    },
+    /** 16inch三連装砲Mk.7+GFCS */
+    id_183:{
+        ID:183,
+        MATERIAL:[ 45,500,770,500],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [IOWA],
+            FRIDAY:   [IOWA],
+            SATURDAY: [IOWA],
+        },
+        star0to6:{
+            RESEARCH:[16,24],
+            SCREW:   [ 8,12],
+            consumes:{ID: 28,NUM:2}, //22号対水上電探*2
+        },
+        star6toMax:{
+            RESEARCH:[16,24],
+            SCREW:   [ 8,16],
+            consumes:{ID: 31,NUM:2}, //32号対水上電探*2
+        },
+        upgrade:null,
+    },
     /* 副砲 */
     /** 90mm単装高角砲 */
     id_135:{
@@ -1208,9 +1268,9 @@ var remodelItemData = {
             MONDAY:   [MURAKUMO],
             TUESDAY:  [MURAKUMO],
             WEDNESDAY:[NONE],
-            THURSDAY: [FUBUKI],
-            FRIDAY:   [FUBUKI],
-            SATURDAY: [FUBUKI],
+            THURSDAY: [NOT_R2(FUBUKI)],
+            FRIDAY:   [NOT_R2(FUBUKI)],
+            SATURDAY: [NOT_R2(FUBUKI)],
         },
         star0to6:{
             RESEARCH:[ 1, 2],
@@ -1348,6 +1408,253 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    /** 試製61cm六連装(酸素)魚雷 */
+    id_179:{
+        ID:179,
+        MATERIAL:[120,180,120, 40],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [HATSUDUKI],
+            FRIDAY:   [HATSUDUKI],
+            SATURDAY: [HATSUDUKI,SHIMAKAZE],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 5, 6],
+            consumes:{ID: 15,NUM:2}, //61cm四連装(酸素)魚雷*2
+        },
+        star6toMax:{
+            RESEARCH:[ 9,12],
+            SCREW:   [ 6,12],
+            consumes:{ID: 58,NUM:1}, //61cm五連装(酸素)魚雷*1
+        },
+        upgrade:null,
+    },
+    /* 艦上戦闘機 */
+    /**
+     * 後日、いろいろと追加(艦戦系全部・Iowa砲改・試製6連装魚雷)
+     */
+    /** 九六式艦戦 */
+    id_19:{
+        ID:19,
+        MATERIAL:[ 70, 50,  0,170],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [HOSHO],
+            FRIDAY:   [HOSHO],
+            SATURDAY: [HOSHO],
+        },
+        star0to6:{
+            RESEARCH:[ 1, 3],
+            SCREW:   [ 1, 2],
+            consumes:{ID: 19,NUM:1}, //九六式艦戦*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:{ID: 19,NUM:2}, //九六式艦戦*2
+            ID:20, //零式艦戦21型
+            STAR:0,
+        },
+    },
+    /** 零式艦戦21型 */
+    id_20:{
+        ID:20,
+        MATERIAL:[100, 80,  0,250],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [AKAGI],
+            FRIDAY:   [AKAGI],
+            SATURDAY: [AKAGI],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 4],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 20,NUM:1}, //零式艦戦21型*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:null,
+    },
+    /** 零式艦戦21型(熟練) */
+    id_96:{
+        ID:96,
+        MATERIAL:[100, 80,  0,250],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [AKAGI],
+            FRIDAY:   [AKAGI],
+            SATURDAY: [AKAGI],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 4],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+            ID:182, //零式艦戦32型(熟練)★+3
+            STAR:3,
+        },
+    },
+    /** 零式艦戦32型 */
+    id_181:{
+        ID:181,
+        MATERIAL:[ 90,100,  0,260],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [KAGA],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 20,NUM:1}, //零式艦戦21型*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+            ID:21, //零式艦戦52型
+            STAR:0,
+        },
+    },
+    /** 零式艦戦32型(熟練) */
+    id_182:{
+        ID:182,
+        MATERIAL:[ 90,100,  0,260],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [KAGA],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:null,
+    },
+    /** 零式艦戦52型 */
+    id_21:{
+        ID:21,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [SHOKAKU],
+            FRIDAY:   [SHOKAKU],
+            SATURDAY: [SHOKAKU],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 3, 4],
+            consumes:{ID:21,NUM:1}, //零式艦戦52型*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:null,
+    },
+    /** 零式艦戦52型(熟練) */
+    id_152:{
+        ID:152,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [SHOKAKU],
+            FRIDAY:   [SHOKAKU],
+            SATURDAY: [SHOKAKU],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 5, 9],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        upgrade:null,
+    },
+    /** 零戦52型丙(六〇一空) */
+    id_109:{
+        ID:109,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [TAIHO,UNRYU],
+            FRIDAY:   [TAIHO,UNRYU],
+            SATURDAY: [TAIHO,UNRYU],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:null,
+    },
     /* 水上偵察機 */
     /** 零式水上偵察機 */
     id_25:{
@@ -1357,10 +1664,10 @@ var remodelItemData = {
             SUNDAY:   [AKITSUSHIMA_R,MIZUHO],
             MONDAY:   [MIZUHO],
             TUESDAY:  [MIZUHO],
-            WEDNESDAY:[CHIYODA_K],
-            THURSDAY: [CHIYODA_K,AKITSUSHIMA_R],
-            FRIDAY:   [CHITOSE_K,AKITSUSHIMA_R,MIZUHO],
-            SATURDAY: [CHITOSE_K,AKITSUSHIMA_R,MIZUHO],
+            WEDNESDAY:[NOT_F(CHIYODA_K)],
+            THURSDAY: [NOT_F(CHIYODA_K),AKITSUSHIMA_R],
+            FRIDAY:   [NOT_F(CHITOSE_K),AKITSUSHIMA_R,MIZUHO],
+            SATURDAY: [NOT_F(CHITOSE_K),AKITSUSHIMA_R,MIZUHO],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -1994,9 +2301,9 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [MAYA_R2],
             MONDAY:   [ISUZU_R2,MAYA_R2],
-            TUESDAY:  [ISUZU_R2,MAYA],
+            TUESDAY:  [ISUZU_R2,NOT_R2(MAYA)],
             WEDNESDAY:[ISUZU_R2,MAYA,SATSUKI_R2],
-            THURSDAY: [MAYA,SATSUKI_R2],
+            THURSDAY: [NOT_R2(MAYA),SATSUKI_R2],
             FRIDAY:   [MAYA_R2],
             SATURDAY: [MAYA_R2],
         },

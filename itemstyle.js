@@ -1,4 +1,4 @@
-﻿//Ver:2.0.1
+﻿//Ver:2.0.2
 //Author:Nishisonic
 
 //script読み込み
@@ -222,7 +222,12 @@ function rept(str,cnt){
 }
 
 function _getRemodelItemData(itemData){
-	var itemName = Item.get(itemData.ID).getName();
+	var itemName;
+	try {
+		itemName = Item.get(itemData.ID).getName();
+	} catch(e) {
+		itemName = itemData.ID;
+	}
 	var upgradeToItemName = "";
 	var upgradeToItemStar = 0;
 	var sunday    = itemData.helperShip.SUNDAY != NONE;
@@ -244,7 +249,11 @@ function _getRemodelItemData(itemData){
 	var star0to6ConsumeName = "";
 	var star0to6ConsumeNum = "";
 	if(itemData.star0to6.consumes != null){
-		star0to6ConsumeName = Item.get(itemData.star0to6.consumes.ID).getName();
+		try {
+			star0to6ConsumeName = Item.get(itemData.star0to6.consumes.ID).getName();
+		} catch(e) {
+			star0to6ConsumeName = itemData.star0to6.consumes.ID;
+		}
 		star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
 	}
 	var star6toMaxResearch = itemData.star6toMax.RESEARCH;
@@ -252,7 +261,11 @@ function _getRemodelItemData(itemData){
 	var star6toMaxConsumeName = "";
 	var star6toMaxConsumeNum = "";
 	if(itemData.star6toMax.consumes != null){
-		star6toMaxConsumeName = Item.get(itemData.star6toMax.consumes.ID).getName();
+		try {
+			star6toMaxConsumeName = Item.get(itemData.star6toMax.consumes.ID).getName();
+		} catch(e) {
+			star6toMaxConsumeName = itemData.star6toMax.consumes.ID;
+		}
 		star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
 	}
 	var upgradeResearch = ["    ","    "];
@@ -263,10 +276,18 @@ function _getRemodelItemData(itemData){
 		upgradeResearch = itemData.upgrade.RESEARCH;
 		upgradeScrew = itemData.upgrade.SCREW;
 		if(itemData.upgrade.consumes != null){
-			upgradeConsumeName = Item.get(itemData.upgrade.consumes.ID).getName();
+			try {
+				upgradeConsumeName = Item.get(itemData.upgrade.consumes.ID).getName();
+			} catch(e) {
+				upgradeConsumeName = itemData.upgrade.consumes.ID;
+			}
 			upgradeConsumeNum = itemData.upgrade.consumes.NUM;
 		}
-		upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
+		try{
+			upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
+		} catch(e) {
+			upgradeToItemName = itemData.upgrade.ID;
+		}
 		upgradeToItemStar = itemData.upgrade.STAR;
 	}
 	var row1 = itemName + "→" + upgradeToItemName + (upgradeToItemStar != "0" ? "★" + upgradeToItemStar : "") + "　";
