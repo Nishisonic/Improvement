@@ -1,4 +1,4 @@
-//Ver:2.0.2
+//Ver:2.0.2β1
 //Author:Nishisonic
 //LastUpdate:2016/07/02
 
@@ -1434,9 +1434,6 @@ var remodelItemData = {
         upgrade:null,
     },
     /* 艦上戦闘機 */
-    /**
-     * 後日、いろいろと追加(艦戦系全部・Iowa砲改・試製6連装魚雷)
-     */
     /** 九六式艦戦 */
     id_19:{
         ID:19,
@@ -1487,11 +1484,17 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:1}, //零式艦戦21型*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 4],
+            consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[ 4, 7],
+            SCREW:   [ 3, 5],
+            consumes:{ID: 37,NUM:2}, //7.7mm機銃*2
+            ID:181, //零式艦戦32型
+            STAR:0,
+        },
     },
     /** 零式艦戦21型(熟練) */
     id_96:{
