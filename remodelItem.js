@@ -1,6 +1,6 @@
-//Ver:2.0.2β1
+//Ver:2.0.3β2
 //Author:Nishisonic
-//LastUpdate:2016/07/02
+//LastUpdate:2016/07/05
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1125,8 +1125,8 @@ var remodelItemData = {
         ID:161,
         MATERIAL:[ 45,450,750,100],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [IOWA],
+            MONDAY:   [IOWA],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [IOWA],
@@ -1156,8 +1156,8 @@ var remodelItemData = {
         ID:183,
         MATERIAL:[ 45,500,770,500],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [IOWA],
+            MONDAY:   [NONE],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [IOWA],
@@ -1413,8 +1413,8 @@ var remodelItemData = {
         ID:179,
         MATERIAL:[120,180,120, 40],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [SHIMAKAZE],
+            MONDAY:   [NONE],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [HATSUDUKI],
@@ -1439,9 +1439,9 @@ var remodelItemData = {
         ID:19,
         MATERIAL:[ 70, 50,  0,170],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [HOSHO],
+            MONDAY:   [HOSHO],
+            TUESDAY:  [HOSHO],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [HOSHO],
             FRIDAY:   [HOSHO],
@@ -1453,16 +1453,16 @@ var remodelItemData = {
             consumes:{ID: 19,NUM:1}, //九六式艦戦*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
+            RESEARCH:[ 2, 4],
+            SCREW:   [ 1, 3],
             consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
         },
         upgrade:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
+            RESEARCH:[ 3, 6],
+            SCREW:   [ 2, 4],
             consumes:{ID: 19,NUM:2}, //九六式艦戦*2
-            ID:20, //零式艦戦21型
-            STAR:0,
+            ID:20, //零式艦戦21型★+3
+            STAR:3,
         },
     },
     /** 零式艦戦21型 */
@@ -1470,9 +1470,9 @@ var remodelItemData = {
         ID:20,
         MATERIAL:[100, 80,  0,250],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [KAGA],
+            MONDAY:   [KAGA],
+            TUESDAY:  [KAGA],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [AKAGI],
             FRIDAY:   [AKAGI],
@@ -1492,8 +1492,8 @@ var remodelItemData = {
             RESEARCH:[ 4, 7],
             SCREW:   [ 3, 5],
             consumes:{ID: 37,NUM:2}, //7.7mm機銃*2
-            ID:181, //零式艦戦32型
-            STAR:0,
+            ID:181, //零式艦戦32型★+3
+            STAR:3,
         },
     },
     /** 零式艦戦21型(熟練) */
@@ -1501,9 +1501,9 @@ var remodelItemData = {
         ID:96,
         MATERIAL:[100, 80,  0,250],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [KAGA],
+            MONDAY:   [KAGA],
+            TUESDAY:  [KAGA],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [AKAGI],
             FRIDAY:   [AKAGI],
@@ -1515,14 +1515,14 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 5],
+            consumes:{ID: 20,NUM:3}, //零式艦戦21型*3
         },
         upgrade:{
             RESEARCH:NO_DATA,
             SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            consumes:{ID: 37,NUM:3}, //7.7mm機銃*3
             ID:182, //零式艦戦32型(熟練)★+3
             STAR:3,
         },
@@ -1532,9 +1532,9 @@ var remodelItemData = {
         ID:181,
         MATERIAL:[ 90,100,  0,260],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [AKAGI],
+            MONDAY:   [AKAGI],
+            TUESDAY:  [NONE],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [KAGA],
             FRIDAY:   [NONE],
@@ -1546,9 +1546,9 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:1}, //零式艦戦21型*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
         },
         upgrade:{
             RESEARCH:NO_DATA,
@@ -1563,9 +1563,9 @@ var remodelItemData = {
         ID:182,
         MATERIAL:[ 90,100,  0,260],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [AKAGI],
+            MONDAY:   [AKAGI],
+            TUESDAY:  [NONE],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [KAGA],
             FRIDAY:   [NONE],
@@ -1588,9 +1588,9 @@ var remodelItemData = {
         ID:21,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [ZUIKAKU],
+            MONDAY:   [ZUIKAKU],
+            TUESDAY:  [NONE],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [SHOKAKU],
             FRIDAY:   [SHOKAKU],
@@ -1613,9 +1613,9 @@ var remodelItemData = {
         ID:152,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [ZUIKAKU],
+            MONDAY:   [ZUIKAKU],
+            TUESDAY:  [NONE],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [SHOKAKU],
             FRIDAY:   [SHOKAKU],
@@ -1627,8 +1627,8 @@ var remodelItemData = {
             consumes:{ID:21,NUM:2}, //零式艦戦52型*2
         },
         star6toMax:{
-            RESEARCH:[ 4, 6],
-            SCREW:   [ 5, 9],
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
             consumes:{ID:21,NUM:3}, //零式艦戦52型*3
         },
         upgrade:null,
@@ -1638,9 +1638,9 @@ var remodelItemData = {
         ID:109,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
+            SUNDAY:   [TAIHO],
+            MONDAY:   [TAIHO],
+            TUESDAY:  [TAIHO],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [TAIHO,UNRYU],
             FRIDAY:   [TAIHO,UNRYU],
