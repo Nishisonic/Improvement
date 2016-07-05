@@ -1,6 +1,6 @@
-//Ver:2.0.3β2
+//Ver:2.0.3β3
 //Author:Nishisonic
-//LastUpdate:2016/07/05
+//LastUpdate:2016/07/06
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1127,8 +1127,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [IOWA],
             MONDAY:   [IOWA],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [IOWA],
+            WEDNESDAY:[IOWA],
             THURSDAY: [IOWA],
             FRIDAY:   [IOWA],
             SATURDAY: [IOWA],
@@ -1158,8 +1158,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [IOWA],
             MONDAY:   [NONE],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
             THURSDAY: [IOWA],
             FRIDAY:   [IOWA],
             SATURDAY: [IOWA],
@@ -1415,8 +1415,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [SHIMAKAZE],
             MONDAY:   [NONE],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[HATSUDUKI],
             THURSDAY: [HATSUDUKI],
             FRIDAY:   [HATSUDUKI],
             SATURDAY: [HATSUDUKI,SHIMAKAZE],
@@ -1442,7 +1442,7 @@ var remodelItemData = {
             SUNDAY:   [HOSHO],
             MONDAY:   [HOSHO],
             TUESDAY:  [HOSHO],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[HOSHO],
             THURSDAY: [HOSHO],
             FRIDAY:   [HOSHO],
             SATURDAY: [HOSHO],
@@ -1473,7 +1473,7 @@ var remodelItemData = {
             SUNDAY:   [KAGA],
             MONDAY:   [KAGA],
             TUESDAY:  [KAGA],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[NONE],
             THURSDAY: [AKAGI],
             FRIDAY:   [AKAGI],
             SATURDAY: [AKAGI],
@@ -1504,7 +1504,7 @@ var remodelItemData = {
             SUNDAY:   [KAGA],
             MONDAY:   [KAGA],
             TUESDAY:  [KAGA],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[NONE],
             THURSDAY: [AKAGI],
             FRIDAY:   [AKAGI],
             SATURDAY: [AKAGI],
@@ -1520,8 +1520,8 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:3}, //零式艦戦21型*3
         },
         upgrade:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 3, 5],
             consumes:{ID: 37,NUM:3}, //7.7mm機銃*3
             ID:182, //零式艦戦32型(熟練)★+3
             STAR:3,
@@ -1535,7 +1535,7 @@ var remodelItemData = {
             SUNDAY:   [AKAGI],
             MONDAY:   [AKAGI],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[KAGA],
             THURSDAY: [KAGA],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1566,7 +1566,7 @@ var remodelItemData = {
             SUNDAY:   [AKAGI],
             MONDAY:   [AKAGI],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[KAGA],
             THURSDAY: [KAGA],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1591,7 +1591,7 @@ var remodelItemData = {
             SUNDAY:   [ZUIKAKU],
             MONDAY:   [ZUIKAKU],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[ZUIKAKU],
             THURSDAY: [SHOKAKU],
             FRIDAY:   [SHOKAKU],
             SATURDAY: [SHOKAKU],
@@ -1616,7 +1616,7 @@ var remodelItemData = {
             SUNDAY:   [ZUIKAKU],
             MONDAY:   [ZUIKAKU],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[ZUIKAKU],
             THURSDAY: [SHOKAKU],
             FRIDAY:   [SHOKAKU],
             SATURDAY: [SHOKAKU],
@@ -1641,7 +1641,7 @@ var remodelItemData = {
             SUNDAY:   [TAIHO],
             MONDAY:   [TAIHO],
             TUESDAY:  [TAIHO],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[TAIHO],
             THURSDAY: [TAIHO,UNRYU],
             FRIDAY:   [TAIHO,UNRYU],
             SATURDAY: [TAIHO,UNRYU],
