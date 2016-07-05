@@ -1,4 +1,4 @@
-//Ver:2.0.3β3
+//Ver:2.0.3β4
 //Author:Nishisonic
 //LastUpdate:2016/07/06
 
@@ -1602,9 +1602,9 @@ var remodelItemData = {
             consumes:{ID:21,NUM:1}, //零式艦戦52型*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 5, 8],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
         },
         upgrade:null,
     },
