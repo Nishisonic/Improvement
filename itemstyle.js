@@ -1,4 +1,4 @@
-﻿//Ver:2.0.3
+﻿//Ver:2.0.4
 //Author:Nishisonic
 
 //script読み込み
@@ -246,7 +246,7 @@ function _getRemodelItemData(itemData){
 	var bauxite = prefix(material[3],3);
 	var star0to6Research = itemData.star0to6.RESEARCH;
 	var star0to6Screw = itemData.star0to6.SCREW;
-	var star0to6ConsumeName = "";
+	var star0to6ConsumeName = "なし";
 	var star0to6ConsumeNum = "";
 	if(itemData.star0to6.consumes != null){
 		try {
@@ -258,7 +258,7 @@ function _getRemodelItemData(itemData){
 	}
 	var star6toMaxResearch = itemData.star6toMax.RESEARCH;
 	var star6toMaxScrew = itemData.star6toMax.SCREW;
-	var star6toMaxConsumeName = "";
+	var star6toMaxConsumeName = "なし";
 	var star6toMaxConsumeNum = "";
 	if(itemData.star6toMax.consumes != null){
 		try {
@@ -268,9 +268,9 @@ function _getRemodelItemData(itemData){
 		}
 		star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
 	}
-	var upgradeResearch = ["    ","    "];
-	var upgradeScrew    = ["    ","    "];
-	var upgradeConsumeName = "";
+	var upgradeResearch = [" --","-- "];
+	var upgradeScrew    = [" --","--  "];
+	var upgradeConsumeName = "なし";
 	var upgradeConsumeNum = "";
 	if(itemData.upgrade != null){
 		upgradeResearch = itemData.upgrade.RESEARCH;
@@ -292,9 +292,9 @@ function _getRemodelItemData(itemData){
 	}
 	var row1 = " " + itemName + "→" + upgradeToItemName + (upgradeToItemStar != "0" ? "★" + (upgradeToItemStar == 10 ? "max" : "+" + upgradeToItemStar) : "") + "　";
 	var row2 = " 二番艦:" + helperShip + "　";
-	var row3 = " 燃料:" + fuel + " 弾薬:" + ammo + " 鋼材:" + steel + " ﾎﾞｰｷ:" + bauxite + "　";
-	var row4 = " 初期|開発:" + prefix(star0to6Research[0],2) + "/" + prefix(star0to6Research[1],2) + " 改修:" + prefix(star0to6Screw[0],2) + "/" + prefix(star0to6Screw[1],2) + " 消費:" + star0to6ConsumeName + (star0to6ConsumeName == "" ? "" : "*") + star0to6ConsumeNum + "　";
-	var row5 = " ★６|開発:" + prefix(star6toMaxResearch[0],2) + "/" + prefix(star6toMaxResearch[1],2) + " 改修:" + prefix(star6toMaxScrew[0],2) + "/" + prefix(star6toMaxScrew[1],2) + " 消費:" + star6toMaxConsumeName + (star6toMaxConsumeName == "" ? "" : "*") + star6toMaxConsumeNum + "　";
-	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2) + "/" + prefix(upgradeResearch[1],2) + " 改修:" + prefix(upgradeScrew[0],2) + "/" + prefix(upgradeScrew[1],2) + " 消費:" + upgradeConsumeName + (upgradeConsumeName == "" ? "" : "*") + upgradeConsumeNum + "　";
+	var row3 = " 燃料:" + fuel + " 弾薬:" + ammo + " 鋼材:" + steel + " ボーキ:" + bauxite + "　";
+	var row4 = " 初期|開発:" + prefix(star0to6Research[0],2)   + "/" + prefix(star0to6Research[1],2)   + " 改修:" + prefix(star0to6Screw[0],2)   + "/" + prefix(star0to6Screw[1],2)   + " 消費:" + (star0to6Screw[1]   == "--  " ? "---" : star0to6ConsumeName   + (star0to6ConsumeNum   == "" ? "" : "*") + star0to6ConsumeNum   + "　");
+	var row5 = " ★６|開発:" + prefix(star6toMaxResearch[0],2) + "/" + prefix(star6toMaxResearch[1],2) + " 改修:" + prefix(star6toMaxScrew[0],2) + "/" + prefix(star6toMaxScrew[1],2) + " 消費:" + (star6toMaxScrew[1] == "--  " ? "---" : star6toMaxConsumeName + (star6toMaxConsumeNum == "" ? "" : "*") + star6toMaxConsumeNum + "　");
+	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2)    + "/" + prefix(upgradeResearch[1],2)    + " 改修:" + prefix(upgradeScrew[0],2)    + "/" + prefix(upgradeScrew[1],2)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*") + upgradeConsumeNum    + "　");
 	return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
 }

@@ -1,6 +1,6 @@
-//Ver:2.0.3β4
+//Ver:2.0.4
 //Author:Nishisonic
-//LastUpdate:2016/07/06
+//LastUpdate:2016/07/07
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -12,8 +12,9 @@ var ERROR         = "ERROR";
 var UNKNOWN       = "不明";
 var NOT_R2        = function(name){ return name + "(改二は除く)"; };
 var NOT_F         = function(name){ return name + "(航以降は不可)"; };
-var NO_DATA       = ["?? ","?? "];
-var C_NO_DATA     = {ID:UNKNOWN,NUM:"?"};
+var UNDEFINED     = "    ";
+var NO_DATA       = [UNDEFINED,UNDEFINED];
+var C_NO_DATA     = {ID:UNKNOWN,NUM:"???"};
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -1572,9 +1573,9 @@ var remodelItemData = {
             SATURDAY: [NONE],
         },
         star0to6:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
         },
         star6toMax:{
             RESEARCH:NO_DATA,
@@ -1652,9 +1653,9 @@ var remodelItemData = {
             consumes:{ID:21,NUM:2}, //零式艦戦52型*2
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[UNDEFINED, 9],
+            SCREW:   [UNDEFINED, 6],
+            consumes:{ID:17,NUM:2}, //天山*2
         },
         upgrade:null,
     },
