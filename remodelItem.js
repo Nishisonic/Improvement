@@ -1,6 +1,6 @@
-//Ver:2.0.4β1
+//Ver:2.0.4β2
 //Author:Nishisonic
-//LastUpdate:2016/07/08
+//LastUpdate:2016/07/15
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1555,8 +1555,8 @@ var remodelItemData = {
             RESEARCH:NO_DATA,
             SCREW:   NO_DATA,
             consumes:C_NO_DATA,
-            ID:21, //零式艦戦52型
-            STAR:0,
+            ID:21, //零式艦戦52型★+3
+            STAR:3,
         },
     },
     /** 零式艦戦32型(熟練) */
@@ -1578,9 +1578,9 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID: 20,NUM:3}, //零式艦戦21型*3
         },
         upgrade:null,
     },
@@ -1656,6 +1656,132 @@ var remodelItemData = {
             RESEARCH:[ 5, 9],
             SCREW:   [ 4, 6],
             consumes:{ID:17,NUM:2}, //天山*2
+        },
+        upgrade:null,
+    },
+    /** 零戦52型丙(付岩井小隊) */
+    id_153:{
+        ID:153,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [NONE],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        upgrade:null,
+    },
+    /** 零戦52型甲(付岩本小隊) */
+    id_156:{
+        ID:156,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [ZUIKAKU],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        upgrade:null,
+    },
+    /** 零式艦戦53型(岩本隊) */
+    id_157:{
+        ID:157,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [ZUIKAKU],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        upgrade:null,
+    },
+    /* 艦上爆撃機 */
+    /** 零式艦戦62型(爆戦) */
+    id_60:{
+        ID:60,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [JUNYO],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        upgrade:null,
+    },
+    /** 零戦62型(爆戦/岩井隊) */
+    id_154:{
+        ID:154,
+        MATERIAL:[120,120,  0,280],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [NONE],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
         },
         upgrade:null,
     },
