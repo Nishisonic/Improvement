@@ -1,6 +1,6 @@
-//Ver:2.0.4β2
+//Ver:2.0.4β3
 //Author:Nishisonic
-//LastUpdate:2016/07/15
+//LastUpdate:2016/07/17
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -14,7 +14,7 @@ var NOT_R2        = function(name){ return name + "(改二は除く)"; };
 var NOT_F         = function(name){ return name + "(航以降は不可)"; };
 var UNDEFINED     = "    ";
 var NO_DATA       = [UNDEFINED,UNDEFINED];
-var C_NO_DATA     = {ID:UNKNOWN,NUM:"???"};
+var C_NO_DATA     = {ID:UNKNOWN,NUM:"?"};
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -1582,7 +1582,13 @@ var remodelItemData = {
             SCREW:   [ 3, 5],
             consumes:{ID: 20,NUM:3}, //零式艦戦21型*3
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[ 5,UNDEFINED],
+            SCREW:   [ 4,UNDEFINED],
+            consumes:{ID:181,NUM:2}, //零式艦戦32型*2
+            ID:152, //零式艦戦52型(熟練)★+3
+            STAR:3,
+        },
     },
     /** 零式艦戦52型 */
     id_21:{
@@ -1664,13 +1670,13 @@ var remodelItemData = {
         ID:153,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -1689,13 +1695,13 @@ var remodelItemData = {
         ID:156,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [ZUIKAKU],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [ZUIKAKU],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -1714,13 +1720,13 @@ var remodelItemData = {
         ID:157,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [ZUIKAKU],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [ZUIKAKU],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -1740,13 +1746,13 @@ var remodelItemData = {
         ID:60,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [JUNYO,SHOKAKU],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [JUNYO],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [JUNYO],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -1756,7 +1762,7 @@ var remodelItemData = {
         star6toMax:{
             RESEARCH:[ 5, 9],
             SCREW:   [ 4, 6],
-            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+            consumes:{ID:24,NUM:2}, //彗星*2
         },
         upgrade:null,
     },
@@ -1765,13 +1771,13 @@ var remodelItemData = {
         ID:154,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
