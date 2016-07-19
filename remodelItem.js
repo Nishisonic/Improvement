@@ -1,6 +1,6 @@
-//Ver:2.0.4β3
+//Ver:2.0.4β4
 //Author:Nishisonic
-//LastUpdate:2016/07/17
+//LastUpdate:2016/07/20
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1583,8 +1583,8 @@ var remodelItemData = {
             consumes:{ID: 20,NUM:3}, //零式艦戦21型*3
         },
         upgrade:{
-            RESEARCH:[ 5,UNDEFINED],
-            SCREW:   [ 4,UNDEFINED],
+            RESEARCH:[ 5, 8],
+            SCREW:   [ 4, 6],
             consumes:{ID:181,NUM:2}, //零式艦戦32型*2
             ID:152, //零式艦戦52型(熟練)★+3
             STAR:3,
@@ -1671,9 +1671,9 @@ var remodelItemData = {
         MATERIAL:[120,120,  0,280],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            MONDAY:   [NONE],
+            TUESDAY:  [ZUIKAKU],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1696,9 +1696,9 @@ var remodelItemData = {
         MATERIAL:[120,120,  0,280],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [ZUIKAKU],
             SATURDAY: [ZUIKAKU],
@@ -1721,9 +1721,9 @@ var remodelItemData = {
         MATERIAL:[120,120,  0,280],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [ZUIKAKU],
             SATURDAY: [ZUIKAKU],
@@ -1747,9 +1747,9 @@ var remodelItemData = {
         MATERIAL:[120,120,  0,280],
         helperShip:{
             SUNDAY:   [JUNYO,SHOKAKU],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            MONDAY:   [SHOKAKU],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [JUNYO],
             SATURDAY: [JUNYO],
@@ -1772,9 +1772,9 @@ var remodelItemData = {
         MATERIAL:[120,120,  0,280],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            MONDAY:   [NONE],
+            TUESDAY:  [ZUIKAKU],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
