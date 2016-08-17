@@ -1,6 +1,6 @@
-//Ver:2.0.5
+//Ver:2.0.5+
 //Author:Nishisonic
-//LastUpdate:2016/07/27
+//LastUpdate:2016/08/18
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -405,6 +405,10 @@ var IOWA_R          = "Iowa改";          //ID:360
 var POLA_R          = "Pola改";          //ID:361
 var OYASHIO_R       = "親潮改";          //ID:362
 var HARUKAZE_R      = "春風改";          //ID:363
+var WARSPITE_R      = "Warspite改";      //ID:364
+var AQUILA_R        = "Aquila改";        //ID:365
+var MINADUKI_R      = "水無月改";        //ID:366
+var I26_R           = "伊26改";          //ID:367
 var I168_R          = "伊168改";         //ID:398
 var I58_R           = "伊58改";          //ID:399
 var I8_R            = "伊8改";           //ID:400
@@ -446,12 +450,12 @@ var KISARAGI_R2     = "如月改二";        //ID:435
 var RO500           = "呂500";           //ID:436
 var AKATSUKI_R2     = "暁改二";          //ID:437
 //var NULL          = "NULL";            //ID:438
-//var NULL          = "NULL";            //ID:439
+var WARSPITE        = "Warspite";        //ID:439
 var IOWA            = "Iowa";            //ID:440
 var LITTORIO        = "Littorio";        //ID:441
 var ROMA            = "Roma";            //ID:442
 var LIBECCIO        = "Libeccio";        //ID:443
-//var NULL          = "NULL";            //ID:444
+var AQUILA          = "Aquila";          //ID:444
 var AKITSUSHIMA     = "秋津洲";          //ID:445
 var ITALIA          = "Italia";          //ID:446
 var ROMA_R          = "Roma";            //ID:447
@@ -484,6 +488,13 @@ var HARUKAZE        = "春風";            //ID:473
 //var NULL          = "NULL";            //ID:474
 //var NULL          = "NULL";            //ID:475
 var KAMIKAZE_R      = "神風改";          //ID:476
+//var NULL          = "NULL";            //ID:477
+//var NULL          = "NULL";            //ID:478
+//var NULL          = "NULL";            //ID:479
+//var NULL          = "NULL";            //ID:480
+var MINADUKI        = "水無月";          //ID:481
+//var NULL          = "NULL";            //ID:482
+var I26             = "伊26";            //ID:483
 
 var word = "id_";
 
