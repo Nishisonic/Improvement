@@ -371,7 +371,7 @@ var HATSUHARU_R2    = "初春改二";        //ID:326
 var ASAGUMO_R       = "朝雲改";          //ID:327
 var YAMAGUMO_R      = "山雲改";          //ID:328
 var NOWAKI_R        = "野分改";          //ID:329
-var AKIDUKI_R       = "秋月改";          //ID:330
+var AKIZUKI_R       = "秋月改";          //ID:330
 var AMAGI           = "天城";            //ID:331
 var KATSURAGI       = "葛城";            //ID:332
 //var NULL          = "NULL";            //ID:333
@@ -387,7 +387,7 @@ var U511_R          = "U-511改";         //ID:334
 var KATORI_R        = "香取改";          //ID:343
 var ASASHIMO_R      = "朝霜改";          //ID:344
 var TAKANAMI_R      = "高波改";          //ID:345
-var TERUDUKI_R      = "照月改";          //ID:346
+var TERUZUKI_R      = "照月改";          //ID:346
 var LIBECCIO_R      = "Libeccio改";      //ID:347
 var MIZUHO_R        = "瑞穂改";          //ID:348
 var KAZAGUMO_R      = "風雲改";          //ID:349
@@ -398,7 +398,7 @@ var GRAF_ZEPPELIN_R = "Graf Zeppelin改"; //ID:353
 var ARASHI_R        = "嵐改";            //ID:354
 var HAGIKAZE_R      = "萩風改";          //ID:355
 var KASHIMA_R       = "鹿島改";          //ID:356
-var HATSUDUKI_R     = "初月改";          //ID:357
+var HATSUZUKI_R     = "初月改";          //ID:357
 var ZARA_R          = "Zara改";          //ID:358
 var OKINAMI_R       = "沖波改";          //ID:359
 var IOWA_R          = "Iowa改";          //ID:360
@@ -432,9 +432,9 @@ var KAKO_R2         = "加古改二";        //ID:417
 var SATSUKI_R2      = "皐月改二";        //ID:418
 var HATSUSHIMO_R2   = "初霜改二";        //ID:419
 var MURAKUMO_R2     = "叢雲改二";        //ID:420
-var AKIDUKI         = "秋月";            //ID:421
-var TERUDUKI        = "照月";            //ID:422
-var HATSUDUKI       = "初月";            //ID:423
+var AKIZUKI         = "秋月";            //ID:421
+var TERUZUKI        = "照月";            //ID:422
+var HATSUZUKI       = "初月";            //ID:423
 var TAKANAMI        = "高波";            //ID:424
 var ASASHIMO        = "朝霜";            //ID:425
 var FUBUKI_R2       = "吹雪改二";        //ID:426
@@ -562,13 +562,13 @@ var remodelItemData = {
         ID:122,
         MATERIAL:[ 10, 60,150, 50],
         helperShip:{
-            SUNDAY:   [TERUDUKI],
-            MONDAY:   [AKIDUKI,HATSUDUKI],
-            TUESDAY:  [AKIDUKI,HATSUDUKI],
-            WEDNESDAY:[AKIDUKI,HATSUDUKI],
-            THURSDAY: [AKIDUKI,TERUDUKI,HATSUDUKI],
-            FRIDAY:   [TERUDUKI],
-            SATURDAY: [TERUDUKI],
+            SUNDAY:   [TERUZUKI],
+            MONDAY:   [AKIZUKI,HATSUZUKI],
+            TUESDAY:  [AKIZUKI,HATSUZUKI],
+            WEDNESDAY:[AKIZUKI,HATSUZUKI],
+            THURSDAY: [AKIZUKI,TERUZUKI,HATSUZUKI],
+            FRIDAY:   [TERUZUKI],
+            SATURDAY: [TERUZUKI],
         },
         star0to6:{
             RESEARCH:[ 6, 7],
@@ -1428,10 +1428,10 @@ var remodelItemData = {
             SUNDAY:   [SHIMAKAZE],
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
-            WEDNESDAY:[HATSUDUKI],
-            THURSDAY: [HATSUDUKI],
-            FRIDAY:   [HATSUDUKI],
-            SATURDAY: [HATSUDUKI,SHIMAKAZE],
+            WEDNESDAY:[HATSUZUKI],
+            THURSDAY: [HATSUZUKI],
+            FRIDAY:   [HATSUZUKI],
+            SATURDAY: [HATSUZUKI,SHIMAKAZE],
         },
         star0to6:{
             RESEARCH:[ 6, 8],
@@ -1922,10 +1922,10 @@ var remodelItemData = {
         MATERIAL:[ 10,  0, 20, 30],
         helperShip:{
             SUNDAY:   [SHIGURE_R2,ISUZU_R2],
-            MONDAY:   [ISUZU_R2,TERUDUKI],
-            TUESDAY:  [AKIDUKI,TERUDUKI],
-            WEDNESDAY:[AKIDUKI,TERUDUKI],
-            THURSDAY: [SHIGURE_R2,AKIDUKI],
+            MONDAY:   [ISUZU_R2,TERUZUKI],
+            TUESDAY:  [AKIZUKI,TERUZUKI],
+            WEDNESDAY:[AKIZUKI,TERUZUKI],
+            THURSDAY: [SHIGURE_R2,AKIZUKI],
             FRIDAY:   [SHIGURE_R2,ISUZU_R2],
             SATURDAY: [SHIGURE_R2,ISUZU_R2],
         },
@@ -2244,10 +2244,10 @@ var remodelItemData = {
         ID:149,
         MATERIAL:[ 10,  0, 50, 60],
         helperShip:{
-            SUNDAY:   [AKIDUKI],
+            SUNDAY:   [AKIZUKI],
             MONDAY:   [KATORI_R],
             TUESDAY:  [KATORI_R],
-            WEDNESDAY:[TERUDUKI],
+            WEDNESDAY:[TERUZUKI],
             THURSDAY: [ISUZU_R2],
             FRIDAY:   [ISUZU_R2],
             SATURDAY: [ISUZU_R2],
@@ -2478,13 +2478,13 @@ var remodelItemData = {
         ID:120,
         MATERIAL:[  0,  0, 60, 40],
         helperShip:{
-            SUNDAY:   [MAYA,AKIDUKI,TERUDUKI],
-            MONDAY:   [MAYA,AKIDUKI],
+            SUNDAY:   [MAYA,AKIZUKI,TERUZUKI],
+            MONDAY:   [MAYA,AKIZUKI],
             TUESDAY:  [NONE],
             WEDNESDAY:[NONE],
-            THURSDAY: [TERUDUKI],
-            FRIDAY:   [MAYA,AKIDUKI,TERUDUKI],
-            SATURDAY: [MAYA,AKIDUKI,TERUDUKI],
+            THURSDAY: [TERUZUKI],
+            FRIDAY:   [MAYA,AKIZUKI,TERUZUKI],
+            SATURDAY: [MAYA,AKIZUKI,TERUZUKI],
         },
         star0to6:{
             RESEARCH:[ 3, 4],
@@ -2508,25 +2508,25 @@ var remodelItemData = {
     id_121:{
         ID:121,
         helperShip:{
-            SUNDAY:   [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2],
-            MONDAY:   [AKIDUKI,TERUDUKI],
-            TUESDAY:  [AKIDUKI,TERUDUKI],
-            WEDNESDAY:[AKIDUKI,TERUDUKI],
-            THURSDAY: [AKIDUKI,TERUDUKI,FUBUKI_R2,MAYA_R2],
-            FRIDAY:   [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2],
-            SATURDAY: [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2,MAYA_R2],
+            SUNDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2,MAYA_R2],
+            MONDAY:   [AKIZUKI,TERUZUKI],
+            TUESDAY:  [AKIZUKI,TERUZUKI],
+            WEDNESDAY:[AKIZUKI,TERUZUKI],
+            THURSDAY: [AKIZUKI,TERUZUKI,FUBUKI_R2,MAYA_R2],
+            FRIDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2,MAYA_R2],
+            SATURDAY: [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2,MAYA_R2],
         },
         upgrade:[{
             ID:121,
             MATERIAL:[  0,  0, 80, 70],
             helperShip:{
-                SUNDAY:   [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2],
-                MONDAY:   [AKIDUKI,TERUDUKI],
-                TUESDAY:  [AKIDUKI,TERUDUKI],
-                WEDNESDAY:[AKIDUKI,TERUDUKI],
-                THURSDAY: [AKIDUKI,TERUDUKI,FUBUKI_R2],
-                FRIDAY:   [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2],
-                SATURDAY: [AKIDUKI,TERUDUKI,HATSUDUKI,FUBUKI_R2],
+                SUNDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2],
+                MONDAY:   [AKIZUKI,TERUZUKI],
+                TUESDAY:  [AKIZUKI,TERUZUKI],
+                WEDNESDAY:[AKIZUKI,TERUZUKI],
+                THURSDAY: [AKIZUKI,TERUZUKI,FUBUKI_R2],
+                FRIDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2],
+                SATURDAY: [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2],
             },
             star0to6:{
                 RESEARCH:[ 4, 5],
