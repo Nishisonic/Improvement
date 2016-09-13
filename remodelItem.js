@@ -1,13 +1,13 @@
-//Ver:2.0.5+
+//Ver:2.0.6
 //Author:Nishisonic
-//LastUpdate:2016/08/18
+//LastUpdate:2016/09/13
 
 Calendar = Java.type("java.util.Calendar");
 
 /* 定数リスト */
 var DEFAULT       = "デフォルト";
 var SEP           = ",";
-var NONE          = "";
+var NONE          = "\n本日の改修は出来ません";
 var ERROR         = "ERROR";
 var UNKNOWN       = "不明";
 var NOT_R2        = function(name){ return name + "(改二は除く)"; };

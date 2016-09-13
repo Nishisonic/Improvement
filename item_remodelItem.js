@@ -1,4 +1,4 @@
-//Ver:2.0.5
+//Ver:2.0.6
 //Author:Nishisonic
 
 load("script/utils.js");
@@ -25,6 +25,6 @@ function getSecondShip(dayOfWeek, itemId){
         //安定のリフレクション
         return remodelItemData[String(word + itemId)].helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
     }catch(e){
-        return NONE;
+        return "\n改修不可";
     }
 }

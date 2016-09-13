@@ -1,4 +1,4 @@
-﻿//Ver:2.0.5
+﻿//Ver:2.0.6
 //Author:Nishisonic
 
 //script読み込み
