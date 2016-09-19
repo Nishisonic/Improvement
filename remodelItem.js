@@ -1,6 +1,6 @@
-//Ver:2.0.6
+//Ver:2.0.7β1
 //Author:Nishisonic
-//LastUpdate:2016/09/13
+//LastUpdate:2016/09/20
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -51,7 +51,7 @@ var KISARAGI        = "如月";            //ID:2
 //var NULL          = "NULL";            //ID:4
 //var NULL          = "NULL";            //ID:5
 var NAGATSUKI       = "長月";            //ID:6
-var MIKADUKI        = "三日月";          //ID:7
+var MIKAZUKI        = "三日月";          //ID:7
 //var NULL          = "NULL";            //ID:8
 var FUBUKI          = "吹雪";            //ID:9
 var SHIRAYUKI       = "白雪";            //ID:10
@@ -73,9 +73,9 @@ var KITAKAMI        = "北上";            //ID:25
 var FUSO            = "扶桑";            //ID:26
 var YAMASHIRO       = "山城";            //ID:27
 var SATSUKI         = "皐月";            //ID:28
-var FUMIDUKI        = "文月";            //ID:29
-var KIKUDUKI        = "菊月";            //ID:30
-var MOCHIDUKI       = "望月";            //ID:31
+var FUMIZUKI        = "文月";            //ID:29
+var KIKUZUKI        = "菊月";            //ID:30
+var MOCHIZUKI       = "望月";            //ID:31
 var HATSUYUKI       = "初雪";            //ID:32
 var MURAKUMO        = "叢雲";            //ID:33
 var AKATSUKI        = "暁";              //ID:34
@@ -209,7 +209,7 @@ var AKITSUMARU      = "あきつ丸";        //ID:161
 //var NULL          = "NULL";            //ID:162
 var MARUYU          = "まるゆ";          //ID:163
 var YAYOI           = "弥生";            //ID:164
-var UDUKI           = "卯月";            //ID:165
+var UZUKI           = "卯月";            //ID:165
 var AKITSUMARU_R    = "あきつ丸改";      //ID:166
 var ISOKAZE         = "磯風";            //ID:167
 var URAKAZE         = "浦風";            //ID:168
@@ -300,11 +300,11 @@ var KASUMI_R        = "霞改";            //ID:253
 var MUTSUKI_R       = "睦月改";          //ID:254
 var KISARAGI_R      = "如月改";          //ID:255
 var SATSUKI_R       = "皐月改";          //ID:256
-var FUMIDUKI_R      = "文月改";          //ID:257
+var FUMIZUKI_R      = "文月改";          //ID:257
 var NAGATSUKI_R     = "長月改";          //ID:258
-var KIKUDUKI_R      = "菊月改";          //ID:259
-var MIKADUKI_R      = "三日月改";        //ID:260
-var MOCHIDUKI_R     = "望月改";          //ID:261
+var KIKUZUKI_R      = "菊月改";          //ID:259
+var MIKAZUKI_R      = "三日月改";        //ID:260
+var MOCHIZUKI_R     = "望月改";          //ID:261
 var FURUTAKA_R      = "古鷹改";          //ID:262
 var KAKO_R          = "加古改";          //ID:263
 var AOBA_R          = "青葉改";          //ID:264
@@ -350,7 +350,7 @@ var AGANO_R         = "阿賀野改";        //ID:305
 var NOSHIRO_R       = "能代改";          //ID:306
 var YAHAGI_R        = "矢矧改";          //ID:307
 var YAYOI_R         = "弥生改";          //ID:308
-var UDUKI_R         = "卯月改";          //ID:309
+var UZUKI_R         = "卯月改";          //ID:309
 var Z1_R            = "Z1改";            //ID:310
 var Z3_R            = "Z3改";            //ID:311
 var HAMAKAZE_R      = "浜風改";          //ID:312
@@ -407,8 +407,9 @@ var OYASHIO_R       = "親潮改";          //ID:362
 var HARUKAZE_R      = "春風改";          //ID:363
 var WARSPITE_R      = "Warspite改";      //ID:364
 var AQUILA_R        = "Aquila改";        //ID:365
-var MINADUKI_R      = "水無月改";        //ID:366
+var MINAZUKI_R      = "水無月改";        //ID:366
 var I26_R           = "伊26改";          //ID:367
+var URANAMI_R       = "浦波改";          //ID:368
 var I168_R          = "伊168改";         //ID:398
 var I58_R           = "伊58改";          //ID:399
 var I8_R            = "伊8改";           //ID:400
@@ -492,9 +493,10 @@ var KAMIKAZE_R      = "神風改";          //ID:476
 //var NULL          = "NULL";            //ID:478
 //var NULL          = "NULL";            //ID:479
 //var NULL          = "NULL";            //ID:480
-var MINADUKI        = "水無月";          //ID:481
+var MINAZUKI        = "水無月";          //ID:481
 //var NULL          = "NULL";            //ID:482
 var I26             = "伊26";            //ID:483
+var URANAMI         = "浦波";            //ID:486
 
 var word = "id_";
 
@@ -839,6 +841,31 @@ var remodelItemData = {
             STAR:0,
         },
     },
+    /** 35.6cm連装砲(ダズル迷彩) */
+    id_104:{
+        ID:104,
+        MATERIAL:[ 30,250,300, 30],
+        helperShip:{
+            SUNDAY:   [HARUNA_R2],
+            MONDAY:   [HARUNA_R2],
+            TUESDAY:  [HARUNA_R2],
+            WEDNESDAY:[HARUNA_R2],
+            THURSDAY: [NONE],
+            FRIDAY:   [NONE],
+            SATURDAY: [HARUNA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 2, 3],
+            consumes:{ID:  7,NUM:1}, //35.6cm連装砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 3, 5],
+            consumes:{ID:  7,NUM:2}, //35.6cm連装砲*2
+        },
+        upgrade:null,
+    },
     /** 試製35.6cm三連装砲 */
     id_103:{
         ID:103,
@@ -864,28 +891,28 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 35.6cm連装砲(ダズル迷彩) */
-    id_104:{
-        ID:104,
-        MATERIAL:[ 30,250,300, 30],
+    /** 38.1cm Mk.I連装砲 */
+    id_190:{
+        ID:190,
+        MATERIAL:[ 24,280,380,  0],
         helperShip:{
-            SUNDAY:   [HARUNA_R2],
-            MONDAY:   [HARUNA_R2],
-            TUESDAY:  [HARUNA_R2],
-            WEDNESDAY:[HARUNA_R2],
-            THURSDAY: [NONE],
-            FRIDAY:   [NONE],
-            SATURDAY: [HARUNA_R2],
+            SUNDAY:   [WARSPITE],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [WARSPITE],
+            SATURDAY: [WARSPITE],
         },
         star0to6:{
             RESEARCH:[ 3, 4],
-            SCREW:   [ 2, 3],
-            consumes:{ID:  7,NUM:1}, //35.6cm連装砲*1
+            SCREW:   [ 3, 4],
+            consumes:{ID:  7,NUM:2}, //35.6cm連装砲*2
         },
         star6toMax:{
-            RESEARCH:[ 4, 5],
+            RESEARCH:[ 4, 6],
             SCREW:   [ 3, 5],
-            consumes:{ID:  7,NUM:2}, //35.6cm連装砲*2
+            consumes:{ID:  8,NUM:2}, //41cm連装砲*2
         },
         upgrade:null,
     },
@@ -2387,10 +2414,10 @@ var remodelItemData = {
             SUNDAY:   [SATSUKI],
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
-            WEDNESDAY:[FUMIDUKI],
-            THURSDAY: [FUMIDUKI],
-            FRIDAY:   [SATSUKI,FUMIDUKI],
-            SATURDAY: [SATSUKI,FUMIDUKI],
+            WEDNESDAY:[FUMIZUKI],
+            THURSDAY: [FUMIZUKI],
+            FRIDAY:   [SATSUKI,FUMIZUKI],
+            SATURDAY: [SATSUKI,FUMIZUKI],
         },
         star0to6:{
             RESEARCH:[ 0, 1],
@@ -2415,9 +2442,9 @@ var remodelItemData = {
         ID:39,
         MATERIAL:[  0, 20, 10, 10],
         helperShip:{
-            SUNDAY:   [ISUZU_R2,FUMIDUKI],
-            MONDAY:   [SATSUKI,FUMIDUKI],
-            TUESDAY:  [SATSUKI,FUMIDUKI],
+            SUNDAY:   [ISUZU_R2,FUMIZUKI],
+            MONDAY:   [SATSUKI,FUMIZUKI],
+            TUESDAY:  [SATSUKI,FUMIZUKI],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
