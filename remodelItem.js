@@ -1,6 +1,6 @@
-//Ver:2.0.7β1
+//Ver:2.0.7
 //Author:Nishisonic
-//LastUpdate:2016/09/20
+//LastUpdate:2016/09/22
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -899,8 +899,8 @@ var remodelItemData = {
             SUNDAY:   [WARSPITE],
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
-            THURSDAY: [UNKNOWN],
+            WEDNESDAY:[NONE],
+            THURSDAY: [WARSPITE],
             FRIDAY:   [WARSPITE],
             SATURDAY: [WARSPITE],
         },
