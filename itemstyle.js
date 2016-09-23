@@ -1,4 +1,4 @@
-﻿//Ver:2.0.7
+﻿//Ver:2.0.7-prototype
 //Author:Nishisonic
 
 //script読み込み
@@ -24,11 +24,11 @@ Listener = Java.type("org.eclipse.swt.widgets.Listener");
 Shell = Java.type("org.eclipse.swt.widgets.Shell");
 Event = Java.type("org.eclipse.swt.widgets.Event");
 IntStream = Java.type("java.util.stream.IntStream");
-
+Button = Java.type("org.eclipse.swt.widgets.Button");
+Composite = Java.type("org.eclipse.swt.widgets.Composite");
 
 data_prefix = "remodelItem_";
 var remodelItemIndex = - 1;
-
 		  
 function begin(header) {
 	for (var i = 0; i < header.length; ++i) {
@@ -83,7 +83,7 @@ function getTableItemColor(iconid) {
 }
 
 var tip = null;
-var label = null;
+var composite = null;
 
 function create(table, data, index) {
 	// 装備
@@ -99,76 +99,78 @@ function create(table, data, index) {
 	}
 
 //	item.setBackground(nameIndex,SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
-//	item.setBackground(SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
+	item.setBackground(SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
 	
 	item.setText(ReportUtils.toStringArray(data));
 	
 	//table使う場合ってどうすれば良いんだろう
 	var TableListener = new Listener({
     	handleEvent : function(event) {
+    	    var _item = table.getItem(new Point(event.x, event.y));
    		    switch (event.type) {
+				case SWT.MouseExit:
+					if(_item != null) break;
         		case SWT.Dispose:
         		case SWT.KeyDown:
-        		case SWT.MouseMove: {
         			if (tip == null) break;
          			tip.dispose();
           			tip = null;
-          			label = null;
+          			composite = null;
           			break;
-        		}
 	        	case SWT.MouseHover: {
-    	    		var _item = table.getItem(new Point(event.x, event.y));
-        			if (_item != null && isRemodelItem(_item.data.info.id)) {
+        			if (_item != null && _item != getData("item") && isRemodelItem(_item.data.info.id)) {
        	     			if (tip != null && !tip.isDisposed()) tip.dispose();
         	   			tip = new Shell(table.getShell(), SWT.ON_TOP | SWT.TOOL);
 						tip.setLayout(new FillLayout());
-						label = new Label (tip, SWT.NONE);
-						label.setData ("_TABLEITEM", item);
+						composite = new Composite (tip, SWT.NONE);
+						//label.setData ("_TABLEITEM", item);
 						//12.7cm連装砲→12.7cm連装砲B型改二
 						//二番艦:デフォルト
 						//燃料:010 弾薬:030 鋼材:060 ﾎﾞｰｷ:000
 						//初期|開発:01/02 改修:01/02 消費:-
 						//★６|開発:01/02 改修:01/02 消費:12.7cm連装砲*1
 						//★Ｍ|開発:02/03 改修:03/06 消費:12.7cm連装砲*2
-						label.setText (getRemodelItemData(_item.data.info.id));
-						label.addListener (SWT.MouseExit, LabelListener);
-						label.addListener (SWT.MouseDown, LabelListener);
+						//label.setText (getRemodelItemData(_item.data.info.id));
+						//composite.addListener (SWT.MouseExit, CompositeListener);
+						//composite.addListener (SWT.MouseDown, CompositeListener);
 						var size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
 						var rect = _item.getBounds (remodelItemIndex);
 						var pt = table.toDisplay (event.x, event.y);
-						tip.setBounds (pt.x + 20, pt.y + 5, size.x, size.y);
+						tip.setBounds (pt.x - 40, pt.y, size.x, size.y);
 						tip.setVisible (true);
+						setTmpData("item",_item);
        				}
         		}
         	}
 		}
 	});
-	
-	var LabelListener = new Listener({
+	/*
+	var CompositeListener = new Listener({
 		handleEvent : function(event){
-			var _label = Label.class.cast(event.widget);
-			var shell1 = label.getShell();
+			var _composite = Composite.class.cast(event.widget);
+			var shell = composite.getShell();
 			switch (event.type){
 				case SWT.MouseDown:
 					var e = new Event();
-					e.item = TableItem.class.cast(_label.getData("_TABLEITEM"));
+					//e.item = TableItem.class.cast(_label.getData("_TABLEITEM"));
 					//table.setSelection (new TableItem [] { TableItem.class.cast(e.item) });
 					table.notifyListeners(SWT.Selection, e);
-					shell1.dispose();
+					shell.dispose();
 					table.setFocus();
 					break;
 				case SWT.MouseExit:
-					shell1.dispose();
+					shell.dispose();
 					break;
 			}
 		}
 	});
-	
+	*/
 	if(getData("set") == null){
 		table.setToolTipText("");
+		
+		table.addListener(SWT.MouseExit, TableListener);
 		table.addListener(SWT.Dispose, TableListener);
     	table.addListener(SWT.KeyDown, TableListener);
-    	table.addListener(SWT.MouseMove, TableListener);
     	table.addListener(SWT.MouseHover, TableListener);
 		setTmpData("set",true);
 	}
@@ -298,3 +300,63 @@ function _getRemodelItemData(itemData){
 	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2)    + "/" + prefix(upgradeResearch[1],2)    + " 改修:" + prefix(upgradeScrew[0],2)    + "/" + prefix(upgradeScrew[1],2)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*") + upgradeConsumeNum    + "　");
 	return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
 }
+/*
+function getSwtAction(eventType){
+	switch(eventType){
+		case 0:return "None";
+		case 1:return "KeyDown";
+		case 2:return "KeyUp";
+		case 3:return "MouseDown";
+		case 4:return "MouseUp";
+		case 5:return "MouseMove";
+		case 6:return "MouseEnter";
+		case 7:return "MouseExit";
+		case 8:return "MouseDoubleClick";
+		case 9:return "Paint";
+		case 10:return "Move";
+		case 11:return "Resize";
+		case 12:return "Dispose";
+		case 13:return "Selection";
+		case 14:return "DefaultSelection";
+		case 15:return "FocusIn";
+		case 16:return "FocusOut";
+		case 17:return "Expand";
+		case 18:return "Collapse";
+		case 19:return "Iconify";
+		case 20:return "Deiconify";
+		case 21:return "Close";
+		case 22:return "Show";
+		case 23:return "Hide";
+		case 24:return "Modify";
+		case 25:return "Verify";
+		case 26:return "Activate";
+		case 27:return "Deactivate";
+		case 28:return "Help";
+		case 29:return "DragDetect";
+		case 30:return "Arm";
+		case 31:return "Traverse";
+		case 32:return "MouseHover";
+		case 33:return "HardKeyDown";
+		case 34:return "HardKeyUp";
+		case 35:return "MenuDetect";
+		case 36:return "SetData";
+		case 37:return "MouseVerticalWheel/MouseWheel";
+		case 38:return "MouseHorizontalWheel";
+		case 39:return "Settings";
+		case 40:return "EraseItem";
+		case 41:return "MeasureItem";
+		case 42:return "PaintItem";
+		case 43:return "ImeComposition";
+		case 44:return "OrientationChange";
+		case 45:return "Skin";
+		case 46:return "OpenDocument";
+		case 47:return "Touch";
+		case 48:return "Gesture";
+		case 49:return "Segments";
+		case 50:return "PreEvent";
+		case 51:return "PostEvent";
+		case 52:return "Sleep";
+		case 53:return "Wakeup";
+	}
+}
+*/
