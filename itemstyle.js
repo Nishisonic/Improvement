@@ -1,4 +1,4 @@
-﻿//Ver:2.0.7
+﻿//Ver:2.0.7.5
 //Author:Nishisonic
 
 //script読み込み
@@ -7,79 +7,34 @@ load("script/ScriptData.js");
 load("script/remodelItem.js");
 
 //Import部分
-TableItem = Java.type("org.eclipse.swt.widgets.TableItem");
-SWT = Java.type("org.eclipse.swt.SWT");
+Arrays             = Java.type("java.util.Arrays");
+Calendar           = Java.type("java.util.Calendar");
+IntStream          = Java.type("java.util.stream.IntStream");
+ObjectArrayType    = Java.type("java.lang.Object[]");
+TimeZone           = Java.type("java.util.TimeZone");
+Event              = Java.type("org.eclipse.swt.widgets.Event");
+FillLayout         = Java.type("org.eclipse.swt.layout.FillLayout");
+Label              = Java.type("org.eclipse.swt.widgets.Label");
+Listener           = Java.type("org.eclipse.swt.widgets.Listener");
+Point              = Java.type("org.eclipse.swt.graphics.Point");
+Shell              = Java.type("org.eclipse.swt.widgets.Shell");
+SWT                = Java.type("org.eclipse.swt.SWT");
 SWTResourceManager = Java.type("org.eclipse.wb.swt.SWTResourceManager");
-RGB = Java.type("org.eclipse.swt.graphics.RGB");
-Calendar = Java.type("java.util.Calendar");
-TimeZone = Java.type("java.util.TimeZone");
-Item = Java.type("logbook.internal.Item");
-GlobalContext = Java.type("logbook.data.context.GlobalContext");
-AppConstants = Java.type("logbook.constants.AppConstants");
-ReportUtils = Java.type("logbook.util.ReportUtils");
-Point = Java.type("org.eclipse.swt.graphics.Point");
-FillLayout = Java.type("org.eclipse.swt.layout.FillLayout");
-Label = Java.type("org.eclipse.swt.widgets.Label");
-Listener = Java.type("org.eclipse.swt.widgets.Listener");
-Shell = Java.type("org.eclipse.swt.widgets.Shell");
-Event = Java.type("org.eclipse.swt.widgets.Event");
-IntStream = Java.type("java.util.stream.IntStream");
-
+TableItem          = Java.type("org.eclipse.swt.widgets.TableItem");
+AppConstants       = Java.type("logbook.constants.AppConstants");
+GlobalContext      = Java.type("logbook.data.context.GlobalContext");
+Item               = Java.type("logbook.internal.Item");
+ReportUtils        = Java.type("logbook.util.ReportUtils");
 
 data_prefix = "remodelItem_";
 var remodelItemIndex = - 1;
-
 		  
 function begin(header) {
-	for (var i = 0; i < header.length; ++i) {
+	IntStream.range(0,header.length).forEach(function(i){
 		if (header[i].equals("二番艦")) {
 			remodelItemIndex = i;
 		}
-	}
-}
-
-function getTableItemColor(iconid) {
-	switch(iconid){
-		case  1: return new RGB(255,204,204); //小口径主砲
-		case  2: return new RGB(255,204,204); //中口径主砲
-		case  3: return new RGB(255,204,204); //大口径主砲
-		case  4: return new RGB(255,255,153); //副砲
-		case  5: return new RGB(153,204,255); //魚雷
-		case  6: return new RGB(204,255,204); //艦上戦闘機
-		case  7: return new RGB(255,204,204); //艦上爆撃機
-		case  8: return new RGB(153,204,255); //艦上攻撃機
-		case  9: return new RGB(255,204,102); //艦上偵察機
-		case 10: return new RGB(204,255,204); //水上機
-		case 11: return new RGB(255,204,102); //電探
-		case 12: return new RGB(204,255,204); //対空強化弾
-		case 13: return new RGB(255,204,204); //対艦強化弾
-		case 14: return new RGB(255,255,255); //応急修理要員
-		case 15: return new RGB(204,255,204); //対空機銃
-		case 16: return new RGB(204,255,204); //高角砲
-		case 17: return new RGB(204,255,255); //爆雷
-		case 18: return new RGB(204,255,255); //ソナー
-		case 19: return new RGB(255,204,102); //機関部強化
-		case 20: return new RGB(204,255,102); //上陸用舟艇
-		case 21: return new RGB(204,255,204); //オートジャイロ
-		case 22: return new RGB(204,255,255); //対潜哨戒機
-		case 23: return new RGB(204,204,255); //追加装甲
-		case 24: return new RGB(255,204,102); //探照灯
-		case 25: return new RGB(238,238,238); //簡易輸送部材
-		case 26: return new RGB(221,204,187); //艦艇修理施設
-		case 27: return new RGB(255,204,102); //照明弾
-		case 28: return new RGB(204,187,255); //司令部施設
-		case 29: return new RGB(221,204,187); //航空要員
-		case 30: return new RGB(154,205, 50); //高射装置
-		case 31: return new RGB(247,129,129); //対地装備
-		case 32: return new RGB(204,255,204); //水上艦要員
-		case 33: return new RGB(204,255,204); //大型飛行艇
-		case 34: return new RGB(255,255,255); //戦闘糧食
-		case 35: return new RGB( 96,215,168); //補給物資
-		case 36: return new RGB(204,255,102); //特型内火艇
-		case 37: return new RGB(204,255,204); //陸上攻撃機
-		case 38: return new RGB(204,255,204); //陸上攻撃機
-		default: return new RGB(255,255,255); //例外
-	}
+	})
 }
 
 var tip = null;
@@ -97,13 +52,9 @@ function create(table, data, index) {
 	if ((index % 2) != 0) {
 		item.setBackground(SWTResourceManager.getColor(AppConstants.ROW_BACKGROUND));
 	}
-
-//	item.setBackground(nameIndex,SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
-//	item.setBackground(SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
 	
 	item.setText(ReportUtils.toStringArray(data));
 	
-	//table使う場合ってどうすれば良いんだろう
 	var TableListener = new Listener({
     	handleEvent : function(event) {
    		    switch (event.type) {
@@ -124,12 +75,6 @@ function create(table, data, index) {
 						tip.setLayout(new FillLayout());
 						label = new Label (tip, SWT.NONE);
 						label.setData ("_TABLEITEM", item);
-						//12.7cm連装砲→12.7cm連装砲B型改二
-						//二番艦:デフォルト
-						//燃料:010 弾薬:030 鋼材:060 ﾎﾞｰｷ:000
-						//初期|開発:01/02 改修:01/02 消費:-
-						//★６|開発:01/02 改修:01/02 消費:12.7cm連装砲*1
-						//★Ｍ|開発:02/03 改修:03/06 消費:12.7cm連装砲*2
 						label.setText (getRemodelItemData(_item.data.info.id));
 						label.addListener (SWT.MouseExit, LabelListener);
 						label.addListener (SWT.MouseDown, LabelListener);
@@ -152,7 +97,6 @@ function create(table, data, index) {
 				case SWT.MouseDown:
 					var e = new Event();
 					e.item = TableItem.class.cast(_label.getData("_TABLEITEM"));
-					//table.setSelection (new TableItem [] { TableItem.class.cast(e.item) });
 					table.notifyListeners(SWT.Selection, e);
 					shell1.dispose();
 					table.setFocus();
@@ -195,10 +139,10 @@ function getRemodelItemData(itemId){
 		}
 	})(itemId);
 	if(num > 1){
-		for each(data in remodelItemData[String(word + itemId)].upgrade){
+		Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).forEach(function(data){
 			result += _getRemodelItemData(data) + "\r\n";
-		}
-		result = result.substr(0, result.length - 2); //超強引
+		});
+		result = result.substr(0, result.length - 2);
 	} else {
 		result += _getRemodelItemData(remodelItemData[String(word + itemId)]);
 	}
