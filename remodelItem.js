@@ -1,6 +1,6 @@
-//Ver:2.0.7
+//Ver:2.0.7β1
 //Author:Nishisonic
-//LastUpdate:2016/09/22
+//LastUpdate:2016/10/08
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -891,31 +891,6 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 38.1cm Mk.I連装砲 */
-    id_190:{
-        ID:190,
-        MATERIAL:[ 24,280,380,  0],
-        helperShip:{
-            SUNDAY:   [WARSPITE],
-            MONDAY:   [NONE],
-            TUESDAY:  [NONE],
-            WEDNESDAY:[NONE],
-            THURSDAY: [WARSPITE],
-            FRIDAY:   [WARSPITE],
-            SATURDAY: [WARSPITE],
-        },
-        star0to6:{
-            RESEARCH:[ 3, 4],
-            SCREW:   [ 3, 4],
-            consumes:{ID:  7,NUM:2}, //35.6cm連装砲*2
-        },
-        star6toMax:{
-            RESEARCH:[ 4, 6],
-            SCREW:   [ 3, 5],
-            consumes:{ID:  8,NUM:2}, //41cm連装砲*2
-        },
-        upgrade:null,
-    },
     /** 38cm連装砲 */
     id_76:{
         ID:76,
@@ -968,6 +943,62 @@ var remodelItemData = {
         star6toMax:{
             RESEARCH:[ 6, 9],
             SCREW:   [ 4, 6],
+            consumes:{ID:  8,NUM:2}, //41cm連装砲*2
+        },
+        upgrade:null,
+    },
+    /** 38.1cm Mk.I連装砲 */
+    id_190:{
+        ID:190,
+        MATERIAL:[ 24,280,380,  0],
+        helperShip:{
+            SUNDAY:   [WARSPITE],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [WARSPITE],
+            FRIDAY:   [WARSPITE],
+            SATURDAY: [WARSPITE],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 3, 4],
+            consumes:{ID:  7,NUM:2}, //35.6cm連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:  8,NUM:2}, //41cm連装砲*2
+        },
+        upgrade:{
+            RESEARCH:[ 8,15],
+            SCREW:   [ 6,12],
+            consumes:{ID: 49,NUM:2}, //25mm単装機銃*2
+            ID:192, //38.1cm Mk.I／N連装砲改
+            STAR:0,
+        },
+    },
+    /** 38.1cm Mk.I／N連装砲改 */
+    id_192:{
+        ID:192,
+        MATERIAL:[ 28,320,420, 40],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[WARSPITE],
+            THURSDAY: [WARSPITE],
+            FRIDAY:   [WARSPITE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 3, 5],
+            consumes:{ID:  8,NUM:1}, //41cm連装砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 4, 7],
             consumes:{ID:  8,NUM:2}, //41cm連装砲*2
         },
         upgrade:null,
