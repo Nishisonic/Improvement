@@ -1,4 +1,4 @@
-﻿//Ver:2.0.8
+﻿//Ver:2.0.9
 //Author:Nishisonic
 
 //script読み込み
@@ -68,8 +68,9 @@ function create(table, data, index) {
           			break;
         		}
 	        	case SWT.MouseHover: {
-    	    		var _item = table.getItem(new Point(event.x, event.y));
-        			if (_item != null && isRemodelItem(_item.data.info.id)) {
+					var point = new Point(event.x, event.y);
+    	    		var _item = table.getItem(point);
+        			if (_item != null && isRemodelItem(_item.data.info.id) && getColumnIndex(point,_item) == remodelItemIndex) {
        	     			if (tip != null && !tip.isDisposed()) tip.dispose();
         	   			tip = new Shell(table.getShell(), SWT.ON_TOP | SWT.TOOL);
 						tip.setLayout(new FillLayout());
@@ -79,9 +80,9 @@ function create(table, data, index) {
 						label.addListener (SWT.MouseExit, LabelListener);
 						label.addListener (SWT.MouseDown, LabelListener);
 						var size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
-						var rect = _item.getBounds (remodelItemIndex);
+						//var rect = _item.getBounds (remodelItemIndex);
 						var pt = table.toDisplay (event.x, event.y);
-						tip.setBounds (pt.x + 20, pt.y + 5, size.x, size.y);
+						tip.setBounds (pt.x + 15, pt.y + 5, size.x, size.y);
 						tip.setVisible (true);
        				}
         		}
@@ -241,4 +242,12 @@ function _getRemodelItemData(itemData){
 	var row5 = " ★６|開発:" + prefix(star6toMaxResearch[0],2) + "/" + prefix(star6toMaxResearch[1],2) + " 改修:" + prefix(star6toMaxScrew[0],2) + "/" + prefix(star6toMaxScrew[1],2) + " 消費:" + (star6toMaxScrew[1] == "--  " ? "---" : star6toMaxConsumeName + (star6toMaxConsumeNum == "" ? "" : "*") + star6toMaxConsumeNum + "　");
 	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2)    + "/" + prefix(upgradeResearch[1],2)    + " 改修:" + prefix(upgradeScrew[0],2)    + "/" + prefix(upgradeScrew[1],2)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*") + upgradeConsumeNum    + "　");
 	return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
+}
+
+function getColumnIndex(pt,item){
+	var columns = item.getParent().getColumnCount();
+	return IntStream.range(0,columns).filter(function(index){
+		var rect = item.getBounds(index);
+		return pt.x >= rect.x && pt.x < rect.x + rect.width;
+	}).findFirst().orElse(-1);
 }
