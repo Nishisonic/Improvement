@@ -1,4 +1,4 @@
-﻿//Ver:2.0.9
+﻿//Ver:2.1.0
 //Author:Nishisonic
 
 //script読み込み
@@ -193,54 +193,50 @@ function _getRemodelItemData(itemData){
 	var star0to6Screw = itemData.star0to6.SCREW;
 	var star0to6ConsumeName = "なし";
 	var star0to6ConsumeNum = "";
+	var star0to6NumOfPossesions = 0;
 	if(itemData.star0to6.consumes != null){
-		try {
-			star0to6ConsumeName = Item.get(itemData.star0to6.consumes.ID).getName();
-		} catch(e) {
-			star0to6ConsumeName = itemData.star0to6.consumes.ID;
-		}
+		star0to6ConsumeName = Item.get(itemData.star0to6.consumes.ID).getName();
 		star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
+		star0to6NumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+			return item.slotitemId == itemData.star0to6.consumes.ID && item.level == 0;
+		}).count();
 	}
 	var star6toMaxResearch = itemData.star6toMax.RESEARCH;
 	var star6toMaxScrew = itemData.star6toMax.SCREW;
 	var star6toMaxConsumeName = "なし";
 	var star6toMaxConsumeNum = "";
+	var star6toMaxNumOfPossesions = 0;
 	if(itemData.star6toMax.consumes != null){
-		try {
-			star6toMaxConsumeName = Item.get(itemData.star6toMax.consumes.ID).getName();
-		} catch(e) {
-			star6toMaxConsumeName = itemData.star6toMax.consumes.ID;
-		}
+		star6toMaxConsumeName = Item.get(itemData.star6toMax.consumes.ID).getName();
 		star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
+		star6toMaxNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+			return item.slotitemId == itemData.star6toMax.consumes.ID && item.level == 0;
+		}).count();
 	}
 	var upgradeResearch = [" --","-- "];
 	var upgradeScrew    = [" --","--  "];
 	var upgradeConsumeName = "なし";
 	var upgradeConsumeNum = "";
+	var upgradeNumOfPossesions = 0;
 	if(itemData.upgrade != null){
 		upgradeResearch = itemData.upgrade.RESEARCH;
 		upgradeScrew = itemData.upgrade.SCREW;
 		if(itemData.upgrade.consumes != null){
-			try {
-				upgradeConsumeName = Item.get(itemData.upgrade.consumes.ID).getName();
-			} catch(e) {
-				upgradeConsumeName = itemData.upgrade.consumes.ID;
-			}
+			upgradeConsumeName = Item.get(itemData.upgrade.consumes.ID).getName();
 			upgradeConsumeNum = itemData.upgrade.consumes.NUM;
+			upgradeNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+				return item.slotitemId == itemData.upgrade.consumes.ID && item.level == 0;
+			}).count();
 		}
-		try{
-			upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
-		} catch(e) {
-			upgradeToItemName = itemData.upgrade.ID;
-		}
+		upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
 		upgradeToItemStar = itemData.upgrade.STAR;
 	}
 	var row1 = " " + itemName + "→" + upgradeToItemName + (upgradeToItemStar != "0" ? "★" + (upgradeToItemStar == 10 ? "max" : "+" + upgradeToItemStar) : "") + "　";
 	var row2 = " 二番艦:" + helperShip + "　";
 	var row3 = " 燃料:" + fuel + " 弾薬:" + ammo + " 鋼材:" + steel + " ボーキ:" + bauxite + "　";
-	var row4 = " 初期|開発:" + prefix(star0to6Research[0],2)   + "/" + prefix(star0to6Research[1],2)   + " 改修:" + prefix(star0to6Screw[0],2)   + "/" + prefix(star0to6Screw[1],2)   + " 消費:" + (star0to6Screw[1]   == "--  " ? "---" : star0to6ConsumeName   + (star0to6ConsumeNum   == "" ? "" : "*") + star0to6ConsumeNum   + "　");
-	var row5 = " ★６|開発:" + prefix(star6toMaxResearch[0],2) + "/" + prefix(star6toMaxResearch[1],2) + " 改修:" + prefix(star6toMaxScrew[0],2) + "/" + prefix(star6toMaxScrew[1],2) + " 消費:" + (star6toMaxScrew[1] == "--  " ? "---" : star6toMaxConsumeName + (star6toMaxConsumeNum == "" ? "" : "*") + star6toMaxConsumeNum + "　");
-	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2)    + "/" + prefix(upgradeResearch[1],2)    + " 改修:" + prefix(upgradeScrew[0],2)    + "/" + prefix(upgradeScrew[1],2)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*") + upgradeConsumeNum    + "　");
+	var row4 = " 初期|開発:" + prefix(star0to6Research[0],2)   + "/" + prefix(star0to6Research[1],2)   + " 改修:" + prefix(star0to6Screw[0],2)   + "/" + prefix(star0to6Screw[1],2)   + " 消費:" + (star0to6Screw[1]   == "--  " ? "---" : star0to6ConsumeName   + (star0to6ConsumeNum   == "" ? "" : "*") + star0to6ConsumeNum + " (" + star0to6NumOfPossesions + ")　");
+	var row5 = " ★６|開発:" + prefix(star6toMaxResearch[0],2) + "/" + prefix(star6toMaxResearch[1],2) + " 改修:" + prefix(star6toMaxScrew[0],2) + "/" + prefix(star6toMaxScrew[1],2) + " 消費:" + (star6toMaxScrew[1] == "--  " ? "---" : star6toMaxConsumeName + (star6toMaxConsumeNum == "" ? "" : "*") + star6toMaxConsumeNum + " (" + star6toMaxNumOfPossesions + ")　");
+	var row6 = " ★Ｍ|開発:" + prefix(upgradeResearch[0],2)    + "/" + prefix(upgradeResearch[1],2)    + " 改修:" + prefix(upgradeScrew[0],2)    + "/" + prefix(upgradeScrew[1],2)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*") + upgradeConsumeNum    + " (" + upgradeNumOfPossesions + ")　");
 	return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
 }
 
