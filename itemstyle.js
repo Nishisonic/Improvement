@@ -1,4 +1,4 @@
-﻿//Ver:2.0.9+
+﻿//Ver:2.0.9++
 //Author:Nishisonic
 
 //script読み込み
@@ -38,7 +38,7 @@ function begin(header) {
 	})
 }
 
-function getTableItemColor(iconid) {
+function getItemIconColor(iconid) {
 	switch(iconid){
 		case  1: return new RGB(255,204,204); //小口径主砲
 		case  2: return new RGB(255,204,204); //中口径主砲
@@ -93,7 +93,7 @@ function create(table, data, index) {
 
 	item.setData(items);
 
-	item.setBackground(SWTResourceManager.getColor(getTableItemColor(items.info.type3)));
+	item.setBackground(SWTResourceManager.getColor(getItemIconColor(items.info.type3)));
 	
 	item.setText(ReportUtils.toStringArray(data));
 	
@@ -121,6 +121,7 @@ function create(table, data, index) {
 						label.setText (getRemodelItemData(_item.data.info.id));
 						label.addListener (SWT.MouseExit, LabelListener);
 						label.addListener (SWT.MouseDown, LabelListener);
+						label.setBackground(SWTResourceManager.getColor(getItemIconColor(_item.data.info.type3)));
 						var size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
 						//var rect = _item.getBounds (remodelItemIndex);
 						var pt = table.toDisplay (event.x, event.y);
