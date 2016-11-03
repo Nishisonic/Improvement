@@ -1,4 +1,4 @@
-//Ver:2.1.1
+//Ver:2.1.2
 //Author:Nishisonic
 //LastUpdate:2016/11/04
 
