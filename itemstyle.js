@@ -1,4 +1,4 @@
-﻿//Ver:2.1.3
+﻿//Ver:2.1.4
 //Author:Nishisonic
 
 //script読み込み
@@ -19,6 +19,7 @@ Label              = Java.type("org.eclipse.swt.widgets.Label");
 Listener           = Java.type("org.eclipse.swt.widgets.Listener");
 Point              = Java.type("org.eclipse.swt.graphics.Point");
 Shell              = Java.type("org.eclipse.swt.widgets.Shell");
+SimpleDateFormat   = Java.type("java.text.SimpleDateFormat");
 Stream             = Java.type("java.util.stream.Stream");
 SWT                = Java.type("org.eclipse.swt.SWT");
 SWTResourceManager = Java.type("org.eclipse.wb.swt.SWTResourceManager");
@@ -73,14 +74,13 @@ function create(table, data, index) {
 	        	case SWT.MouseHover: {
 					var point = new Point(event.x, event.y);
     	    		var _item = table.getItem(point);
-					var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK);
         			if (_item != null && isRemodelItem(_item.data.info.id) && getColumnIndex(point,_item) == remodelItemIndex) {
        	     			if (tip != null && !tip.isDisposed()) tip.dispose();
         	   			tip = new Shell(table.getShell(), SWT.ON_TOP | SWT.TOOL);
 						tip.setLayout(new FillLayout());
 						label = new Label (tip, SWT.NONE);
 						label.setData ("_TABLEITEM", item);
-						label.setText (getRemodelItemData(_item.data.info.id,dayOfWeek));
+						label.setText (getRemodelItemData(_item.data.info.id,Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"))));
 						label.addListener (SWT.MouseExit, LabelListener);
 						label.addListener (SWT.MouseDown, LabelListener);
 						var size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
@@ -131,7 +131,7 @@ function isRemodelItem(itemId,dayOfWeek){
 	return remodelItemData[String(word + itemId)] != null && remodelItemData[String(word + itemId)].helperShip[getDayOfWeek(dayOfWeek)] != NONE;
 }
 
-function getRemodelItemData(itemId,dayOfWeek){
+function getRemodelItemData(itemId,cal){
 	var result = "";
 	var num = (function(id){
 		switch(itemId){
@@ -144,16 +144,16 @@ function getRemodelItemData(itemId,dayOfWeek){
 	})(itemId);
 	if(num > 1){
 		Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).forEach(function(data){
-			result += _getRemodelItemData(data,dayOfWeek) + "\r\n";
+			result += _getRemodelItemData(data,cal) + "\r\n";
 		});
 		result = result.substr(0, result.length - 2);
 	} else {
-		result += _getRemodelItemData(remodelItemData[String(word + itemId)],dayOfWeek);
+		result += _getRemodelItemData(remodelItemData[String(word + itemId)],cal);
 	}
 	return result;
 }
 
-function _getRemodelItemData(itemData,dayOfWeek){
+function _getRemodelItemData(itemData,cal){
 	var df = new DecimalFormat("000");
 	var df2 = new DecimalFormat("00");
 	var itemName;
@@ -164,10 +164,11 @@ function _getRemodelItemData(itemData,dayOfWeek){
 	}
 	var upgradeToItemName = "";
 	var upgradeToItemStar = 0;
-	var helperShip = itemData.helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
+	var helperShip = itemData.helperShip[getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK))].join(SEP);
 	if(helperShip == NONE){
 		helperShip = helperShip.substring(1,helperShip.length()); //改行を省く
-		helperShip += "(次回は" + getDayOfWeek(getNextImprovementDayOfWeek(itemData,dayOfWeek),true) + "曜日)"; //次の改修日を表示
+		var sdf = new SimpleDateFormat("(次回はM月d日(E))");
+		helperShip += sdf.format(getNextImprovementDate(itemData,cal).getTime()); //次の改修日を表示
 	}
 	var material = itemData.MATERIAL;
 	var fuel    = df.format(material[0]|0);
@@ -238,23 +239,12 @@ function getColumnIndex(pt,item){
 	}).findFirst().orElse(-1);
 }
 
-function getNextImprovementDayOfWeek(itemData,dayOfWeek){
-	var d = dayOfWeek;
+function getNextImprovementDate(itemData,cal){
+	var calendar = cal.clone();
 	return Stream.iterate(1,function(i){return i;}).limit(7).map(function(i){
-		return d = rollDayOfWeek(d,true);
-	}).filter(function(dayOfTheWeek){
-		return itemData.helperShip[getDayOfWeek(dayOfTheWeek)] != NONE;
+		calendar.roll(Calendar.DAY_OF_YEAR ,true);
+		return calendar;
+	}).filter(function(c){
+		return itemData.helperShip[getDayOfWeek(c.get(Calendar.DAY_OF_WEEK))] != NONE;
 	}).findFirst().orElse(null);
-}
-
-function rollDayOfWeek(dayOfWeek,up){
-	switch(dayOfWeek){
-		case Calendar.SUNDAY   :return up ? Calendar.MONDAY    : Calendar.SATURDAY;
-		case Calendar.MONDAY   :return up ? Calendar.TUESDAY   : Calendar.SUNDAY;
-		case Calendar.TUESDAY  :return up ? Calendar.WEDNESDAY : Calendar.MONDAY;
-		case Calendar.WEDNESDAY:return up ? Calendar.THURSDAY  : Calendar.TUESDAY;
-		case Calendar.THURSDAY :return up ? Calendar.FRIDAY    : Calendar.WEDNESDAY;
-		case Calendar.FRIDAY   :return up ? Calendar.SATURDAY  : Calendar.THURSDAY;
-		case Calendar.SATURDAY :return up ? Calendar.SUNDAY    : Calendar.FRIDAY;
-	}
 }
