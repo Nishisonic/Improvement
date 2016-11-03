@@ -1,4 +1,4 @@
-﻿//Ver:2.1.2
+﻿//Ver:2.1.3
 //Author:Nishisonic
 
 //script読み込み
@@ -19,6 +19,7 @@ Label              = Java.type("org.eclipse.swt.widgets.Label");
 Listener           = Java.type("org.eclipse.swt.widgets.Listener");
 Point              = Java.type("org.eclipse.swt.graphics.Point");
 Shell              = Java.type("org.eclipse.swt.widgets.Shell");
+Stream             = Java.type("java.util.stream.Stream");
 SWT                = Java.type("org.eclipse.swt.SWT");
 SWTResourceManager = Java.type("org.eclipse.wb.swt.SWTResourceManager");
 TableItem          = Java.type("org.eclipse.swt.widgets.TableItem");
@@ -142,9 +143,7 @@ function getRemodelItemData(itemId,dayOfWeek){
 		}
 	})(itemId);
 	if(num > 1){
-		Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).filter(function(data){
-			return getHelperShip(data,dayOfWeek) != NONE;
-		}).forEach(function(data){
+		Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).forEach(function(data){
 			result += _getRemodelItemData(data,dayOfWeek) + "\r\n";
 		});
 		result = result.substr(0, result.length - 2);
@@ -165,7 +164,11 @@ function _getRemodelItemData(itemData,dayOfWeek){
 	}
 	var upgradeToItemName = "";
 	var upgradeToItemStar = 0;
-	var helperShip = getHelperShip(itemData,dayOfWeek);
+	var helperShip = itemData.helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
+	if(helperShip == NONE){
+		helperShip = helperShip.substring(1,helperShip.length()); //改行を省く
+		helperShip += "(次回は" + getDayOfWeek(getNextImprovementDayOfWeek(itemData,dayOfWeek),true) + "曜日)"; //次の改修日を表示
+	}
 	var material = itemData.MATERIAL;
 	var fuel    = df.format(material[0]|0);
 	var ammo    = df.format(material[1]|0);
@@ -235,6 +238,23 @@ function getColumnIndex(pt,item){
 	}).findFirst().orElse(-1);
 }
 
-function getHelperShip(itemData,dayOfWeek){
-	return itemData.helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
+function getNextImprovementDayOfWeek(itemData,dayOfWeek){
+	var d = dayOfWeek;
+	return Stream.iterate(1,function(i){return i;}).limit(7).map(function(i){
+		return d = rollDayOfWeek(d,true);
+	}).filter(function(dayOfTheWeek){
+		return itemData.helperShip[getDayOfWeek(dayOfTheWeek)] != NONE;
+	}).findFirst().orElse(null);
+}
+
+function rollDayOfWeek(dayOfWeek,up){
+	switch(dayOfWeek){
+		case Calendar.SUNDAY   :return up ? Calendar.MONDAY    : Calendar.SATURDAY;
+		case Calendar.MONDAY   :return up ? Calendar.TUESDAY   : Calendar.SUNDAY;
+		case Calendar.TUESDAY  :return up ? Calendar.WEDNESDAY : Calendar.MONDAY;
+		case Calendar.WEDNESDAY:return up ? Calendar.THURSDAY  : Calendar.TUESDAY;
+		case Calendar.THURSDAY :return up ? Calendar.FRIDAY    : Calendar.WEDNESDAY;
+		case Calendar.FRIDAY   :return up ? Calendar.SATURDAY  : Calendar.THURSDAY;
+		case Calendar.SATURDAY :return up ? Calendar.SUNDAY    : Calendar.FRIDAY;
+	}
 }

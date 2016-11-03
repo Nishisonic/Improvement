@@ -1,4 +1,4 @@
-//Ver:2.1.2
+//Ver:2.1.3
 //Author:Nishisonic
 //LastUpdate:2016/11/04
 
@@ -2782,14 +2782,15 @@ var remodelItemData = {
     },
 }
 
-function getDayOfWeek(dayOfWeek){
+function getDayOfWeek(dayOfWeek,isJpn){
+    var isJpn = isJpn !== undefined ? isJpn : false;
     switch(dayOfWeek){
-        case Calendar.SUNDAY:    return "SUNDAY";
-        case Calendar.MONDAY:    return "MONDAY";
-        case Calendar.TUESDAY:   return "TUESDAY";
-        case Calendar.WEDNESDAY: return "WEDNESDAY";
-        case Calendar.THURSDAY:  return "THURSDAY";
-        case Calendar.FRIDAY:    return "FRIDAY";
-        case Calendar.SATURDAY:  return "SATURDAY";
+        case Calendar.SUNDAY:    return isJpn ? "日" : "SUNDAY";
+        case Calendar.MONDAY:    return isJpn ? "月" : "MONDAY";
+        case Calendar.TUESDAY:   return isJpn ? "火" : "TUESDAY";
+        case Calendar.WEDNESDAY: return isJpn ? "水" : "WEDNESDAY";
+        case Calendar.THURSDAY:  return isJpn ? "木" : "THURSDAY";
+        case Calendar.FRIDAY:    return isJpn ? "金" : "FRIDAY";
+        case Calendar.SATURDAY:  return isJpn ? "土" : "SATURDAY";
     }
 }
