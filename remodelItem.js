@@ -1,6 +1,6 @@
-//Ver:2.1.0
+//Ver:2.1.1
 //Author:Nishisonic
-//LastUpdate:2016/10/22
+//LastUpdate:2016/11/04
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1856,7 +1856,7 @@ var remodelItemData = {
         star6toMax:{
             RESEARCH:[ 5, 9],
             SCREW:   [ 4, 6],
-            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+            consumes:{ID:24,NUM:2}, //彗星*2
         },
         upgrade:null,
     },
