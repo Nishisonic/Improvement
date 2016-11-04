@@ -1,4 +1,4 @@
-//Ver:2.1.4.1
+//Ver:2.1.4.2
 //Author:Nishisonic
 //LastUpdate:2016/11/04
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
@@ -2531,6 +2531,31 @@ var remodelItemData = {
             ID:131, //25mm三連装機銃 集中配備
             STAR:0,
         },
+    },
+    /** 25mm三連装機銃 集中配備 */
+    id_131:{
+        ID:131,
+        MATERIAL:[  0, 90, 90,150],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [MAYA_R2,KINU_R2],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 3, 5],
+            consumes:{ID: 40,NUM:3}, //25mm三連装機銃*3
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 9],
+            SCREW:   [ 6, 9],
+            consumes:{ID: 40,NUM:5}, //25mm三連装機銃*5
+        },
+        upgrade:null,
     },
     /* 高射装置 */
     /** 91式高射装置 */
