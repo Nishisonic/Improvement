@@ -1,4 +1,4 @@
-//Ver:2.1.4.2
+//Ver:2.1.4.3
 //Author:Nishisonic
 //LastUpdate:2016/11/04
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
@@ -2512,7 +2512,7 @@ var remodelItemData = {
             WEDNESDAY:[ISUZU_R2,MAYA,SATSUKI_R2],
             THURSDAY: [NOT_R2(MAYA),SATSUKI_R2],
             FRIDAY:   [NONE], //11/04 21:03
-            SATURDAY: [MAYA_R2],
+            SATURDAY: [NONE], //11/05 0:22
         },
         star0to6:{
             RESEARCH:[ 1, 2],
@@ -2543,7 +2543,7 @@ var remodelItemData = {
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [MAYA_R2,KINU_R2],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [MAYA_R2,KINU_R2],
         },
         star0to6:{
             RESEARCH:[ 3, 5],
@@ -2673,7 +2673,7 @@ var remodelItemData = {
             WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
             THURSDAY: [AKITSUMARU],
             FRIDAY:   [AKITSUMARU,ABUKUMA_R2,KINU_R2], //11/04 21:04
-            SATURDAY: [AKITSUMARU,ABUKUMA_R2],
+            SATURDAY: [AKITSUMARU,ABUKUMA_R2,KINU_R2], //11/05 0:23
         },
         upgrade:[{
             ID:68,
@@ -2715,7 +2715,7 @@ var remodelItemData = {
                 WEDNESDAY:[UNKNOWN],
                 THURSDAY: [UNKNOWN],
                 FRIDAY:   [KINU_R2],
-                SATURDAY: [UNKNOWN],
+                SATURDAY: [KINU_R2],
             },
             star0to6:{
                 RESEARCH:[ 1, 2],
@@ -2803,7 +2803,7 @@ var remodelItemData = {
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [KINU_R2],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [KINU_R2],
         },
         star0to6:{
             RESEARCH:[ 3, 5],
