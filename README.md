@@ -14,11 +14,11 @@
 
 ### このプロジェクトについて
 
-* [艦これwiki](http://wikiwiki.jp/kancolle/)などの情報を元に、今日の改修工廠の情報を所有装備一覧に表示します。
+* [艦これwiki](http://wikiwiki.jp/kancolle/)などの情報を元に、本日の改修工廠の情報を所有装備一覧に表示します。
 
 * 動作イメージ
 
-![](http://i.imgur.com/9KTZSPz.gif)
+![](https://pbs.twimg.com/media/CwYBi1vUkAALnHO.jpg)
 
 
 
