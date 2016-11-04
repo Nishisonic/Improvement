@@ -1,6 +1,7 @@
-//Ver:2.1.4
+//Ver:2.1.4.1
 //Author:Nishisonic
 //LastUpdate:2016/11/04
+//「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -497,6 +498,7 @@ var MINAZUKI        = "水無月";          //ID:481
 //var NULL          = "NULL";            //ID:482
 var I26             = "伊26";            //ID:483
 var URANAMI         = "浦波";            //ID:486
+var KINU_R2         = "鬼怒改二";        //ID:487
 
 var word = "id_";
 
@@ -2509,7 +2511,7 @@ var remodelItemData = {
             TUESDAY:  [ISUZU_R2,NOT_R2(MAYA)],
             WEDNESDAY:[ISUZU_R2,MAYA,SATSUKI_R2],
             THURSDAY: [NOT_R2(MAYA),SATSUKI_R2],
-            FRIDAY:   [MAYA_R2],
+            FRIDAY:   [NONE], //11/04 21:03
             SATURDAY: [MAYA_R2],
         },
         star0to6:{
@@ -2639,33 +2641,75 @@ var remodelItemData = {
     /** 大発動艇 */
     id_68:{
         ID:68,
-        MATERIAL:[ 50, 30, 30, 10],
         helperShip:{
             SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
             MONDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
             TUESDAY:  [AKITSUMARU,SATSUKI_R2],
             WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
             THURSDAY: [AKITSUMARU],
-            FRIDAY:   [AKITSUMARU,ABUKUMA_R2],
+            FRIDAY:   [AKITSUMARU,ABUKUMA_R2,KINU_R2], //11/04 21:04
             SATURDAY: [AKITSUMARU,ABUKUMA_R2],
         },
-        star0to6:{
-            RESEARCH:[ 1, 2],
-            SCREW:   [ 1, 2],
-            consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+        upgrade:[{
+            ID:68,
+            MATERIAL:[ 50, 30, 30, 10],
+            helperShip:{
+                SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+                MONDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+                TUESDAY:  [AKITSUMARU,SATSUKI_R2],
+                WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
+                THURSDAY: [AKITSUMARU],
+                FRIDAY:   [AKITSUMARU,ABUKUMA_R2],
+                SATURDAY: [AKITSUMARU,ABUKUMA_R2],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 4],
+                SCREW:   [ 2, 3],
+                consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
+            },
+            upgrade:{
+                RESEARCH:[ 4, 8],
+                SCREW:   [ 3, 7],
+                consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
+                ID:166, //大発動艇(八九式中戦車＆陸戦隊)
+                STAR:0,
+            },
         },
-        star6toMax:{
-            RESEARCH:[ 1, 4],
-            SCREW:   [ 2, 3],
-            consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
-        },
-        upgrade:{
-            RESEARCH:[ 4, 8],
-            SCREW:   [ 3, 7],
-            consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
-            ID:166, //大発動艇(八九式中戦車＆陸戦隊)
-            STAR:0,
-        },
+        { //後日再反映
+            ID:68,
+            MATERIAL:[ 50, 30, 30, 10],
+            helperShip:{
+                SUNDAY:   [UNKNOWN],
+                MONDAY:   [UNKNOWN],
+                TUESDAY:  [UNKNOWN],
+                WEDNESDAY:[UNKNOWN],
+                THURSDAY: [UNKNOWN],
+                FRIDAY:   [KINU_R2],
+                SATURDAY: [UNKNOWN],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 4],
+                SCREW:   [ 2, 3],
+                consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
+            },
+            upgrade:{
+                RESEARCH:[ 8,16],
+                SCREW:   [ 6,12],
+                consumes:{ID: 68,NUM:4}, //大発動艇*4
+                ID:193, //特大発動艇
+                STAR:0,
+            },
+        }],
     },
     /** 大発動艇(八九式中戦車＆陸戦隊) */
     id_166:{
@@ -2720,6 +2764,31 @@ var remodelItemData = {
             RESEARCH:[ 8,12],
             SCREW:   [ 4, 6],
             consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
+        },
+        upgrade:null,
+    },
+    /** 特大発動艇 */
+    id_193:{
+        ID:193,
+        MATERIAL:[ 70, 80,120, 30],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [KINU_R2],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 75,NUM:2}, //ドラム缶(輸送用)*2
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 8],
+            SCREW:   [ 4, 6],
+            consumes:{ID: 68,NUM:1}, //大発動艇*1
         },
         upgrade:null,
     },

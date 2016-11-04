@@ -1,4 +1,4 @@
-﻿//Ver:2.1.4
+﻿//Ver:2.1.4.1
 //Author:Nishisonic
 
 //script読み込み
@@ -133,16 +133,7 @@ function isRemodelItem(itemId,dayOfWeek){
 
 function getRemodelItemData(itemId,cal){
 	var result = "";
-	var num = (function(id){
-		switch(itemId){
-			case 121: //94式高射装置
-			case  46: //九三式水中聴音機
-				return 2;
-			default :
-				return 1;
-		}
-	})(itemId);
-	if(num > 1){
+	if(remodelItemData[String(word + itemId)].MATERIAL === undefined){
 		Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).forEach(function(data){
 			result += _getRemodelItemData(data,cal) + "\r\n";
 		});
