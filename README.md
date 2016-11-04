@@ -18,7 +18,7 @@
 
 * 動作イメージ
 
-![](https://pbs.twimg.com/media/CwYBi1vUkAALnHO.jpg)
+![](http://i.imgur.com/9KTZSPz.gif)
 
 
 
