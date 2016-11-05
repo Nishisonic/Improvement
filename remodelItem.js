@@ -1,6 +1,6 @@
-//Ver:2.1.4.3
+//Ver:2.1.4.4
 //Author:Nishisonic
-//LastUpdate:2016/11/04
+//LastUpdate:2016/11/06
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
 
 Calendar = Java.type("java.util.Calendar");
@@ -2537,7 +2537,7 @@ var remodelItemData = {
         ID:131,
         MATERIAL:[  0, 90, 90,150],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
@@ -2709,7 +2709,7 @@ var remodelItemData = {
             ID:68,
             MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
-                SUNDAY:   [UNKNOWN],
+                SUNDAY:   [NONE],
                 MONDAY:   [UNKNOWN],
                 TUESDAY:  [UNKNOWN],
                 WEDNESDAY:[UNKNOWN],
@@ -2797,7 +2797,7 @@ var remodelItemData = {
         ID:193,
         MATERIAL:[ 70, 80,120, 30],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
