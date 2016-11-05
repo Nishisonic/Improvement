@@ -1,4 +1,4 @@
-//Ver:2.1.4.4
+//Ver:2.1.4.5
 //Author:Nishisonic
 //LastUpdate:2016/11/06
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
@@ -2537,7 +2537,7 @@ var remodelItemData = {
         ID:131,
         MATERIAL:[  0, 90, 90,150],
         helperShip:{
-            SUNDAY:   [NONE],
+            SUNDAY:   [KINU_R2],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
@@ -2667,7 +2667,7 @@ var remodelItemData = {
     id_68:{
         ID:68,
         helperShip:{
-            SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+            SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2,KINU_R2],
             MONDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
             TUESDAY:  [AKITSUMARU,SATSUKI_R2],
             WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
@@ -2709,7 +2709,7 @@ var remodelItemData = {
             ID:68,
             MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
-                SUNDAY:   [NONE],
+                SUNDAY:   [KINU_R2],
                 MONDAY:   [UNKNOWN],
                 TUESDAY:  [UNKNOWN],
                 WEDNESDAY:[UNKNOWN],
@@ -2797,7 +2797,7 @@ var remodelItemData = {
         ID:193,
         MATERIAL:[ 70, 80,120, 30],
         helperShip:{
-            SUNDAY:   [NONE],
+            SUNDAY:   [KINU_R2],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
