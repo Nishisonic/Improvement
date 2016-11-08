@@ -1,23 +1,23 @@
-//Ver:2.1.4.7
+//Ver:2.1.4.8
 //Author:Nishisonic
-//LastUpdate:2016/11/08
+//LastUpdate:2016/11/09
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
 
 Calendar = Java.type("java.util.Calendar");
 
 /* 定数リスト */
-var DEFAULT        = "デフォルト";
-var SEP            = ",";
-var NONE           = "\n本日の改修は出来ません";
-var ERROR          = "ERROR";
-var UNKNOWN        = "不明";
-var NOT_R2         = function(name){ return name + "(改二は除く)"; };
-var NOT_F          = function(name){ return name + "(航以降は不可)"; };
-var NOT_UPGRADE    = function(name){ return name + "(ただし更新不可)"; };
-var NOT_R2_UPGRADE = function(name){ return name + "(改二を除き更新不可)"; };
-var UNDEFINED      = "    ";
-var NO_DATA        = [UNDEFINED,UNDEFINED];
-var C_NO_DATA      = {ID:UNKNOWN,NUM:"?"};
+var DEFAULT         = "デフォルト";
+var SEP             = ",";
+var NONE            = "\n本日の改修は出来ません";
+var ERROR           = "ERROR";
+var UNKNOWN         = "不明";
+var NOT_R2          = function(name){ return name + "(改二は除く)"; };
+var NOT_F           = function(name){ return name + "(航以降は不可)"; };
+var NOT_UPGRADE     = function(name){ return name + "(ただし更新不可)"; };
+var ONLY_R2_UPGRADE = function(name){ return name + "(改二のみ更新可)"; };
+var UNDEFINED       = "    ";
+var NO_DATA         = [UNDEFINED,UNDEFINED];
+var C_NO_DATA       = {ID:UNKNOWN,NUM:"?"};
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -2480,7 +2480,7 @@ var remodelItemData = {
             SUNDAY:   [ISUZU_R2,FUMIZUKI],
             MONDAY:   [SATSUKI,FUMIZUKI],
             TUESDAY:  [SATSUKI,FUMIZUKI],
-            WEDNESDAY:[NONE],
+            WEDNESDAY:[KINU_R2],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [ISUZU_R2],
@@ -2510,8 +2510,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [MAYA_R2],
             MONDAY:   [ISUZU_R2,MAYA_R2,KINU_R2],
-            TUESDAY:  [ISUZU_R2,NOT_R2_UPGRADE(MAYA),KINU_R2], // 摩耶改二じゃ無い方は詳細不明
-            WEDNESDAY:[ISUZU_R2,MAYA,SATSUKI_R2],
+            TUESDAY:  [ISUZU_R2,ONLY_R2_UPGRADE(MAYA),KINU_R2], // 摩耶改二じゃ無い方は詳細不明
+            WEDNESDAY:[ISUZU_R2,ONLY_R2_UPGRADE(MAYA),SATSUKI_R2],
             THURSDAY: [NOT_R2(MAYA),SATSUKI_R2],
             FRIDAY:   [NONE], //11/04 21:03
             SATURDAY: [NONE], //11/05 0:22
@@ -2714,7 +2714,7 @@ var remodelItemData = {
                 SUNDAY:   [KINU_R2],
                 MONDAY:   [NONE],
                 TUESDAY:  [NONE],
-                WEDNESDAY:[UNKNOWN],
+                WEDNESDAY:[NONE],
                 THURSDAY: [UNKNOWN],
                 FRIDAY:   [KINU_R2],
                 SATURDAY: [KINU_R2],
@@ -2802,7 +2802,7 @@ var remodelItemData = {
             SUNDAY:   [KINU_R2],
             MONDAY:   [KINU_R2],
             TUESDAY:  [AKITSUMARU],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[AKITSUMARU],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [KINU_R2],
             SATURDAY: [KINU_R2],
