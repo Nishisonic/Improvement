@@ -1,4 +1,4 @@
-//Ver:2.1.4.8
+//Ver:2.1.4.9
 //Author:Nishisonic
 //LastUpdate:2016/11/09
 //「鬼怒」「あきつ丸」「摩耶改二」の確認を怠らないこと ※運営電文より
@@ -2542,7 +2542,7 @@ var remodelItemData = {
             SUNDAY:   [KINU_R2],
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [MAYA_R2,KINU_R2],
             SATURDAY: [MAYA_R2,KINU_R2],
