@@ -1,20 +1,23 @@
-//Ver:2.1.4
+//Ver:2.1.5
 //Author:Nishisonic
-//LastUpdate:2016/11/04
+//LastUpdate:2016/11/10
 
 Calendar = Java.type("java.util.Calendar");
 
 /* 定数リスト */
-var DEFAULT       = "デフォルト";
-var SEP           = ",";
-var NONE          = "\n本日の改修は出来ません";
-var ERROR         = "ERROR";
-var UNKNOWN       = "不明";
-var NOT_R2        = function(name){ return name + "(改二は除く)"; };
-var NOT_F         = function(name){ return name + "(航以降は不可)"; };
-var UNDEFINED     = "    ";
-var NO_DATA       = [UNDEFINED,UNDEFINED];
-var C_NO_DATA     = {ID:UNKNOWN,NUM:"?"};
+var DEFAULT         = "デフォルト";
+var SEP             = ",";
+var NONE            = "\n本日の改修は出来ません";
+var ERROR           = "ERROR";
+var UNKNOWN         = "不明";
+var NOT_R2          = function(name){ return name + "(改二は除く)"; };
+var NOT_F           = function(name){ return name + "(航以降は不可)"; };
+var NOT_UPGRADE     = function(name){ return name + "(ただし更新不可)"; };
+var ONLY_R2_UPGRADE = function(name){ return name + "(改二のみ更新可)"; };
+var NOT_R2_UPGRADE  = function(name){ return name + "(改二は除く、また更新不可)"; };
+var UNDEFINED       = "    ";
+var NO_DATA         = [UNDEFINED,UNDEFINED];
+var C_NO_DATA       = {ID:UNKNOWN,NUM:"?"};
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -497,6 +500,7 @@ var MINAZUKI        = "水無月";          //ID:481
 //var NULL          = "NULL";            //ID:482
 var I26             = "伊26";            //ID:483
 var URANAMI         = "浦波";            //ID:486
+var KINU_R2         = "鬼怒改二";        //ID:487
 
 var word = "id_";
 
@@ -2446,7 +2450,7 @@ var remodelItemData = {
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
             WEDNESDAY:[FUMIZUKI],
-            THURSDAY: [FUMIZUKI],
+            THURSDAY: [FUMIZUKI,KINU_R2],
             FRIDAY:   [SATSUKI,FUMIZUKI],
             SATURDAY: [SATSUKI,FUMIZUKI],
         },
@@ -2476,7 +2480,7 @@ var remodelItemData = {
             SUNDAY:   [ISUZU_R2,FUMIZUKI],
             MONDAY:   [SATSUKI,FUMIZUKI],
             TUESDAY:  [SATSUKI,FUMIZUKI],
-            WEDNESDAY:[NONE],
+            WEDNESDAY:[KINU_R2],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [ISUZU_R2],
@@ -2505,12 +2509,12 @@ var remodelItemData = {
         MATERIAL:[  0, 30, 20, 10],
         helperShip:{
             SUNDAY:   [MAYA_R2],
-            MONDAY:   [ISUZU_R2,MAYA_R2],
-            TUESDAY:  [ISUZU_R2,NOT_R2(MAYA)],
-            WEDNESDAY:[ISUZU_R2,MAYA,SATSUKI_R2],
-            THURSDAY: [NOT_R2(MAYA),SATSUKI_R2],
-            FRIDAY:   [MAYA_R2],
-            SATURDAY: [MAYA_R2],
+            MONDAY:   [ISUZU_R2,MAYA_R2,KINU_R2],
+            TUESDAY:  [ISUZU_R2,ONLY_R2_UPGRADE(MAYA),KINU_R2], // 摩耶改二じゃ無い方は詳細不明
+            WEDNESDAY:[ISUZU_R2,ONLY_R2_UPGRADE(MAYA),SATSUKI_R2],
+            THURSDAY: [NOT_R2_UPGRADE(MAYA),SATSUKI_R2],
+            FRIDAY:   [NONE], //11/04 21:03
+            SATURDAY: [NONE], //11/05 0:22
         },
         star0to6:{
             RESEARCH:[ 1, 2],
@@ -2529,6 +2533,31 @@ var remodelItemData = {
             ID:131, //25mm三連装機銃 集中配備
             STAR:0,
         },
+    },
+    /** 25mm三連装機銃 集中配備 */
+    id_131:{
+        ID:131,
+        MATERIAL:[  0, 90, 90,150],
+        helperShip:{
+            SUNDAY:   [KINU_R2],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [MAYA_R2],
+            FRIDAY:   [MAYA_R2,KINU_R2],
+            SATURDAY: [MAYA_R2,KINU_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 3, 5],
+            consumes:{ID: 40,NUM:3}, //25mm三連装機銃*3
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 9],
+            SCREW:   [ 6, 9],
+            consumes:{ID: 40,NUM:5}, //25mm三連装機銃*5
+        },
+        upgrade:null,
     },
     /* 高射装置 */
     /** 91式高射装置 */
@@ -2639,33 +2668,75 @@ var remodelItemData = {
     /** 大発動艇 */
     id_68:{
         ID:68,
-        MATERIAL:[ 50, 30, 30, 10],
         helperShip:{
-            SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+            SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2,KINU_R2],
             MONDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
             TUESDAY:  [AKITSUMARU,SATSUKI_R2],
             WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
             THURSDAY: [AKITSUMARU],
-            FRIDAY:   [AKITSUMARU,ABUKUMA_R2],
-            SATURDAY: [AKITSUMARU,ABUKUMA_R2],
+            FRIDAY:   [AKITSUMARU,ABUKUMA_R2,KINU_R2], //11/04 21:04
+            SATURDAY: [AKITSUMARU,ABUKUMA_R2,KINU_R2], //11/05 0:23
         },
-        star0to6:{
-            RESEARCH:[ 1, 2],
-            SCREW:   [ 1, 2],
-            consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+        upgrade:[{
+            ID:68,
+            MATERIAL:[ 50, 30, 30, 10],
+            helperShip:{
+                SUNDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+                MONDAY:   [AKITSUMARU,SATSUKI_R2,ABUKUMA_R2],
+                TUESDAY:  [AKITSUMARU,SATSUKI_R2],
+                WEDNESDAY:[AKITSUMARU,SATSUKI_R2],
+                THURSDAY: [AKITSUMARU],
+                FRIDAY:   [AKITSUMARU,ABUKUMA_R2],
+                SATURDAY: [AKITSUMARU,ABUKUMA_R2],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 4],
+                SCREW:   [ 2, 3],
+                consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
+            },
+            upgrade:{
+                RESEARCH:[ 4, 8],
+                SCREW:   [ 3, 7],
+                consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
+                ID:166, //大発動艇(八九式中戦車＆陸戦隊)
+                STAR:0,
+            },
         },
-        star6toMax:{
-            RESEARCH:[ 1, 4],
-            SCREW:   [ 2, 3],
-            consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
-        },
-        upgrade:{
-            RESEARCH:[ 4, 8],
-            SCREW:   [ 3, 7],
-            consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
-            ID:166, //大発動艇(八九式中戦車＆陸戦隊)
-            STAR:0,
-        },
+        { //後日再反映
+            ID:68,
+            MATERIAL:[ 50, 30, 30, 10],
+            helperShip:{
+                SUNDAY:   [KINU_R2],
+                MONDAY:   [NONE],
+                TUESDAY:  [NONE],
+                WEDNESDAY:[NONE],
+                THURSDAY: [NONE],
+                FRIDAY:   [KINU_R2],
+                SATURDAY: [KINU_R2],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID: 75,NUM:1}, //ドラム缶(輸送用)*1
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 4],
+                SCREW:   [ 2, 3],
+                consumes:{ID: 37,NUM:1}, //7.7mm機銃*1
+            },
+            upgrade:{
+                RESEARCH:[ 8,16],
+                SCREW:   [ 6,12],
+                consumes:{ID: 68,NUM:4}, //大発動艇*4
+                ID:193, //特大発動艇
+                STAR:0,
+            },
+        }],
     },
     /** 大発動艇(八九式中戦車＆陸戦隊) */
     id_166:{
@@ -2720,6 +2791,31 @@ var remodelItemData = {
             RESEARCH:[ 8,12],
             SCREW:   [ 4, 6],
             consumes:{ID: 38,NUM:3}, //12.7mm単装機銃*3
+        },
+        upgrade:null,
+    },
+    /** 特大発動艇 */
+    id_193:{
+        ID:193,
+        MATERIAL:[ 70, 80,120, 30],
+        helperShip:{
+            SUNDAY:   [KINU_R2],
+            MONDAY:   [KINU_R2],
+            TUESDAY:  [AKITSUMARU],
+            WEDNESDAY:[AKITSUMARU],
+            THURSDAY: [AKITSUMARU],
+            FRIDAY:   [KINU_R2],
+            SATURDAY: [KINU_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 75,NUM:2}, //ドラム缶(輸送用)*2
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 8],
+            SCREW:   [ 4, 6],
+            consumes:{ID: 68,NUM:1}, //大発動艇*1
         },
         upgrade:null,
     },
