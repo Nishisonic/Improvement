@@ -1,4 +1,4 @@
-//Ver:2.1.4.10
+//Ver:2.1.5
 //Author:Nishisonic
 //LastUpdate:2016/11/10
 
@@ -2450,7 +2450,7 @@ var remodelItemData = {
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
             WEDNESDAY:[FUMIZUKI],
-            THURSDAY: [FUMIZUKI],
+            THURSDAY: [FUMIZUKI,KINU_R2],
             FRIDAY:   [SATSUKI,FUMIZUKI],
             SATURDAY: [SATSUKI,FUMIZUKI],
         },
