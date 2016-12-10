@@ -1,4 +1,4 @@
-﻿//Ver:2.1.5
+﻿//Ver:2.1.5.1
 //Author:Nishisonic
 
 //script読み込み
@@ -147,12 +147,7 @@ function getRemodelItemData(itemId,cal){
 function _getRemodelItemData(itemData,cal){
 	var df = new DecimalFormat("000");
 	var df2 = new DecimalFormat("00");
-	var itemName;
-	try {
-		itemName = Item.get(itemData.ID).getName();
-	} catch(e) {
-		itemName = itemData.ID;
-	}
+	var itemName = getItemName(itemData.ID);
 	var upgradeToItemName = "";
 	var upgradeToItemStar = 0;
 	var helperShip = itemData.helperShip[getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK))].join(SEP);
@@ -172,7 +167,7 @@ function _getRemodelItemData(itemData,cal){
 	var star0to6ConsumeNum = "";
 	var star0to6NumOfPossesions = 0;
 	if(itemData.star0to6.consumes != null){
-		star0to6ConsumeName = Item.get(itemData.star0to6.consumes.ID).getName();
+		star0to6ConsumeName = getItemName(itemData.star0to6.consumes.ID);
 		star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
 		star0to6NumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
 			return item.slotitemId == itemData.star0to6.consumes.ID && item.level == 0;
@@ -184,7 +179,7 @@ function _getRemodelItemData(itemData,cal){
 	var star6toMaxConsumeNum = "";
 	var star6toMaxNumOfPossesions = 0;
 	if(itemData.star6toMax.consumes != null){
-		star6toMaxConsumeName = Item.get(itemData.star6toMax.consumes.ID).getName();
+		star6toMaxConsumeName = getItemName(itemData.star6toMax.consumes.ID);
 		star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
 		star6toMaxNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
 			return item.slotitemId == itemData.star6toMax.consumes.ID && item.level == 0;
@@ -199,7 +194,7 @@ function _getRemodelItemData(itemData,cal){
 		upgradeResearch = itemData.upgrade.RESEARCH;
 		upgradeScrew = itemData.upgrade.SCREW;
 		if(itemData.upgrade.consumes != null){
-			upgradeConsumeName = Item.get(itemData.upgrade.consumes.ID).getName();
+			upgradeConsumeName = getItemName(itemData.upgrade.consumes.ID);
 			upgradeConsumeNum = itemData.upgrade.consumes.NUM;
 			upgradeNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
 				return item.slotitemId == itemData.upgrade.consumes.ID && item.level == 0;
@@ -238,4 +233,15 @@ function getNextImprovementDate(itemData,cal){
 	}).filter(function(c){
 		return itemData.helperShip[getDayOfWeek(c.get(Calendar.DAY_OF_WEEK))] != NONE;
 	}).findFirst().orElse(null);
+}
+
+function getItemName(id){
+	try {
+		return Item.get(id).getName();
+	} catch(e) {
+		switch(id){
+			case NE_ENGINE:return "ネ式エンジン";
+			default       :return id;
+		}
+	}
 }
