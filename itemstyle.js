@@ -1,4 +1,4 @@
-﻿//Ver:2.1.5.1
+﻿//Ver:2.1.5.2
 //Author:Nishisonic
 
 //script読み込み
@@ -27,6 +27,7 @@ TableItem          = Java.type("org.eclipse.swt.widgets.TableItem");
 AppConstants       = Java.type("logbook.constants.AppConstants");
 GlobalContext      = Java.type("logbook.data.context.GlobalContext");
 Item               = Java.type("logbook.internal.Item");
+ItemInfoDto        = Java.type("logbook.dto.ItemInfoDto");
 ReportUtils        = Java.type("logbook.util.ReportUtils");
 
 data_prefix = "remodelItem_";
@@ -169,9 +170,9 @@ function _getRemodelItemData(itemData,cal){
 	if(itemData.star0to6.consumes != null){
 		star0to6ConsumeName = getItemName(itemData.star0to6.consumes.ID);
 		star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
-		star0to6NumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+		star0to6NumOfPossesions = isItem(itemData.star0to6.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
 			return item.slotitemId == itemData.star0to6.consumes.ID && item.level == 0;
-		}).count();
+		}).count() : "?";
 	}
 	var star6toMaxResearch = itemData.star6toMax.RESEARCH;
 	var star6toMaxScrew = itemData.star6toMax.SCREW;
@@ -181,9 +182,9 @@ function _getRemodelItemData(itemData,cal){
 	if(itemData.star6toMax.consumes != null){
 		star6toMaxConsumeName = getItemName(itemData.star6toMax.consumes.ID);
 		star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
-		star6toMaxNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+		star6toMaxNumOfPossesions = isItem(itemData.star6toMax.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
 			return item.slotitemId == itemData.star6toMax.consumes.ID && item.level == 0;
-		}).count();
+		}).count() : "?";
 	}
 	var upgradeResearch = [" --","-- "];
 	var upgradeScrew    = [" --","--  "];
@@ -196,9 +197,9 @@ function _getRemodelItemData(itemData,cal){
 		if(itemData.upgrade.consumes != null){
 			upgradeConsumeName = getItemName(itemData.upgrade.consumes.ID);
 			upgradeConsumeNum = itemData.upgrade.consumes.NUM;
-			upgradeNumOfPossesions = GlobalContext.getItemMap().values().stream().filter(function(item){
+			upgradeNumOfPossesions = isItem(itemData.upgrade.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
 				return item.slotitemId == itemData.upgrade.consumes.ID && item.level == 0;
-			}).count();
+			}).count() : "?";
 		}
 		upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
 		upgradeToItemStar = itemData.upgrade.STAR;
@@ -244,4 +245,8 @@ function getItemName(id){
 			default       :return id;
 		}
 	}
+}
+
+function isItem(id){
+	return Item.get(id) instanceof ItemInfoDto;
 }

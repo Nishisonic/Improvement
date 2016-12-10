@@ -1,6 +1,6 @@
-//Ver:2.1.5.1
+//Ver:2.1.5.2
 //Author:Nishisonic
-//LastUpdate:2016/12/10
+//LastUpdate:2016/12/11
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1829,7 +1829,7 @@ var remodelItemData = {
         ID:197,
         MATERIAL:[ 90, 90,  0,270],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
@@ -1845,7 +1845,7 @@ var remodelItemData = {
         star6toMax:{
             RESEARCH:[ 3, 6],
             SCREW:   [ 2, 4],
-            consumes:{ID:19,NUM:0}, //九六式艦戦*1
+            consumes:{ID:19,NUM:1}, //九六式艦戦*1
         },
         upgrade:{
             RESEARCH:[ 4, 8],
@@ -1858,25 +1858,25 @@ var remodelItemData = {
     /** F4F-4 */
     id_198:{
         ID:198,
-        MATERIAL:["?","?","?","?"],
+        MATERIAL:[100,120,  0,300],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [SARATOGA],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
-            FRIDAY:   [UNKNOWN],
-            SATURDAY: [UNKNOWN],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
         },
         star0to6:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:null,
+            RESEARCH:[ 3, 6],
+            SCREW:   [ 3, 4],
+            consumes:{ID:21,NUM:1}, //零式艦戦21型*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:null,
+            RESEARCH:[ 4, 8],
+            SCREW:   [ 3, 6],
+            consumes:{ID:181,NUM:1}, //零式艦戦32型*1
         },
         upgrade:null,
     },
@@ -1937,13 +1937,13 @@ var remodelItemData = {
         ID:151,
         MATERIAL:[250,100,700,650],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
+            SUNDAY:   [SHOKAKU_R2K,ZUIKAKU_R2K],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
-            FRIDAY:   [SHOKAKU],
-            SATURDAY: [SHOKAKU],
+            FRIDAY:   [SHOKAKU_R2K],
+            SATURDAY: [SHOKAKU_R2K],
         },
         star0to6:{
             RESEARCH:[ 8,10],
@@ -1956,8 +1956,8 @@ var remodelItemData = {
             consumes:{ID:22,NUM:1}, //烈風*1
         },
         upgrade:{
-            RESEARCH:[20,10],
-            SCREW:   [30,13],
+            RESEARCH:[20,30],
+            SCREW:   [10,13],
             consumes:{ID:NE_ENGINE,NUM:1}, //ネ式エンジン*1
             ID:199, //噴式景雲改
             STAR:0,
