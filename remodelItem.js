@@ -1,4 +1,4 @@
-//Ver:2.1.5.2
+//Ver:2.1.5.3
 //Author:Nishisonic
 //LastUpdate:2016/12/11
 
@@ -1829,7 +1829,7 @@ var remodelItemData = {
         ID:197,
         MATERIAL:[ 90, 90,  0,270],
         helperShip:{
-            SUNDAY:   [NONE],
+            SUNDAY:   [SARATOGA],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
@@ -1860,7 +1860,7 @@ var remodelItemData = {
         ID:198,
         MATERIAL:[100,120,  0,300],
         helperShip:{
-            SUNDAY:   [SARATOGA],
+            SUNDAY:   [SARATOGA_R],
             MONDAY:   [UNKNOWN],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
