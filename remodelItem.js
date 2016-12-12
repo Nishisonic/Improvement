@@ -1,6 +1,6 @@
-//Ver:2.1.5.3
+//Ver:2.1.5.4
 //Author:Nishisonic
-//LastUpdate:2016/12/11
+//LastUpdate:2016/12/12
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -10,6 +10,7 @@ var SEP             = ",";
 var NONE            = "\n本日の改修は出来ません";
 var ERROR           = "ERROR";
 var UNKNOWN         = "不明";
+var NOT_R           = function(name){ return name + "(改は不可)"; };
 var NOT_R2          = function(name){ return name + "(改二は除く)"; };
 var NOT_F           = function(name){ return name + "(航以降は不可)"; };
 var NOT_UPGRADE     = function(name){ return name + "(ただし更新不可)"; };
@@ -1829,13 +1830,13 @@ var remodelItemData = {
         ID:197,
         MATERIAL:[ 90, 90,  0,270],
         helperShip:{
-            SUNDAY:   [SARATOGA],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [NOT_R(SARATOGA)],
+            MONDAY:   [NONE],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
-            FRIDAY:   [SARATOGA],
-            SATURDAY: [SARATOGA],
+            FRIDAY:   [NOT_R(SARATOGA)],
+            SATURDAY: [NOT_R(SARATOGA)],
         },
         star0to6:{
             RESEARCH:[ 2, 5],
@@ -1861,7 +1862,7 @@ var remodelItemData = {
         MATERIAL:[100,120,  0,300],
         helperShip:{
             SUNDAY:   [SARATOGA_R],
-            MONDAY:   [UNKNOWN],
+            MONDAY:   [SARATOGA],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
@@ -1938,7 +1939,7 @@ var remodelItemData = {
         MATERIAL:[250,100,700,650],
         helperShip:{
             SUNDAY:   [SHOKAKU_R2K,ZUIKAKU_R2K],
-            MONDAY:   [UNKNOWN],
+            MONDAY:   [ZUIKAKU_R2K],
             TUESDAY:  [UNKNOWN],
             WEDNESDAY:[UNKNOWN],
             THURSDAY: [UNKNOWN],
