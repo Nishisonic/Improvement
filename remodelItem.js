@@ -1,6 +1,6 @@
-//Ver:2.1.5.4
+//Ver:2.1.5.5
 //Author:Nishisonic
-//LastUpdate:2016/12/12
+//LastUpdate:2016/12/14
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1832,8 +1832,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [NOT_R(SARATOGA)],
             MONDAY:   [NONE],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NOT_R(SARATOGA)],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NOT_R(SARATOGA)],
             SATURDAY: [NOT_R(SARATOGA)],
@@ -1863,8 +1863,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [SARATOGA_R],
             MONDAY:   [SARATOGA],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [SARATOGA],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1940,8 +1940,8 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [SHOKAKU_R2K,ZUIKAKU_R2K],
             MONDAY:   [ZUIKAKU_R2K],
-            TUESDAY:  [UNKNOWN],
-            WEDNESDAY:[UNKNOWN],
+            TUESDAY:  [ZUIKAKU_R2K],
+            WEDNESDAY:[NONE],
             THURSDAY: [UNKNOWN],
             FRIDAY:   [SHOKAKU_R2K],
             SATURDAY: [SHOKAKU_R2K],
