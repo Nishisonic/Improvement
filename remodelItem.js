@@ -1,6 +1,6 @@
-//Ver:2.1.5.5
+//Ver:2.1.6
 //Author:Nishisonic
-//LastUpdate:2016/12/14
+//LastUpdate:2016/12/15
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1834,7 +1834,7 @@ var remodelItemData = {
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
             WEDNESDAY:[NOT_R(SARATOGA)],
-            THURSDAY: [UNKNOWN],
+            THURSDAY: [NOT_R(SARATOGA)],
             FRIDAY:   [NOT_R(SARATOGA)],
             SATURDAY: [NOT_R(SARATOGA)],
         },
@@ -1865,7 +1865,7 @@ var remodelItemData = {
             MONDAY:   [SARATOGA],
             TUESDAY:  [SARATOGA],
             WEDNESDAY:[NONE],
-            THURSDAY: [UNKNOWN],
+            THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
         },
@@ -1942,7 +1942,7 @@ var remodelItemData = {
             MONDAY:   [ZUIKAKU_R2K],
             TUESDAY:  [ZUIKAKU_R2K],
             WEDNESDAY:[NONE],
-            THURSDAY: [UNKNOWN],
+            THURSDAY: [NONE],
             FRIDAY:   [SHOKAKU_R2K],
             SATURDAY: [SHOKAKU_R2K],
         },
