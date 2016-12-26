@@ -1,6 +1,6 @@
-//Ver:2.1.6
+//Ver:2.1.6.1
 //Author:Nishisonic
-//LastUpdate:2016/12/15
+//LastUpdate:2016/12/26
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -2973,6 +2973,63 @@ var remodelItemData = {
             RESEARCH:[ 5,10],
             SCREW:   [ 3, 7],
             consumes:{ID: 74,NUM:1}, //探照灯*1
+        },
+        upgrade:null,
+    },
+    /* バルジ */
+    /** 増設バルジ(大型艦) */
+    id_73:{
+        ID:73,
+        MATERIAL:[ 80,  0,880,  0],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [NAGATO,MUTSU,YAMATO,MUSASHI],
+            FRIDAY:   [NAGATO,MUTSU,YAMATO,MUSASHI],
+            SATURDAY: [NAGATO,MUSASHI],
+        },
+        star0to6:{
+            RESEARCH:[ 8,10],
+            SCREW:   [ 4, 5],
+            consumes:{ID: 72,NUM:2}, //増設バルジ(中型艦)*2
+        },
+        star6toMax:{
+            RESEARCH:[20,30],
+            SCREW:   [ 6, 9],
+            consumes:{ID: 73,NUM:1}, //増設バルジ(大型艦)*1
+        },
+        upgrade:{
+            RESEARCH:[32,48],
+            SCREW:   [ 8,12],
+            consumes:{ID: 73,NUM:2}, //増設バルジ(大型艦)*2
+            ID:204, //艦本新設計 増設バルジ(大型艦)
+            STAR:0,
+        },
+    },
+    /** 艦本新設計 増設バルジ(大型艦) */
+    id_204:{
+        ID:204,
+        MATERIAL:[180,  0,980, 80],
+        helperShip:{
+            SUNDAY:   [YAMATO,MUSASHI],
+            MONDAY:   [NONE],
+            TUESDAY:  [UNKNOWN],
+            WEDNESDAY:[UNKNOWN],
+            THURSDAY: [NONE],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[20,30],
+            SCREW:   [ 6, 9],
+            consumes:{ID:204,NUM:1}, //増設バルジ(大型艦)*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
         },
         upgrade:null,
     },
