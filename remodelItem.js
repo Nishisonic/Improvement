@@ -1,6 +1,6 @@
-//Ver:2.1.6.2
+//Ver:2.1.6.3
 //Author:Nishisonic
-//LastUpdate:2016/12/27
+//LastUpdate:2016/12/28
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -2985,7 +2985,7 @@ var remodelItemData = {
             SUNDAY:   [NONE],
             MONDAY:   [NONE],
             TUESDAY:  [NONE],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[MUTSU,YAMATO],
             THURSDAY: [NAGATO,MUTSU,YAMATO,MUSASHI],
             FRIDAY:   [NAGATO,MUTSU,YAMATO,MUSASHI],
             SATURDAY: [NAGATO,MUSASHI],
@@ -3016,7 +3016,7 @@ var remodelItemData = {
             SUNDAY:   [YAMATO,MUSASHI],
             MONDAY:   [NONE],
             TUESDAY:  [MUSASHI],
-            WEDNESDAY:[UNKNOWN],
+            WEDNESDAY:[NONE],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
