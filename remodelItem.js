@@ -1,6 +1,6 @@
-//Ver:2.1.6.3
+//Ver:2.1.7
 //Author:Nishisonic
-//LastUpdate:2016/12/28
+//LastUpdate:2016/12/31
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1949,7 +1949,7 @@ var remodelItemData = {
         star0to6:{
             RESEARCH:[ 8,10],
             SCREW:   [ 6, 8],
-            consumes:{ID:18,NUM:2}, //流星*1
+            consumes:{ID:18,NUM:1}, //流星*1
         },
         star6toMax:{
             RESEARCH:[10,15],
@@ -2807,7 +2807,7 @@ var remodelItemData = {
                 STAR:0,
             },
         },
-        { //後日再反映
+        {
             ID:68,
             MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
@@ -3027,9 +3027,9 @@ var remodelItemData = {
             consumes:{ID:204,NUM:1}, //増設バルジ(大型艦)*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[32,48],
+            SCREW:   [ 8,12],
+            consumes:{ID:204,NUM:2}, //増設バルジ(大型艦)*2
         },
         upgrade:null,
     },
