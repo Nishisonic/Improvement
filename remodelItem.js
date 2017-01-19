@@ -1,6 +1,6 @@
-//Ver:2.1.7
+//Ver:2.1.8
 //Author:Nishisonic
-//LastUpdate:2016/12/31
+//LastUpdate:2017/01/20
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1835,8 +1835,8 @@ var remodelItemData = {
             TUESDAY:  [NONE],
             WEDNESDAY:[NOT_R(SARATOGA)],
             THURSDAY: [NOT_R(SARATOGA)],
-            FRIDAY:   [NOT_R(SARATOGA)],
-            SATURDAY: [NOT_R(SARATOGA)],
+            FRIDAY:   [SARATOGA],
+            SATURDAY: [SARATOGA],
         },
         star0to6:{
             RESEARCH:[ 2, 5],
@@ -1861,10 +1861,10 @@ var remodelItemData = {
         ID:198,
         MATERIAL:[100,120,  0,300],
         helperShip:{
-            SUNDAY:   [SARATOGA_R],
+            SUNDAY:   [NONE],
             MONDAY:   [SARATOGA],
             TUESDAY:  [SARATOGA],
-            WEDNESDAY:[NONE],
+            WEDNESDAY:[SARATOGA_R],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1872,12 +1872,43 @@ var remodelItemData = {
         star0to6:{
             RESEARCH:[ 3, 6],
             SCREW:   [ 3, 4],
-            consumes:{ID:21,NUM:1}, //零式艦戦21型*1
+            consumes:{ID:20,NUM:1}, //零式艦戦21型*1
         },
         star6toMax:{
             RESEARCH:[ 4, 8],
             SCREW:   [ 3, 6],
             consumes:{ID:181,NUM:1}, //零式艦戦32型*1
+        },
+        upgrade:{
+            RESEARCH:[ 8,16],
+            SCREW:   [ 6, 9],
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
+            ID:205, //F6F-3
+            STAR:0,
+        },
+    },
+    /** F6F-3 */
+    id_205:{
+        ID:205,
+        MATERIAL:[160,180,  0,380],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [SARATOGA_R],
+            WEDNESDAY:[SARATOGA_R],
+            THURSDAY: [SARATOGA_R],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:1}, //零式艦戦52型*1
+        },
+        star6toMax:{
+            RESEARCH:[ 8,10],
+            SCREW:   [ 6, 8],
+            consumes:{ID:55,NUM:1}, //零式艦戦52型*1
         },
         upgrade:null,
     },
@@ -2142,7 +2173,7 @@ var remodelItemData = {
             SUNDAY:   [HYUGA],
             MONDAY:   [HYUGA,YUGUMO],
             TUESDAY:  [YUGUMO],
-            WEDNESDAY:[SHIMAKAZE],
+            WEDNESDAY:[NONE],
             THURSDAY: [SHIMAKAZE],
             FRIDAY:   [HYUGA,YUGUMO,SHIMAKAZE],
             SATURDAY: [HYUGA,YUGUMO,SHIMAKAZE],
@@ -3030,6 +3061,63 @@ var remodelItemData = {
             RESEARCH:[32,48],
             SCREW:   [ 8,12],
             consumes:{ID:204,NUM:2}, //増設バルジ(大型艦)*2
+        },
+        upgrade:null,
+    },
+    /** 機関部強化 */
+    /* 強化型艦本式缶 */
+    id_34:{
+        ID:34,
+        MATERIAL:[240,  0,600, 80],
+        helperShip:{
+            SUNDAY:   [AMATSUKAZE],
+            MONDAY:   [AMATSUKAZE],
+            TUESDAY:  [AMATSUKAZE,SHIMAKAZE_R],
+            WEDNESDAY:[AMATSUKAZE,SHIMAKAZE_R],
+            THURSDAY: [AMATSUKAZE],
+            FRIDAY:   [AMATSUKAZE],
+            SATURDAY: [AMATSUKAZE],
+        },
+        star0to6:{
+            RESEARCH:[10,20],
+            SCREW:   [ 5, 8],
+            consumes:{ID: 33,NUM:1}, //改良型艦本式タービン*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA, //???
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA, //???
+            ID:87, //新型高温高圧缶
+            STAR:0,
+        },
+    },
+    /* 新型高温高圧缶 */
+    id_87:{
+        ID:87,
+        MATERIAL:[300,  0,750,100],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [SHIMAKAZE_R],
+            TUESDAY:  [AMATSUKAZE_R,SHIMAKAZE_R],
+            WEDNESDAY:[AMATSUKAZE_R],
+            THURSDAY: [AMATSUKAZE_R],
+            FRIDAY:   [SHIMAKAZE_R],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[15,30],
+            SCREW:   [ 8,10],
+            consumes:{ID: 33,NUM:2}, //改良型艦本式タービン*2
+        },
+        star6toMax:{
+            RESEARCH:[16,32],
+            SCREW:   [ 9,12],
+            consumes:{ID: 34,NUM:2}, //強化型艦本式缶*2
         },
         upgrade:null,
     },
