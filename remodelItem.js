@@ -1,6 +1,6 @@
-//Ver:2.1.8
+//Ver:2.1.8.1
 //Author:Nishisonic
-//LastUpdate:2017/01/20
+//LastUpdate:2017/03/01
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -417,8 +417,11 @@ var I26_R              = "伊26改";             //ID:367
 var URANAMI_R          = "浦波改";             //ID:368
 var YAMAKAZE_R         = "山風改";             //ID:369
 var ASAKAZE_R          = "朝風改";             //ID:370
-//var NULL             = "NULL";               //ID:371
+var MATSUKAZE_R        = "松風改";             //ID:371
 var COMMANDANT_TASTE_R = "Commandant Taste改"; //ID:372
+var FUJINAMI_R         = "藤波改";             //ID:373
+var I13_R              = "伊13改";             //ID:374
+var I14_R              = "伊14改";             //ID:375
 var I168_R             = "伊168改";            //ID:398
 var I58_R              = "伊58改";             //ID:399
 var I8_R               = "伊8改";              //ID:400
@@ -495,7 +498,7 @@ var KASUMI_R2O         = "霞改二乙";           //ID:470
 var KAMIKAZE           = "神風";               //ID:471
 var ASAKAZE            = "朝風";               //ID:472
 var HARUKAZE           = "春風";               //ID:473
-//var NULL             = "NULL";               //ID:474
+var MATSUKAZE          = "松風";               //ID:474
 //var NULL             = "NULL";               //ID:475
 var KAMIKAZE_R         = "神風改";             //ID:476
 //var NULL             = "NULL";               //ID:477
@@ -506,13 +509,18 @@ var MINAZUKI           = "水無月";             //ID:481
 //var NULL             = "NULL";               //ID:482
 var I26                = "伊26";               //ID:483
 //var NULL             = "NULL";               //ID:484
-//var NULL             = "NULL";               //ID:485
+var FUJINAMI           = "藤波";               //ID:485
 var URANAMI            = "浦波";               //ID:486
 var KINU_R2            = "鬼怒改二";           //ID:487
 //var NULL             = "NULL";               //ID:488
 //var NULL             = "NULL";               //ID:489
-//var NULL             = "NULL";               //ID:490
+var ARASHIO_R2         = "荒潮改二";           //ID:490
 var COMMANDANT_TASTE   = "Commandant Taste";   //ID:491
+//var NULL             = "NULL";               //ID:492
+//var NULL             = "NULL";               //ID:493
+var I13                = "伊13";               //ID:494
+var I14                = "伊14";               //ID:495
+var ZARA_R2            = "Zara due";           //ID:496
 
 var word = "id_";
 
@@ -822,6 +830,31 @@ var remodelItemData = {
             RESEARCH:[ 3, 5],
             SCREW:   [ 3, 5],
             consumes:{ID: 50,NUM:1}, //20.3cm(3号)連装砲*1
+        },
+        upgrade:null,
+    },
+    /** 203mm／53 連装砲 */
+    id_162:{
+        ID:162,
+        MATERIAL:[ 10,180,190,  0],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [ZARA_R2],
+            WEDNESDAY:[ZARA_R2],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [UNKNOWN],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 3, 4],
+            consumes:{ID:  6,NUM:2}, //20.3cm連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 8],
+            SCREW:   [ 4, 7],
+            consumes:{ID: 90,NUM:1}, //20.3cm(2号)連装砲*1
         },
         upgrade:null,
     },
@@ -3008,6 +3041,62 @@ var remodelItemData = {
         upgrade:null,
     },
     /* バルジ */
+    /** 増設バルジ(中型艦) */
+    id_72:{
+        ID:72,
+        MATERIAL:[ 70,  0,770,  0],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [VERUNUI,ZARA_R2],
+            WEDNESDAY:[VERUNUI,SAKAWA,ZARA_R2],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [UNKNOWN],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[ 7, 9],
+            SCREW:   [ 4, 5],
+            consumes:{ID: 72,NUM:1}, //増設バルジ(中型艦)*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+            ID:203, //艦本新設計 増設バルジ(中型艦)
+            STAR:0,
+        },
+    },
+    /** 艦本新設計 増設バルジ(中型艦) */
+    id_203:{
+        ID:203,
+        MATERIAL:[170,  0,970, 70],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [ZARA_R2],
+            WEDNESDAY:[ZARA_R2],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [UNKNOWN],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[16,24],
+            SCREW:   [ 6, 9],
+            consumes:{ID: 72,NUM:2}, //増設バルジ(中型艦)*2
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:null,
+    },
     /** 増設バルジ(大型艦) */
     id_73:{
         ID:73,
@@ -3084,14 +3173,14 @@ var remodelItemData = {
             consumes:{ID: 33,NUM:1}, //改良型艦本式タービン*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA, //???
+            RESEARCH:[14,28],
+            SCREW:   [ 7, 9],
+            consumes:{ID: 34,NUM:1}, //強化型艦本式缶*1
         },
         upgrade:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA, //???
+            RESEARCH:[20,40],
+            SCREW:   [ 8,12],
+            consumes:{ID: 34,NUM:2}, //強化型艦本式缶*2
             ID:87, //新型高温高圧缶
             STAR:0,
         },
@@ -3118,6 +3207,32 @@ var remodelItemData = {
             RESEARCH:[16,32],
             SCREW:   [ 9,12],
             consumes:{ID: 34,NUM:2}, //強化型艦本式缶*2
+        },
+        upgrade:null,
+    },
+    /** 潜水艦装備 */
+    /* 潜水艦搭載電探＆水防式望遠鏡 */
+    id_210:{
+        ID:210,
+        MATERIAL:[ 80, 90,100, 70],
+        helperShip:{
+            SUNDAY:   [UNKNOWN],
+            MONDAY:   [UNKNOWN],
+            TUESDAY:  [I401_R],
+            WEDNESDAY:[I401_R],
+            THURSDAY: [UNKNOWN],
+            FRIDAY:   [UNKNOWN],
+            SATURDAY: [UNKNOWN],
+        },
+        star0to6:{
+            RESEARCH:[20,24],
+            SCREW:   [ 7, 9],
+            consumes:{ID: 28,NUM:2}, //22号対水上電探*2
+        },
+        star6toMax:{
+            RESEARCH:[30,40],
+            SCREW:   [ 8,10],
+            consumes:{ID:129,NUM:1}, //熟練見張員*1
         },
         upgrade:null,
     },
