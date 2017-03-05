@@ -1,6 +1,6 @@
-//Ver:2.1.8.2
+//Ver:2.1.9
 //Author:Nishisonic
-//LastUpdate:2017/03/03
+//LastUpdate:2017/03/06
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -838,13 +838,13 @@ var remodelItemData = {
         ID:162,
         MATERIAL:[ 10,180,190,  0],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [ZARA_R2],
+            MONDAY:   [ZARA_R2],
             TUESDAY:  [ZARA_R2],
             WEDNESDAY:[ZARA_R2],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[ 4, 5],
@@ -3046,13 +3046,13 @@ var remodelItemData = {
         ID:72,
         MATERIAL:[ 70,  0,770,  0],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [VERUNUI],
+            MONDAY:   [VERUNUI,SAKAWA,ZARA_R2],
             TUESDAY:  [VERUNUI,ZARA_R2],
             WEDNESDAY:[VERUNUI,SAKAWA,ZARA_R2],
             THURSDAY: [SAKAWA],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[ 7, 9],
@@ -3060,14 +3060,14 @@ var remodelItemData = {
             consumes:{ID: 72,NUM:1}, //増設バルジ(中型艦)*1
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[18,UNDEFINED],
+            SCREW:   [ 6,UNDEFINED],
+            consumes:{ID: 72,NUM:2}, //増設バルジ(中型艦)*2
         },
         upgrade:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[28,35],
+            SCREW:   [ 8,12],
+            consumes:{ID: 72,NUM:3}, //増設バルジ(中型艦)*3
             ID:203, //艦本新設計 増設バルジ(中型艦)
             STAR:0,
         },
@@ -3077,13 +3077,13 @@ var remodelItemData = {
         ID:203,
         MATERIAL:[170,  0,970, 70],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
             TUESDAY:  [ZARA_R2],
             WEDNESDAY:[ZARA_R2],
             THURSDAY: [ZARA_R2],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[16,24],
@@ -3091,9 +3091,9 @@ var remodelItemData = {
             consumes:{ID: 72,NUM:2}, //増設バルジ(中型艦)*2
         },
         star6toMax:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[28,35],
+            SCREW:   [ 8,12],
+            consumes:{ID: 72,NUM:3}, //増設バルジ(中型艦)*3
         },
         upgrade:null,
     },
@@ -3216,13 +3216,13 @@ var remodelItemData = {
         ID:210,
         MATERIAL:[ 80, 90,100, 70],
         helperShip:{
-            SUNDAY:   [UNKNOWN],
-            MONDAY:   [UNKNOWN],
-            TUESDAY:  [I401_R],
-            WEDNESDAY:[I401_R],
-            THURSDAY: [I401_R],
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [I401],
+            WEDNESDAY:[I401],
+            THURSDAY: [I401],
             FRIDAY:   [NONE],
-            SATURDAY: [UNKNOWN],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[20,24],
