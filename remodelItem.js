@@ -1,6 +1,6 @@
-//Ver:2.2.0
+//Ver:2.2.1
 //Author:Nishisonic
-//LastUpdate:2017/03/06
+//LastUpdate:2017/03/23
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1377,6 +1377,62 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    /** 12.7cm連装高角砲 */
+    id_10:{
+        ID:10,
+        MATERIAL:[ 10, 40, 70, 20],
+        helperShip:{
+            SUNDAY:   [SUZUYA_R,KUMANO_R],
+            MONDAY:   [KUMANO_R],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [SUZUYA_R,MAYA_R2],
+            SATURDAY: [SUZUYA_R,KUMANO_R,MAYA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 10,NUM:1}, //12.7cm連装高角砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 10,NUM:1}, //12.7cm連装高角砲*1
+        },
+        upgrade:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+            ID:66, //8cm高角砲
+            STAR:0,
+        },
+    },
+    /** 8cm高角砲 */
+    id_66:{
+        ID:66,
+        MATERIAL:[ 10, 40, 80, 40],
+        helperShip:{
+            SUNDAY:   [AGANO,NOSHIRO,YAHAGI],
+            MONDAY:   [NOSHIRO,YAHAGI],
+            TUESDAY:  [YAHAGI],
+            WEDNESDAY:[NONE],
+            THURSDAY: [AGANO],
+            FRIDAY:   [AGANO,NOSHIRO],
+            SATURDAY: [AGANO,NOSHIRO],
+        },
+        star0to6:{
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 3, 3],
+            consumes:{ID:  3,NUM:1}, //10cm連装高角砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 4, 5],
+            consumes:{ID:  3,NUM:1}, //10cm連装高角砲*2
+        },
+        upgrade:null,
+    },
     /* 魚雷 */
     /** 61cm三連装魚雷 */
     id_13:{
@@ -2034,13 +2090,13 @@ var remodelItemData = {
         ID:25,
         MATERIAL:[ 90, 20,  0,300],
         helperShip:{
-            SUNDAY:   [AKITSUSHIMA_R,MIZUHO],
+            SUNDAY:   [AKITSUSHIMA_R],
             MONDAY:   [MIZUHO],
             TUESDAY:  [MIZUHO],
-            WEDNESDAY:[NOT_F(CHIYODA_K)],
+            WEDNESDAY:[NOT_F(CHIYODA_K),MIZUHO],
             THURSDAY: [NOT_F(CHIYODA_K),AKITSUSHIMA_R],
-            FRIDAY:   [NOT_F(CHITOSE_K),AKITSUSHIMA_R,MIZUHO],
-            SATURDAY: [NOT_F(CHITOSE_K),AKITSUSHIMA_R,MIZUHO],
+            FRIDAY:   [NOT_F(CHITOSE_K),AKITSUSHIMA_R],
+            SATURDAY: [NOT_F(CHITOSE_K),AKITSUSHIMA_R],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -2065,13 +2121,13 @@ var remodelItemData = {
         ID:59,
         MATERIAL:[ 90, 40,  0,270],
         helperShip:{
-            SUNDAY:   [MIZUHO],
+            SUNDAY:   [NONE],
             MONDAY:   [MIZUHO],
             TUESDAY:  [MIZUHO],
             WEDNESDAY:[MIZUHO],
             THURSDAY: [MUSASHI],
             FRIDAY:   [MUSASHI],
-            SATURDAY: [MIZUHO,MUSASHI],
+            SATURDAY: [MUSASHI],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -2116,12 +2172,12 @@ var remodelItemData = {
         MATERIAL:[ 60, 30,  0,180],
         helperShip:{
             SUNDAY:   [ITALIA],
-            MONDAY:   [ZARA_R],
-            TUESDAY:  [ZARA_R],
-            WEDNESDAY:[ZARA_R,ROMA_R],
-            THURSDAY: [ZARA_R,ROMA_R],
+            MONDAY:   [NOT_R2(ZARA_R)],
+            TUESDAY:  [NOT_R2(ZARA_R),ROMA_R],
+            WEDNESDAY:[NOT_R2(ZARA_R),ROMA_R],
+            THURSDAY: [ZARA_R],
             FRIDAY:   [ZARA_R],
-            SATURDAY: [ZARA_R],
+            SATURDAY: [ITALIA,ZARA_R2],
         },
         star0to6:{
             RESEARCH:[ 3, 5],
@@ -2140,6 +2196,113 @@ var remodelItemData = {
             ID:164, //Ro.44水上戦闘機
             STAR:0,
         },
+    },
+    /* 水上戦闘機 */
+    /** 二式水戦改 */
+    id_165:{
+        ID:165,
+        MATERIAL:[110, 80,  0,360],
+        helperShip:{
+            SUNDAY:   [MIZUHO],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [MIZUHO],
+            SATURDAY: [MIZUHO],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 5, 6],
+            consumes:{ID: 20,NUM:2}, //零式艦戦21型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 6],
+            SCREW:   [ 7, 8],
+            consumes:{ID: 25,NUM:2}, //零式水上偵察機*2
+        },
+        upgrade:null,
+    },
+    /** 二式水戦改(熟練) */
+    id_216:{
+        ID:216,
+        MATERIAL:[110,100,  0,390],
+        helperShip:{
+            SUNDAY:   [MIZUHO],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [MIZUHO],
+            SATURDAY: [MIZUHO],
+        },
+        star0to6:{
+            RESEARCH:[ 5, 6],
+            SCREW:   [ 7, 8],
+            consumes:{ID:181,NUM:2}, //零式艦戦32型*2
+        },
+        star6toMax:{
+            RESEARCH:[ 6,UNDEFINED],
+            SCREW:   [ 8,UNDEFINED],
+            consumes:{ID: 26,NUM:3}, //瑞雲*3
+        },
+        upgrade:null,
+    },
+    /** Ro.44水上戦闘機 */
+    id_164:{
+        ID:164,
+        MATERIAL:[ 70, 50,  0,220],
+        helperShip:{
+            SUNDAY:   [ZARA_R2],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [ZARA_R2],
+            FRIDAY:   [ZARA_R2],
+            SATURDAY: [ZARA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 9],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 26,NUM:1}, //瑞雲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 9,14],
+            SCREW:   [ 5, 6],
+            consumes:{ID: 26,NUM:2}, //瑞雲*2
+        },
+        upgrade:{
+            RESEARCH:[24,40],
+            SCREW:   [ 8,12],
+            consumes:{ID:164,NUM:1}, //Ro.44水上戦闘機*1
+            ID:215, //Ro.44水上戦闘機bis
+            STAR:0,
+        },
+    },
+    /** Ro.44水上戦闘機bis */
+    id_215:{
+        ID:215,
+        MATERIAL:[ 80, 60,  0,280],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [ZARA_R2],
+            SATURDAY: [ZARA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 8,14],
+            SCREW:   [ 4, 5],
+            consumes:{ID: 26,NUM:2}, //瑞雲*1
+        },
+        star6toMax:{
+            RESEARCH:[14,UNDEFINED],
+            SCREW:   [ 6,UNDEFINED],
+            consumes:{ID:164,NUM:1}, //Ro.44水上戦闘機*1
+        },
+        upgrade:null,
     },
     /* 電探 */
     /** 13号対空電探 */
@@ -2705,11 +2868,11 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [KINU_R2],
             MONDAY:   [NONE],
-            TUESDAY:  [NONE],
-            WEDNESDAY:[NONE],
+            TUESDAY:  [MAYA_R2],
+            WEDNESDAY:[MAYA_R2],
             THURSDAY: [MAYA_R2],
-            FRIDAY:   [MAYA_R2,KINU_R2],
-            SATURDAY: [MAYA_R2,KINU_R2],
+            FRIDAY:   [KINU_R2],
+            SATURDAY: [KINU_R2],
         },
         star0to6:{
             RESEARCH:[ 3, 5],
