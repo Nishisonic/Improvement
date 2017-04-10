@@ -1,6 +1,6 @@
-//Ver:2.2.1
+//Ver:2.2.2
 //Author:Nishisonic
-//LastUpdate:2017/03/23
+//LastUpdate:2017/04/11
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -16,6 +16,7 @@ var NOT_F           = function(name){ return name + "(航以降は不可)"; };
 var NOT_UPGRADE     = function(name){ return name + "(ただし更新不可)"; };
 var ONLY_R2_UPGRADE = function(name){ return name + "(改二のみ更新可)"; };
 var NOT_R2_UPGRADE  = function(name){ return name + "(改二は除く、また更新不可)"; };
+var ONLY_UPGRADE    = function(name){ return name + "(この艦のみ更新可)"; };
 var UNDEFINED       = "    ";
 var NO_DATA         = [UNDEFINED,UNDEFINED];
 var C_NO_DATA       = {ID:UNKNOWN,NUM:"?"};
@@ -521,6 +522,8 @@ var COMMANDANT_TASTE   = "Commandant Taste";   //ID:491
 var I13                = "伊13";               //ID:494
 var I14                = "伊14";               //ID:495
 var ZARA_R2            = "Zara due";           //ID:496
+var SUZUYA_R2          = "鈴谷改二";           //ID:503
+var SUZUYA_R2F         = "鈴谷航改二";         //ID:508
 
 var word = "id_";
 
@@ -1401,9 +1404,9 @@ var remodelItemData = {
             consumes:{ID: 10,NUM:1}, //12.7cm連装高角砲*1
         },
         upgrade:{
-            RESEARCH:NO_DATA,
-            SCREW:   NO_DATA,
-            consumes:C_NO_DATA,
+            RESEARCH:[ 5, 8],
+            SCREW:   [ 6,10],
+            consumes:{ID:  3,NUM:1}, //10cm連装高角砲*1
             ID:66, //8cm高角砲
             STAR:0,
         },
@@ -1413,9 +1416,9 @@ var remodelItemData = {
         ID:66,
         MATERIAL:[ 10, 40, 80, 40],
         helperShip:{
-            SUNDAY:   [AGANO,NOSHIRO,YAHAGI],
-            MONDAY:   [NOSHIRO,YAHAGI],
-            TUESDAY:  [YAHAGI],
+            SUNDAY:   [AGANO,NOSHIRO,ONLY_UPGRADE(YAHAGI)],
+            MONDAY:   [NOSHIRO,ONLY_UPGRADE(YAHAGI)],
+            TUESDAY:  [ONLY_UPGRADE(YAHAGI)],
             WEDNESDAY:[NONE],
             THURSDAY: [AGANO],
             FRIDAY:   [AGANO,NOSHIRO],
@@ -1430,6 +1433,37 @@ var remodelItemData = {
             RESEARCH:[ 6, 8],
             SCREW:   [ 4, 5],
             consumes:{ID:  3,NUM:1}, //10cm連装高角砲*2
+        },
+        upgrade:{
+            RESEARCH:[ 8,16],
+            SCREW:   [ 8,12],
+            consumes:{ID: 49,NUM:2}, //25mm単装機銃*2
+            ID:220, //8cm高角砲改＋増設機銃
+            STAR:0,
+        },
+    },
+    /** 8cm高角砲改＋増設機銃 */
+    id_220:{
+        ID:220,
+        MATERIAL:[ 30, 70,100, 80],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
+            WEDNESDAY:[SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
+            THURSDAY: [SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 4, 5],
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 8,15],
+            SCREW:   [ 6, 8],
+            consumes:{ID: 49,NUM:2}, //25mm単装機銃*2
         },
         upgrade:null,
     },
@@ -2007,8 +2041,8 @@ var remodelItemData = {
         ID:60,
         MATERIAL:[120,120,  0,280],
         helperShip:{
-            SUNDAY:   [JUNYO,SHOKAKU],
-            MONDAY:   [SHOKAKU],
+            SUNDAY:   [JUNYO,SHOKAKU,ONLY_UPGRADE(SUZUYA_R2F)],
+            MONDAY:   [SHOKAKU,ONLY_UPGRADE(SUZUYA_R2F)],
             TUESDAY:  [NONE],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
@@ -2025,7 +2059,13 @@ var remodelItemData = {
             SCREW:   [ 4, 6],
             consumes:{ID:24,NUM:2}, //彗星*2
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[16,22],
+            SCREW:   [ 6, 9],
+            consumes:{ID:22,NUM:1}, //烈風*1
+            ID:219, //零式艦戦63型(爆戦)
+            STAR:0,
+        },
     },
     /** 零戦62型(爆戦/岩井隊) */
     id_154:{
@@ -2049,6 +2089,31 @@ var remodelItemData = {
             RESEARCH:[ 5, 9],
             SCREW:   [ 4, 6],
             consumes:{ID:24,NUM:2}, //彗星*2
+        },
+        upgrade:null,
+    },
+    /** 零式艦戦63型(爆戦) */
+    id_219:{
+        ID:219,
+        MATERIAL:[130,140,  0,290],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [SUZUYA_R2F],
+            TUESDAY:  [SUZUYA_R2F],
+            WEDNESDAY:[SUZUYA_R2F],
+            THURSDAY: [SUZUYA_R2F],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 5, 6],
+            SCREW:   [ 4, 6],
+            consumes:{ID:21,NUM:3}, //零式艦戦52型*3
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 9],
+            SCREW:   [ 5, 7],
+            consumes:{ID:22,NUM:1}, //烈風*1
         },
         upgrade:null,
     },
@@ -2221,7 +2286,13 @@ var remodelItemData = {
             SCREW:   [ 7, 8],
             consumes:{ID: 25,NUM:2}, //零式水上偵察機*2
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[ 8,12],
+            SCREW:   [ 9,16],
+            consumes:{ID: 26,NUM:2}, //瑞雲*2
+            ID:217, //強風改
+            STAR:0,
+        },
     },
     /** 二式水戦改(熟練) */
     id_216:{
@@ -2242,9 +2313,34 @@ var remodelItemData = {
             consumes:{ID:181,NUM:2}, //零式艦戦32型*2
         },
         star6toMax:{
-            RESEARCH:[ 6,UNDEFINED],
-            SCREW:   [ 8,UNDEFINED],
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 8,10],
             consumes:{ID: 26,NUM:3}, //瑞雲*3
+        },
+        upgrade:null,
+    },
+    /** 強風改 */
+    id_217:{
+        ID:217,
+        MATERIAL:[130, 80,  0,300],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [SUZUYA_R2],
+            TUESDAY:  [SUZUYA_R2,MIZUHO],
+            WEDNESDAY:[SUZUYA_R2,MIZUHO],
+            THURSDAY: [SUZUYA_R2,MIZUHO],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[10,12],
+            SCREW:   [ 6, 8],
+            consumes:{ID: 55,NUM:1}, //紫電改二*1
+        },
+        star6toMax:{
+            RESEARCH:[12,17],
+            SCREW:   [ 7,11],
+            consumes:{ID: 55,NUM:1}, //紫電改二*1
         },
         upgrade:null,
     },
@@ -2298,8 +2394,8 @@ var remodelItemData = {
             consumes:{ID: 26,NUM:2}, //瑞雲*1
         },
         star6toMax:{
-            RESEARCH:[14,UNDEFINED],
-            SCREW:   [ 6,UNDEFINED],
+            RESEARCH:[14,18],
+            SCREW:   [ 6, 7],
             consumes:{ID:164,NUM:1}, //Ro.44水上戦闘機*1
         },
         upgrade:null,
@@ -3223,8 +3319,8 @@ var remodelItemData = {
             consumes:{ID: 72,NUM:1}, //増設バルジ(中型艦)*1
         },
         star6toMax:{
-            RESEARCH:[18,UNDEFINED],
-            SCREW:   [ 6,UNDEFINED],
+            RESEARCH:[18,24],
+            SCREW:   [ 6, 9],
             consumes:{ID: 72,NUM:2}, //増設バルジ(中型艦)*2
         },
         upgrade:{
