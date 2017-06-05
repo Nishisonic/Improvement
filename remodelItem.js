@@ -1,6 +1,6 @@
-//Ver:2.2.2
+//Ver:2.2.3
 //Author:Nishisonic
-//LastUpdate:2017/04/11
+//LastUpdate:2017/06/06
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -197,7 +197,7 @@ var MUSASHI            = "武蔵";               //ID:143
 var YUDACHI_R2         = "夕立改二";           //ID:144
 var SHIGURE_R2         = "時雨改二";           //ID:145
 var KISO_R2            = "木曾改二";           //ID:146
-var VERUNUI            = "Верный";             //ID:147
+var VERNYI             = "Верный";             //ID:147
 var MUSASHI_R          = "武蔵改";             //ID:148
 var KONGO_R2           = "金剛改二";           //ID:149
 var HIEI_R2            = "比叡改二";           //ID:150
@@ -423,6 +423,10 @@ var COMMANDANT_TASTE_R = "Commandant Taste改"; //ID:372
 var FUJINAMI_R         = "藤波改";             //ID:373
 var I13_R              = "伊13改";             //ID:374
 var I14_R              = "伊14改";             //ID:375
+var SHIMUSHU_R         = "占守改";             //ID:376
+var KUNASHIRI_R        = "国後改";             //ID:377
+var TAIYOH_R           = "大鷹改";             //ID:380
+var ETOROFU_R          = "択捉改";             //ID:383
 var I168_R             = "伊168改";            //ID:398
 var I58_R              = "伊58改";             //ID:399
 var I8_R               = "伊8改";              //ID:400
@@ -524,6 +528,16 @@ var I14                = "伊14";               //ID:495
 var ZARA_R2            = "Zara due";           //ID:496
 var SUZUYA_R2          = "鈴谷改二";           //ID:503
 var SUZUYA_R2F         = "鈴谷航改二";         //ID:508
+var GANGUT             = "Гангут";             //ID:511
+var OKTIABR_SKAIA_REVOLIUTSIIA = "Октябрьская революция"; //ID:512
+var GANGUT_R2          = "Гангут два";         //ID:513
+var SHIMUSHU           = "占守";               //ID:517
+var KUNASHIRI          = "国後";               //ID:518
+var KASUGAMARU         = "春日丸";             //ID:521
+var ETOROFU            = "択捉";               //ID:524
+var TAIYOH             = "大鷹";               //ID:526
+var TAIYOH_R2          = "大鷹改二";           //ID:529
+var NAGATO_R2          = "長門改二";           //ID:541
 
 var word = "id_";
 
@@ -1158,6 +1172,31 @@ var remodelItemData = {
             RESEARCH:[ 8,10],
             SCREW:   [ 5, 8],
             consumes:{ID:  8,NUM:3}, //41cm連装砲*3
+        },
+        upgrade:null,
+    },
+    /** 41cm三連装砲改 */
+    id_236:{
+        ID:236,
+        MATERIAL:[ 45,450,700, 45],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NAGATO_R2],
+            TUESDAY:  [NAGATO_R2],
+            WEDNESDAY:[NAGATO_R2],
+            THURSDAY: [NONE],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [10,12],
+            consumes:{ID:  8,NUM:2}, //41cm連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 7,10],
+            consumes:{ID:  9,NUM:2}, //46cm三連装砲*2
         },
         upgrade:null,
     },
@@ -3305,10 +3344,10 @@ var remodelItemData = {
         ID:72,
         MATERIAL:[ 70,  0,770,  0],
         helperShip:{
-            SUNDAY:   [VERUNUI],
-            MONDAY:   [VERUNUI,SAKAWA,ZARA_R2],
-            TUESDAY:  [VERUNUI,ZARA_R2],
-            WEDNESDAY:[VERUNUI,SAKAWA,ZARA_R2],
+            SUNDAY:   [VERNYI],
+            MONDAY:   [VERNYI,SAKAWA,ZARA_R2],
+            TUESDAY:  [VERNYI,ZARA_R2],
+            WEDNESDAY:[VERNYI,SAKAWA,ZARA_R2],
             THURSDAY: [SAKAWA],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
