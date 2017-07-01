@@ -1,6 +1,6 @@
-//Ver:2.2.3
+//Ver:2.2.4
 //Author:Nishisonic
-//LastUpdate:2017/06/06
+//LastUpdate:2017/07/02
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -12,6 +12,7 @@ var ERROR           = "ERROR";
 var UNKNOWN         = "不明";
 var NOT_R           = function(name){ return name + "(改は不可)"; };
 var NOT_R2          = function(name){ return name + "(改二は除く)"; };
+var NOT_R2F         = function(name){ return name + "(航改二は除く)"; };
 var NOT_F           = function(name){ return name + "(航以降は不可)"; };
 var NOT_UPGRADE     = function(name){ return name + "(ただし更新不可)"; };
 var ONLY_R2_UPGRADE = function(name){ return name + "(改二のみ更新可)"; };
@@ -21,6 +22,8 @@ var UNDEFINED       = "    ";
 var NO_DATA         = [UNDEFINED,UNDEFINED];
 var C_NO_DATA       = {ID:UNKNOWN,NUM:"?"};
 var NE_ENGINE       = -9999;
+var NEW_GUN_MOUNT   = -9998;
+var SKILLED         = -9997;
 /* 
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -517,7 +520,7 @@ var I26                = "伊26";               //ID:483
 var FUJINAMI           = "藤波";               //ID:485
 var URANAMI            = "浦波";               //ID:486
 var KINU_R2            = "鬼怒改二";           //ID:487
-//var NULL             = "NULL";               //ID:488
+var YURA_R2            = "由良改二";           //ID:488
 //var NULL             = "NULL";               //ID:489
 var ARASHIO_R2         = "荒潮改二";           //ID:490
 var COMMANDANT_TASTE   = "Commandant Taste";   //ID:491
@@ -527,7 +530,9 @@ var I13                = "伊13";               //ID:494
 var I14                = "伊14";               //ID:495
 var ZARA_R2            = "Zara due";           //ID:496
 var SUZUYA_R2          = "鈴谷改二";           //ID:503
+var KUMANO_R2          = "熊野改二";           //ID:504
 var SUZUYA_R2F         = "鈴谷航改二";         //ID:508
+var KUMANO_R2F         = "熊野航改二";         //ID:509
 var GANGUT             = "Гангут";             //ID:511
 var OKTIABR_SKAIA_REVOLIUTSIIA = "Октябрьская революция"; //ID:512
 var GANGUT_R2          = "Гангут два";         //ID:513
@@ -761,7 +766,44 @@ var remodelItemData = {
             SCREW:   [ 2, 4],
             consumes:{ID:  5,NUM:1}, //15.5cm三連装砲*1
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[ 8,12],
+            SCREW:   [ 4, 8],
+            consumes:[{ID:  5,NUM:2},{ID:NEW_GUN_MOUNT,NUM:1}], //15.5cm三連装砲*2、新型砲熕兵装資材*1
+            ID:235, //15.5cm三連装砲改
+            STAR:0,
+        },
+    },
+    /** 15.5cm三連装砲改 */
+    id_235:{
+        ID:235,
+        MATERIAL:[ 15,120,150, 30],
+        helperShip:{
+            SUNDAY:   [OYODO_R],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [OYODO_R],
+            SATURDAY: [OYODO_R],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 4, 5],
+            consumes:{ID:  5,NUM:2}, //15.5cm三連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 8, 9],
+            SCREW:   [ 5, 7],
+            consumes:{ID: 12,NUM:2}, //15.5cm三連装副砲*2
+        },
+        upgrade:{
+            RESEARCH:[ 9,10],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 12,NUM:1}, //15.5cm三連装副砲*1
+            ID:234, //15.5cm三連装副砲改
+            STAR:7,
+        },
     },
     /** 20.3cm連装砲 */
     id_6:{
@@ -1148,7 +1190,13 @@ var remodelItemData = {
             SCREW:   [ 3, 6],
             consumes:{ID:  8,NUM:2}, //41cm連装砲*2
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[12,20],
+            SCREW:   [10,15],
+            consumes:[{ID:  9,NUM:2},{ID:NEW_GUN_MOUNT,NUM:2}], //46cm三連装砲*2、新型砲熕兵装資材*2
+            ID:105, //試製41cm三連装砲
+            STAR:0,
+        },
     },
     /** 試製41cm三連装砲 */
     id_105:{
@@ -1173,7 +1221,13 @@ var remodelItemData = {
             SCREW:   [ 5, 8],
             consumes:{ID:  8,NUM:3}, //41cm連装砲*3
         },
-        upgrade:null,
+        upgrade:{
+            RESEARCH:[15,30],
+            SCREW:   [12,16],
+            consumes:[{ID:  9,NUM:2},{ID:NEW_GUN_MOUNT,NUM:2}], //46cm三連装砲*2、新型砲熕兵装資材*2
+            ID:236, //41cm三連装砲改
+            STAR:0,
+        },
     },
     /** 41cm三連装砲改 */
     id_236:{
@@ -1231,6 +1285,7 @@ var remodelItemData = {
             STAR:5,
         },
     },
+    // 次回修正箇所(2017/07/01)
     /** 46cm三連装砲 */
     id_9:{
         ID:9,
@@ -1394,6 +1449,68 @@ var remodelItemData = {
             STAR:0,
         },
     },
+    /** 15.5cm三連装副砲 */
+    id_12:{
+        ID:12,
+        MATERIAL:[ 10, 90,120,  0],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [YAMATO,MUSASHI],
+            SATURDAY: [YAMATO,MUSASHI],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 2],
+            SCREW:   [ 2, 3],
+            consumes:null,
+        },
+        star6toMax:{
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 2, 4],
+            consumes:{ID:  12,NUM:1}, //15.5cm三連装副砲*1
+        },
+        upgrade:{
+            RESEARCH:[ 8,12],
+            SCREW:   [ 4, 8],
+            consumes:[{ID: 12,NUM:2},{ID:NEW_GUN_MOUNT,NUM:1}], //15.5cm三連装副砲*2,新型砲熕兵装資材*1
+            ID:234, //15.5cm三連装副砲改
+            STAR:0,
+        },
+    },
+    /** 15.5cm三連装副砲改 */
+    id_234:{
+        ID:234,
+        MATERIAL:[ 15,120,150, 30],
+        helperShip:{
+            SUNDAY:   [MUSASHI],
+            MONDAY:   [MUSASHI],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [YAMATO],
+            SATURDAY: [YAMATO],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 4, 5],
+            consumes:{ID: 12,NUM:2}, //15.5cm三連装副砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 8, 9],
+            SCREW:   [ 5, 7],
+            consumes:{ID:  5,NUM:2}, //15.5cm三連装砲*2
+        },
+        upgrade:{
+            RESEARCH:[ 9,10],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 5,NUM:1}, //15.5cm三連装砲*1
+            ID:235, //15.5cm三連装砲改
+            STAR:7,
+        },
+    },
     /** OTO 152mm三連装速射砲 */
     id_134:{
         ID:134,
@@ -1424,13 +1541,13 @@ var remodelItemData = {
         ID:10,
         MATERIAL:[ 10, 40, 70, 20],
         helperShip:{
-            SUNDAY:   [SUZUYA_R,KUMANO_R],
-            MONDAY:   [KUMANO_R],
+            SUNDAY:   [SUZUYA,KUMANO],
+            MONDAY:   [KUMANO],
             TUESDAY:  [NONE],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
-            FRIDAY:   [SUZUYA_R,MAYA_R2],
-            SATURDAY: [SUZUYA_R,KUMANO_R,MAYA_R2],
+            FRIDAY:   [MAYA_R2,SUZUYA],
+            SATURDAY: [MAYA_R2,SUZUYA,KUMANO],
         },
         star0to6:{
             RESEARCH:[ 2, 3],
@@ -1456,10 +1573,10 @@ var remodelItemData = {
         MATERIAL:[ 10, 40, 80, 40],
         helperShip:{
             SUNDAY:   [AGANO,NOSHIRO,ONLY_UPGRADE(YAHAGI)],
-            MONDAY:   [NOSHIRO,ONLY_UPGRADE(YAHAGI)],
-            TUESDAY:  [ONLY_UPGRADE(YAHAGI)],
-            WEDNESDAY:[NONE],
-            THURSDAY: [AGANO],
+            MONDAY:   [KUMANO_R2,NOSHIRO,ONLY_UPGRADE(YAHAGI)],
+            TUESDAY:  [ONLY_UPGRADE(SUZUYA_R2),KUMANO_R2,ONLY_UPGRADE(YAHAGI)],
+            WEDNESDAY:[ONLY_UPGRADE(SUZUYA_R2),KUMANO_R2],
+            THURSDAY: [ONLY_UPGRADE(SUZUYA_R2),AGANO],
             FRIDAY:   [AGANO,NOSHIRO],
             SATURDAY: [AGANO,NOSHIRO],
         },
@@ -1487,10 +1604,10 @@ var remodelItemData = {
         MATERIAL:[ 30, 70,100, 80],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [NONE],
-            TUESDAY:  [SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
-            WEDNESDAY:[SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
-            THURSDAY: [SUZUYA_R2,SUZUYA_R2F,YAHAGI,SAKAWA],
+            MONDAY:   [KUMANO_R2],
+            TUESDAY:  [SUZUYA_R2,KUMANO_R2,YAHAGI,SAKAWA],
+            WEDNESDAY:[SUZUYA_R2,KUMANO_R2,YAHAGI,SAKAWA],
+            THURSDAY: [SUZUYA_R2,YAHAGI,SAKAWA],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
         },
@@ -2138,10 +2255,10 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [NONE],
             MONDAY:   [SUZUYA_R2F],
-            TUESDAY:  [SUZUYA_R2F],
-            WEDNESDAY:[SUZUYA_R2F],
-            THURSDAY: [SUZUYA_R2F],
-            FRIDAY:   [NONE],
+            TUESDAY:  [SUZUYA_R2F,KUMANO_R2F],
+            WEDNESDAY:[SUZUYA_R2F,KUMANO_R2F],
+            THURSDAY: [SUZUYA_R2F,KUMANO_R2F],
+            FRIDAY:   [KUMANO_R2F],
             SATURDAY: [NONE],
         },
         star0to6:{
@@ -2364,10 +2481,10 @@ var remodelItemData = {
         MATERIAL:[130, 80,  0,300],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [SUZUYA_R2],
-            TUESDAY:  [SUZUYA_R2,MIZUHO],
-            WEDNESDAY:[SUZUYA_R2,MIZUHO],
-            THURSDAY: [SUZUYA_R2,MIZUHO],
+            MONDAY:   [NOT_R2F(SUZUYA_R2)],
+            TUESDAY:  [NOT_R2F(SUZUYA_R2),MIZUHO],
+            WEDNESDAY:[NOT_R2F(SUZUYA_R2),MIZUHO],
+            THURSDAY: [NOT_R2F(SUZUYA_R2),MIZUHO],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
         },
@@ -2436,6 +2553,90 @@ var remodelItemData = {
             RESEARCH:[14,18],
             SCREW:   [ 6, 7],
             consumes:{ID:164,NUM:1}, //Ro.44水上戦闘機*1
+        },
+        upgrade:null,
+    },
+    /* 水上爆撃機 */
+    // 次回修正箇所(2017/07/01)
+    /** 瑞雲 */
+    id_26:{
+        ID:26,
+        MATERIAL:[160,160,  0,360],
+        helperShip:{
+            SUNDAY:   [ISE_R,HYUGA_R],
+            MONDAY:   [MOGAMI_R],
+            TUESDAY:  [MOGAMI_R],
+            WEDNESDAY:[MOGAMI_R],
+            THURSDAY: [MOGAMI_R],
+            FRIDAY:   [ISE_R,HYUGA_R],
+            SATURDAY: [ISE_R,HYUGA_R],
+        },
+        star0to6:{
+            RESEARCH:[ 5, 7],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 26,NUM:1}, //瑞雲*1
+        },
+        star6toMax:{
+            RESEARCH:NO_DATA,
+            SCREW:   NO_DATA,
+            consumes:C_NO_DATA,
+        },
+        upgrade:{
+            RESEARCH:[16,UNDEFINED],
+            SCREW:   [ 7,UNDEFINED],
+            consumes:[{ID:26,NUM:2},{ID:SKILLED,NUM:1}], //瑞雲*2、熟練搭乗員*1
+            ID:79, //瑞雲(六三四空)
+            STAR:0,
+        },
+    },
+    /** 瑞雲(六三四空) */
+    id_79:{
+        ID:79,
+        MATERIAL:[180,180,  0,480],
+        helperShip:{
+            SUNDAY:   [ISE_R,HYUGA_R],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [ISE_R,HYUGA_R],
+            SATURDAY: [ISE_R,HYUGA_R],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 5, 6],
+            consumes:{ID: 26,NUM:1}, //瑞雲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 7,10],
+            SCREW:   [ 6, 8],
+            consumes:{ID: 26,NUM:2}, //瑞雲*2
+        },
+        upgrade:null,
+    },
+    // 次回修正箇所(2017/07/01)
+    /** 瑞雲(六三四空/熟練) */
+    id_237:{
+        ID:237,
+        MATERIAL:[190,190,  0,490],
+        helperShip:{
+            SUNDAY:   [HYUGA_R],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [HYUGA_R],
+            SATURDAY: [HYUGA_R],
+        },
+        star0to6:{
+            RESEARCH:[ 8,UNDEFINED],
+            SCREW:   [ 6,UNDEFINED],
+            consumes:{ID: 26,NUM:2}, //瑞雲*2
+        },
+        star6toMax:{
+            RESEARCH:[10,UNDEFINED],
+            SCREW:   [ 7,UNDEFINED],
+            consumes:{ID: 26,NUM:3}, //瑞雲*3
         },
         upgrade:null,
     },
@@ -2552,18 +2753,19 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    // 2017/07/01
     /** 21号対空電探 */
     id_30:{
         ID:30,
         MATERIAL:[ 10,  0, 40, 50],
         helperShip:{
-            SUNDAY:   [ISE],
+            SUNDAY:   [NOT_R(ISE)],
             MONDAY:   [ISE],
             TUESDAY:  [NONE],
             WEDNESDAY:[HYUGA],
             THURSDAY: [HYUGA],
-            FRIDAY:   [ISE,HYUGA],
-            SATURDAY: [ISE,HYUGA],
+            FRIDAY:   [NOT_R(ISE),NOT_R(HYUGA)],
+            SATURDAY: [NOT_R(ISE),NOT_R(HYUGA)],
         },
         star0to6:{
             RESEARCH:[ 5, 6],
@@ -2583,6 +2785,7 @@ var remodelItemData = {
             STAR:0,
         },
     },
+    // 2017/07/01
     /** 21号対空電探改 */
     id_89:{
         ID:89,
@@ -2593,8 +2796,8 @@ var remodelItemData = {
             TUESDAY:  [MUSASHI],
             WEDNESDAY:[MUSASHI],
             THURSDAY: [YAMATO,MUSASHI],
-            FRIDAY:   [YAMATO,MUSASHI],
-            SATURDAY: [YAMATO],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
         },
         star0to6:{
             RESEARCH:[ 6, 8],
@@ -2608,6 +2811,7 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    // 次回修正箇所(2017/07/01)
     /** 32号対水上電探 */
     id_31:{
         ID:31,
@@ -2639,6 +2843,7 @@ var remodelItemData = {
             STAR:0,
         },
     },
+    // 次回修正箇所(2017/07/01)
     /** 32号対水上電探改 */
     id_141:{
         ID:141,
@@ -2649,7 +2854,7 @@ var remodelItemData = {
             TUESDAY:  [ISE],
             WEDNESDAY:[HYUGA],
             THURSDAY: [HYUGA],
-            FRIDAY:   [HYUGA],
+            FRIDAY:   [NONE],
             SATURDAY: [HYUGA],
         },
         star0to6:{

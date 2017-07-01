@@ -1,4 +1,4 @@
-//Ver:2.2.3
+//Ver:2.2.4
 //Author:Nishisonic
 
 //script読み込み
@@ -164,42 +164,88 @@ function _getRemodelItemData(itemData,cal){
     var bauxite = df.format(material[3]|0);
     var star0to6Research = itemData.star0to6.RESEARCH;
     var star0to6Screw = itemData.star0to6.SCREW;
-    var star0to6ConsumeName = "なし";
-    var star0to6ConsumeNum = "";
-    var star0to6NumOfPossesions = 0;
-    if(itemData.star0to6.consumes != null){
-        star0to6ConsumeName = getItemName(itemData.star0to6.consumes.ID);
-        star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
-        star0to6NumOfPossesions = isItem(itemData.star0to6.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
-            return item.slotitemId == itemData.star0to6.consumes.ID && item.level == 0;
-        }).count() : "?";
+    var star0to6Consumes = [];
+    if(itemData.star0to6 != null){
+        star0to6Research = itemData.star0to6.RESEARCH;
+        star0to6Screw = itemData.star0to6.SCREW;
+        if(itemData.star0to6.consumes != null){
+            if(itemData.star0to6.consumes instanceof Array){
+                for(var i in itemData.star0to6.consumes){
+                    var star0to6ConsumeName = getItemName(itemData.star0to6.consumes[i].ID);
+                    var star0to6ConsumeNum = itemData.star0to6.consumes[i].NUM;
+                    var star0to6NumOfPossesions = isItem(itemData.star0to6.consumes[i].ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                        return item.slotitemId == itemData.star0to6.consumes[i].ID && item.level == 0;
+                    }).count() : "?";
+                    star0to6Consumes.push({name:star0to6ConsumeName,num:star0to6ConsumeNum,pos:star0to6NumOfPossesions});
+                }
+            } else {
+                var star0to6ConsumeName = getItemName(itemData.star0to6.consumes.ID);
+                var star0to6ConsumeNum = itemData.star0to6.consumes.NUM;
+                var star0to6NumOfPossesions = isItem(itemData.star0to6.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                    return item.slotitemId == itemData.star0to6.consumes.ID && item.level == 0;
+                }).count() : "?";
+                star0to6Consumes.push({name:star0to6ConsumeName,num:star0to6ConsumeNum,pos:star0to6NumOfPossesions});
+            }
+        } else {
+            star0to6Consumes.push({name:"なし",num:"",pos:0});
+        }
     }
     var star6toMaxResearch = itemData.star6toMax.RESEARCH;
     var star6toMaxScrew = itemData.star6toMax.SCREW;
-    var star6toMaxConsumeName = "なし";
-    var star6toMaxConsumeNum = "";
-    var star6toMaxNumOfPossesions = 0;
-    if(itemData.star6toMax.consumes != null){
-        star6toMaxConsumeName = getItemName(itemData.star6toMax.consumes.ID);
-        star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
-        star6toMaxNumOfPossesions = isItem(itemData.star6toMax.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
-            return item.slotitemId == itemData.star6toMax.consumes.ID && item.level == 0;
-        }).count() : "?";
+    var star6toMaxConsumes = [];
+    if(itemData.star6toMax != null){
+        star6toMaxResearch = itemData.star6toMax.RESEARCH;
+        star6toMaxScrew = itemData.star6toMax.SCREW;
+        if(itemData.star6toMax.consumes != null){
+            if(itemData.star6toMax.consumes instanceof Array){
+                for(var i in itemData.star6toMax.consumes){
+                    var star6toMaxConsumeName = getItemName(itemData.star6toMax.consumes[i].ID);
+                    var star6toMaxConsumeNum = itemData.star6toMax.consumes[i].NUM;
+                    var star6toMaxNumOfPossesions = isItem(itemData.star6toMax.consumes[i].ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                        return item.slotitemId == itemData.star6toMax.consumes[i].ID && item.level == 0;
+                    }).count() : "?";
+                    star6toMaxConsumes.push({name:star6toMaxConsumeName,num:star6toMaxConsumeNum,pos:star6toMaxNumOfPossesions});
+                }
+            } else {
+                var star6toMaxConsumeName = getItemName(itemData.star6toMax.consumes.ID);
+                var star6toMaxConsumeNum = itemData.star6toMax.consumes.NUM;
+                var star6toMaxNumOfPossesions = isItem(itemData.star6toMax.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                    return item.slotitemId == itemData.star6toMax.consumes.ID && item.level == 0;
+                }).count() : "?";
+                star6toMaxConsumes.push({name:star6toMaxConsumeName,num:star6toMaxConsumeNum,pos:star6toMaxNumOfPossesions});
+            }
+        } else {
+            star6toMaxConsumes.push({name:"なし",num:"",pos:0});
+        }
     }
     var upgradeResearch = [" --","-- "];
     var upgradeScrew    = [" --","--  "];
-    var upgradeConsumeName = "なし";
-    var upgradeConsumeNum = "";
-    var upgradeNumOfPossesions = 0;
+    var upgradeConsumes = [];
+    var upgradeToItemName;
+    var upgradeToItemStar;
     if(itemData.upgrade != null){
         upgradeResearch = itemData.upgrade.RESEARCH;
         upgradeScrew = itemData.upgrade.SCREW;
         if(itemData.upgrade.consumes != null){
-            upgradeConsumeName = getItemName(itemData.upgrade.consumes.ID);
-            upgradeConsumeNum = itemData.upgrade.consumes.NUM;
-            upgradeNumOfPossesions = isItem(itemData.upgrade.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
-                return item.slotitemId == itemData.upgrade.consumes.ID && item.level == 0;
-            }).count() : "?";
+            if(itemData.upgrade.consumes instanceof Array){
+                for(var i in itemData.upgrade.consumes){
+                    var upgradeConsumeName = getItemName(itemData.upgrade.consumes[i].ID);
+                    var upgradeConsumeNum = itemData.upgrade.consumes[i].NUM;
+                    var upgradeNumOfPossesions = isItem(itemData.upgrade.consumes[i].ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                        return item.slotitemId == itemData.upgrade.consumes[i].ID && item.level == 0;
+                    }).count() : "?";
+                    upgradeConsumes.push({name:upgradeConsumeName,num:upgradeConsumeNum,pos:upgradeNumOfPossesions});
+                }
+            } else {
+                var upgradeConsumeName = getItemName(itemData.upgrade.consumes.ID);
+                var upgradeConsumeNum = itemData.upgrade.consumes.NUM;
+                var upgradeNumOfPossesions = isItem(itemData.upgrade.consumes.ID) ? GlobalContext.getItemMap().values().stream().filter(function(item){
+                    return item.slotitemId == itemData.upgrade.consumes.ID && item.level == 0;
+                }).count() : "?";
+                upgradeConsumes.push({name:upgradeConsumeName,num:upgradeConsumeNum,pos:upgradeNumOfPossesions});
+            }
+        } else {
+            upgradeConsumes.push({name:"なし",num:"",pos:0});
         }
         upgradeToItemName = Item.get(itemData.upgrade.ID).getName();
         upgradeToItemStar = itemData.upgrade.STAR;
@@ -207,13 +253,13 @@ function _getRemodelItemData(itemData,cal){
     var row1 = " " + itemName + "→" + upgradeToItemName + (upgradeToItemStar != "0" ? "★" + (upgradeToItemStar == 10 ? "max" : "+" + upgradeToItemStar) : "") + "　";
     var row2 = " 二番艦:" + helperShip + "　";
     var row3 = " 燃料:" + fuel + " 弾薬:" + ammo + " 鋼材:" + steel + " ボーキ:" + bauxite + "　";
-    var row4 = " 初期|開発:" + df2.format(star0to6Research[0]|0)   + "/" + df2.format(star0to6Research[1]|0)   + " 改修:" + df2.format(star0to6Screw[0]|0)   + "/" + df2.format(star0to6Screw[1]|0)   + " 消費:" + (star0to6Screw[1]   == "--  " ? "---" : star0to6ConsumeName   + (star0to6ConsumeNum   == "" ? "" : "*" + star0to6ConsumeNum + " (" + star0to6NumOfPossesions + ")　"));
-    var row5 = " ★６|開発:" + df2.format(star6toMaxResearch[0]|0) + "/" + df2.format(star6toMaxResearch[1]|0) + " 改修:" + df2.format(star6toMaxScrew[0]|0) + "/" + df2.format(star6toMaxScrew[1]|0) + " 消費:" + (star6toMaxScrew[1] == "--  " ? "---" : star6toMaxConsumeName + (star6toMaxConsumeNum == "" ? "" : "*" + star6toMaxConsumeNum + " (" + star6toMaxNumOfPossesions + ")　"));
-    var row6 = " ★Ｍ|";
+    var row4 = toFormatInfo(" 初期|",star0to6Research,star0to6Screw,star0to6Consumes);
+    var row5 = toFormatInfo(" ★６|",star6toMaxResearch,star6toMaxScrew,star6toMaxConsumes);
+    var row6;
     if(itemData.upgrade == null){
-        row6 += "　　       ---装備更新不可---";
+        row6 = " ★Ｍ|　　       ---装備更新不可---";
     } else {
-        row6 += "開発:" + df2.format(upgradeResearch[0]|0)    + "/" + df2.format(upgradeResearch[1]|0)    + " 改修:" + df2.format(upgradeScrew[0]|0)    + "/" + df2.format(upgradeScrew[1]|0)    + " 消費:" + (upgradeScrew[1]    == "--  " ? "---" : upgradeConsumeName    + (upgradeConsumeNum    == "" ? "" : "*" + upgradeConsumeNum    + " (" + upgradeNumOfPossesions + ")　"));
+        row6 = toFormatInfo(" ★Ｍ|",upgradeResearch,upgradeScrew,upgradeConsumes);
     }
     return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
 }
@@ -241,12 +287,43 @@ function getItemName(id){
         return Item.get(id).getName();
     } catch(e) {
         switch(id){
-            case NE_ENGINE:return "ネ式エンジン";
-            default       :return id;
+            case NE_ENGINE    : return "ネ式エンジン";
+            case NEW_GUN_MOUNT: return "新型砲熕兵装資材";
+            case SKILLED      : return "熟練搭乗員";
+            default           : return id;
         }
     }
 }
 
 function isItem(id){
     return Item.get(id) instanceof ItemInfoDto;
+}
+
+/**
+ * 
+ * @param {*} prefix 
+ */
+function toFormatInfo(prefix,research,screw,consumes){
+    var df = new DecimalFormat("000");
+    var df2 = new DecimalFormat("00");
+    var result = prefix;
+    result += "開発:" + df2.format(research[0]|0) + "/" + df2.format(research[1]|0);
+    result += " 改修:" + df2.format(screw[0]|0) + "/" + df2.format(screw[1]|0);
+    result += " 消費:";
+    if(screw[1] == "--  "){
+        result += "---";
+    } else {
+        for(var i in consumes){
+            result += consumes[i].name;
+            if(consumes[i].num != ""){
+                result += "*" + consumes[i].num + " (" + consumes[i].pos + ")";
+            }
+            if(i < consumes.length - 1){
+                result += ",";
+            } else {
+                result += "　";
+            }
+        }
+    }
+    return result;
 }
