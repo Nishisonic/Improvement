@@ -1,4 +1,4 @@
-//Ver:2.2.4
+//Ver:2.2.5
 //Author:Nishisonic
 
 //script読み込み
@@ -136,27 +136,25 @@ function getRemodelItemData(itemId,cal){
     var result = "";
     if(remodelItemData[String(word + itemId)].MATERIAL === undefined){
         Arrays.stream(Java.to(remodelItemData[String(word + itemId)].upgrade,ObjectArrayType)).forEach(function(data){
-            result += _getRemodelItemData(data,cal) + "\r\n";
+            result += _getRemodelItemData(itemId,data,cal) + "\n";
         });
         result = result.substr(0, result.length - 2);
     } else {
-        result += _getRemodelItemData(remodelItemData[String(word + itemId)],cal);
+        result += _getRemodelItemData(itemId,remodelItemData[String(word + itemId)],cal);
     }
     return result.replace(/&/g,'&&');
 }
 
-function _getRemodelItemData(itemData,cal){
+function _getRemodelItemData(itemId,itemData,cal){
     var df = new DecimalFormat("000");
     var df2 = new DecimalFormat("00");
-    var itemName = getItemName(itemData.ID);
+    var itemName = getItemName(itemId);
     var upgradeToItemName = "";
     var upgradeToItemStar = 0;
-    var helperShip = itemData.helperShip[getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK))].join(SEP);
-    if(helperShip == NONE){
-        helperShip = helperShip.substring(1,helperShip.length()); //改行を省く
-        var sdf = new SimpleDateFormat("(次回はM月d日(E))");
-        helperShip += sdf.format(getNextImprovementDate(itemData,cal).getTime()); //次の改修日を表示
-    }
+    var helperShip = itemData.helperShip[getDayOfWeek(cal.get(Calendar.DAY_OF_WEEK))].join(SEP).replace(/\n/,"");
+    var sdf = new SimpleDateFormat("\n [次回はM月d日(E)");
+    var nextImprovementDate = getNextImprovementDate(itemData,cal);
+    helperShip += sdf.format(nextImprovementDate.getTime()) + " 二番艦:" + itemData.helperShip[getDayOfWeek(nextImprovementDate.get(Calendar.DAY_OF_WEEK))].join(SEP) + "]"; //次の改修日を表示
     var material = itemData.MATERIAL;
     var fuel    = df.format(material[0]|0);
     var ammo    = df.format(material[1]|0);
@@ -261,7 +259,7 @@ function _getRemodelItemData(itemData,cal){
     } else {
         row6 = toFormatInfo(" ★Ｍ|",upgradeResearch,upgradeScrew,upgradeConsumes);
     }
-    return row1 + "\r\n" + row2 + "\r\n" + row3 + "\r\n" + row4 + "\r\n" + row5 + "\r\n" + row6 + "\r\n";
+    return row1 + "\n" + row2 + "\n" + row3 + "\n" + row4 + "\n" + row5 + "\n" + row6 + "\n";
 }
 
 function getColumnIndex(pt,item){
