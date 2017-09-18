@@ -1,6 +1,6 @@
-//Ver:2.2.5
+//Ver:2.2.6
 //Author:Nishisonic
-//LastUpdate:2017/07/20
+//LastUpdate:2017/09/19
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -10,9 +10,10 @@ var SEP             = ",";
 var NONE            = "\n本日の改修は出来ません";
 var ERROR           = "ERROR";
 var UNKNOWN         = "不明";
-var NOT_R           = function(name){ return name + "(改は不可)"; };
+var NOT_R           = function(name){ return name + "(改以降は不可)"; };
 var NOT_R2          = function(name){ return name + "(改二は除く)"; };
 var NOT_R2F         = function(name){ return name + "(航改二は除く)"; };
+var NOT_R2M2        = function(name){ return name + "(Mod.2は除く)"; };
 var NOT_F           = function(name){ return name + "(航以降は不可)"; };
 var NOT_UPGRADE     = function(name){ return name + "(更新不可)"; };
 var ONLY_R2_UPGRADE = function(name){ return name + "(改二のみ更新可)"; };
@@ -30,21 +31,21 @@ var NE_ENGINE       = -9999;
 var NEW_GUN_MOUNT   = -9998;
 /** 熟練搭乗員 */
 var SKILLED         = -9997;
-/* 
+/*
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
  * IDだけでも良かったですが、物凄く可読性が落ちるのでこの形にしています。
- * 
+ *
  * 【仕様】
  * 日本艦…ローマ字
  * 外国艦…そのまま(アルファベット)
  * ※ただし、Верныйは日本艦と同じようにする
- * 
+ *
  * 無改造                  …そのまま
  * 艦娘名 + 改             …定数名に「_R」を付与(艦娘名 + _R)
  * 艦娘名 + (改二 or zwei) …定数名に「_R2」を付与(艦娘名 + _R2)
  * 艦娘名 + (改三 or drei) …定数名に「_R3」を付与(艦娘名 + _R3)
- * 
+ *
  * ※空白(Grafなど)は、アンダーバーで代用
  * ※マイナス(U-511)は、削る
  * ※千歳、千代田の場合は特例
@@ -59,6 +60,7 @@ var SKILLED         = -9997;
  * 　艦娘名 + 乙 …定数名に「O」を付与(艦娘名 + O)
  * 　艦娘名 + 丙 …定数名に「H」を付与(艦娘名 + H)
  * 　艦娘名 + 丁 …定数名に「T」を付与(艦娘名 + T)
+ * 　艦娘名 + Mod.2 …定数名に「M2」を付与(艦娘名 + M2)
  */
 var MUTSUKI            = "睦月";               //ID:1
 var KISARAGI           = "如月";               //ID:2
@@ -436,6 +438,12 @@ var SHIMUSHU_R         = "占守改";             //ID:376
 var KUNASHIRI_R        = "国後改";             //ID:377
 var TAIYOH_R           = "大鷹改";             //ID:380
 var ETOROFU_R          = "択捉改";             //ID:383
+var MATSUWA_R          = "松輪改";             //ID:384
+var HATAKAZE_R         = "旗風改";             //ID:387
+var AMAGIRI_R          = "天霧改";             //ID:390
+var SAGIRI_R           = "狭霧改";             //ID:391
+var RICHELIEU_R        = "Richelieu改";        //ID:392
+var ARK_ROYAL_R        = "Ark Royal改";        //ID:393
 var I168_R             = "伊168改";            //ID:398
 var I58_R              = "伊58改";             //ID:399
 var I8_R               = "伊8改";              //ID:400
@@ -513,12 +521,12 @@ var KAMIKAZE           = "神風";               //ID:471
 var ASAKAZE            = "朝風";               //ID:472
 var HARUKAZE           = "春風";               //ID:473
 var MATSUKAZE          = "松風";               //ID:474
-//var NULL             = "NULL";               //ID:475
+var HATAKAZE           = "旗風";               //ID:475
 var KAMIKAZE_R         = "神風改";             //ID:476
 //var NULL             = "NULL";               //ID:477
 //var NULL             = "NULL";               //ID:478
-//var NULL             = "NULL";               //ID:479
-//var NULL             = "NULL";               //ID:480
+var AMAGIRI            = "天霧";               //ID:479
+var SAGIRI             = "狭霧";               //ID:480
 var MINAZUKI           = "水無月";             //ID:481
 //var NULL             = "NULL";               //ID:482
 var I26                = "伊26";               //ID:483
@@ -530,7 +538,7 @@ var YURA_R2            = "由良改二";           //ID:488
 //var NULL             = "NULL";               //ID:489
 var ARASHIO_R2         = "荒潮改二";           //ID:490
 var COMMANDANT_TASTE   = "Commandant Taste";   //ID:491
-//var NULL             = "NULL";               //ID:492
+var RICHELIEU          = "Richelieu";          //ID:492
 //var NULL             = "NULL";               //ID:493
 var I13                = "伊13";               //ID:494
 var I14                = "伊14";               //ID:495
@@ -542,13 +550,21 @@ var KUMANO_R2F         = "熊野航改二";         //ID:509
 var GANGUT             = "Гангут";             //ID:511
 var OKTIABR_SKAIA_REVOLIUTSIIA = "Октябрьская революция"; //ID:512
 var GANGUT_R2          = "Гангут два";         //ID:513
+var ARK_ROYAL          = "Ark Royal";          //ID:515
 var SHIMUSHU           = "占守";               //ID:517
 var KUNASHIRI          = "国後";               //ID:518
 var KASUGAMARU         = "春日丸";             //ID:521
 var ETOROFU            = "択捉";               //ID:524
+var MATSUWA            = "松輪";               //ID:525
 var TAIYOH             = "大鷹";               //ID:526
 var TAIYOH_R2          = "大鷹改二";           //ID:529
+var I504               = "伊504";              //ID:530
+var LUIGI_TORELLI      = "Luigi Torelli";      //ID:535
+var UIT_25             = "UIT-25";             //ID:539
 var NAGATO_R2          = "長門改二";           //ID:541
+var SARATOGA_R2        = "Saratoga Mk.II";     //ID:545
+var SARATOGA_R2M2      = "Saratoga Mk.II Mod.2"; //ID:550
+var LUIGI_TORELLI_R    = "Luigi Torelli改";    //ID:605
 
 var word = "id_";
 
@@ -1506,6 +1522,30 @@ var remodelItemData = {
         },
         upgrade:null,
     },
+    /** 15.2cm三連装砲 */
+    id_247:{
+        MATERIAL:[ 15,150,150, 50],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [RICHELIEU],
+            TUESDAY:  [RICHELIEU],
+            WEDNESDAY:[RICHELIEU],
+            THURSDAY: [RICHELIEU],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[10,15],
+            SCREW:   [ 6, 6],
+            consumes:{ID: 12,NUM:1}, //15.5cm三連装副砲*1
+        },
+        star6toMax:{
+            RESEARCH:[10,15],
+            SCREW:   [ 7, 8],
+            consumes:{ID: 28,NUM:2}, //22号対水上電探*2
+        },
+        upgrade:null,
+    },
     /** 12.7cm連装高角砲 */
     id_10:{
         MATERIAL:[ 10, 40, 70, 20],
@@ -2060,11 +2100,11 @@ var remodelItemData = {
         helperShip:{
             SUNDAY:   [NOT_R(SARATOGA)],
             MONDAY:   [NONE],
-            TUESDAY:  [NONE],
-            WEDNESDAY:[NOT_R(SARATOGA)],
+            TUESDAY:  [NOT_R2M2(SARATOGA_R2)],
+            WEDNESDAY:[NOT_R(SARATOGA),NOT_R2M2(SARATOGA_R2)],
             THURSDAY: [NOT_R(SARATOGA)],
-            FRIDAY:   [SARATOGA],
-            SATURDAY: [SARATOGA],
+            FRIDAY:   [NOT_R2(SARATOGA)],
+            SATURDAY: [NOT_R2(SARATOGA)],
         },
         star0to6:{
             RESEARCH:[ 2, 5],
@@ -2089,10 +2129,10 @@ var remodelItemData = {
         MATERIAL:[100,120,  0,300],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [SARATOGA],
-            TUESDAY:  [SARATOGA],
+            MONDAY:   [NOT_R2M2(SARATOGA)],
+            TUESDAY:  [NOT_R2(SARATOGA)],
             WEDNESDAY:[SARATOGA_R],
-            THURSDAY: [NONE],
+            THURSDAY: [NOT_R2M2(SARATOGA_R2)],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
         },
@@ -2129,12 +2169,42 @@ var remodelItemData = {
         star0to6:{
             RESEARCH:[ 6, 7],
             SCREW:   [ 4, 6],
-            consumes:{ID:21,NUM:1}, //零式艦戦52型*1
+            consumes:{ID:21,NUM:2}, //零式艦戦52型*2
         },
         star6toMax:{
             RESEARCH:[ 8,10],
             SCREW:   [ 6, 8],
-            consumes:{ID:55,NUM:1}, //零式艦戦52型*1
+            consumes:{ID:55,NUM:1}, //紫電改二*1
+        },
+        upgrade:{
+            RESEARCH:[12,18],
+            SCREW:   [ 8,16],
+            consumes:{ID:55,NUM:2}, //紫電改二*2
+            ID:206, //F6F-5
+            STAR:0,
+        },
+    },
+    /** F6F-5 */
+    id_206:{
+        MATERIAL:[200,250,  0,450],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [SARATOGA_R2],
+            WEDNESDAY:[SARATOGA_R2],
+            THURSDAY: [SARATOGA_R2],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 8, 9],
+            SCREW:   [ 6, 7],
+            consumes:{ID:55,NUM:2}, //紫電改二*2
+        },
+        star6toMax:{
+            RESEARCH:[12,16],
+            SCREW:   [ 8,12],
+            consumes:{ID:22,NUM:1}, //烈風*1
         },
         upgrade:null,
     },

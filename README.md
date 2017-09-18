@@ -2,7 +2,7 @@
 改修工廠 (RemodelItem)
 --
 
-[![Release](https://img.shields.io/badge/gem-v2.2.5-brightgreen.svg)](https://github.com/Nishisonic/RemodelItem/releases/latest)
+[![Release](https://img.shields.io/badge/gem-v2.2.6-brightgreen.svg)](https://github.com/Nishisonic/RemodelItem/releases/latest)
 [![License](https://img.shields.io/npm/l/express.svg)](https://docs.google.com/spreadsheets/d/1gSYgCPTMV7_bDerWTs_KCgVnhdaJQnFVFXcw5cFCqos/edit#gid=761755938)
 
 

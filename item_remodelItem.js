@@ -1,4 +1,4 @@
-//Ver:2.2.5
+//Ver:2.2.6
 //Author:Nishisonic
 
 load("script/utils.js");

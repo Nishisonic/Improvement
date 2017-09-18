@@ -1,4 +1,4 @@
-//Ver:2.2.5
+//Ver:2.2.6
 //Author:Nishisonic
 
 //script読み込み
@@ -33,7 +33,7 @@ ReportUtils        = Java.type("logbook.util.ReportUtils");
 data_prefix = "remodelItem_";
 
 var remodelItemIndex = - 1;
-          
+
 function begin(header) {
     IntStream.range(0,header.length).forEach(function(i){
         if (header[i].equals("二番艦")) {
@@ -48,7 +48,7 @@ var label = null;
 function create(table, data, index) {
     // 装備
     var items = data[0].get();
-    
+
     var item = new TableItem(table, SWT.NONE);
 
     item.setData(items);
@@ -57,9 +57,9 @@ function create(table, data, index) {
     if ((index % 2) != 0) {
         item.setBackground(SWTResourceManager.getColor(AppConstants.ROW_BACKGROUND));
     }
-    
+
     item.setText(ReportUtils.toStringArray(data));
-    
+
     var TableListener = new Listener({
         handleEvent : function(event) {
                switch (event.type) {
@@ -94,7 +94,7 @@ function create(table, data, index) {
             }
         }
     });
-    
+
     var LabelListener = new Listener({
         handleEvent : function(event){
             var _label = Label.class.cast(event.widget);
@@ -113,7 +113,7 @@ function create(table, data, index) {
             }
         }
     });
-    
+
     if(getData("set") == null){
         table.setToolTipText("");
         table.addListener(SWT.Dispose, TableListener);
@@ -298,8 +298,8 @@ function isItem(id){
 }
 
 /**
- * 
- * @param {*} prefix 
+ *
+ * @param {*} prefix
  */
 function toFormatInfo(prefix,research,screw,consumes){
     var df = new DecimalFormat("000");
