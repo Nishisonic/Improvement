@@ -1,6 +1,6 @@
-//Ver:2.2.6
+//Ver:2.2.7
 //Author:Nishisonic
-//LastUpdate:2017/09/19
+//LastUpdate:2017/11/03
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -535,7 +535,7 @@ var FUJINAMI           = "藤波";               //ID:485
 var URANAMI            = "浦波";               //ID:486
 var KINU_R2            = "鬼怒改二";           //ID:487
 var YURA_R2            = "由良改二";           //ID:488
-//var NULL             = "NULL";               //ID:489
+var MICHISHIO_R2       = "満潮改二";           //ID:489
 var ARASHIO_R2         = "荒潮改二";           //ID:490
 var COMMANDANT_TASTE   = "Commandant Taste";   //ID:491
 var RICHELIEU          = "Richelieu";          //ID:492
@@ -570,8 +570,8 @@ var word = "id_";
 
 
 var remodelItemData = {
-    /* 小口径主砲 */
-    /** 12.7cm連装砲 */
+//#region 小口径主砲
+    //#region 12.7cm連装砲(2014/10/24)
     id_2:{
         MATERIAL:[ 10, 30, 60,  0],
         helperShip:{
@@ -601,15 +601,16 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 12.7cm連装砲B型改二 */
+    //#endregion
+    //#region 12.7cm連装砲B型改二(2014/10/24)
     id_63:{
         MATERIAL:[ 10, 40, 70,  0],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [YUDACHI_R2,AYANAMI_R2],
-            TUESDAY:  [YUDACHI_R2,AYANAMI_R2],
-            WEDNESDAY:[YUDACHI_R2,AYANAMI_R2],
-            THURSDAY: [NONE],
+            MONDAY:   [YUDACHI_R2,AYANAMI_R2,KAWAKAZE_R2],
+            TUESDAY:  [YUDACHI_R2,AYANAMI_R2,KAWAKAZE_R2],
+            WEDNESDAY:[YUDACHI_R2,AYANAMI_R2,KAWAKAZE_R2],
+            THURSDAY: [KAWAKAZE_R2],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
         },
@@ -623,9 +624,41 @@ var remodelItemData = {
             SCREW:   [ 2, 4],
             consumes:{ID: 63,NUM:1}, //12.7cm連装砲B型改二*1
         },
+        upgrade:{
+            RESEARCH:[ 4, 8],
+            SCREW:   [ 4, 7],
+            consumes:{ID:  2,NUM:3}, //12.7cm連装砲*3
+            ID:266, //12.7cm連装砲C型改二
+            STAR:0,
+        },
+    },
+    //#endregion
+    //#region 12.7cm連装砲C型改二(2017/10/25)
+    id_266:{
+        MATERIAL:[ 10, 50, 80,  0],
+        helperShip:{
+            SUNDAY:   [MICHISHIO_R2],
+            MONDAY:   [MICHISHIO_R2],
+            TUESDAY:  [MICHISHIO_R2],
+            WEDNESDAY:[MICHISHIO_R2,ARASHIO_R2],
+            THURSDAY: [MICHISHIO_R2,ARASHIO_R2],
+            FRIDAY:   [MICHISHIO_R2,ARASHIO_R2],
+            SATURDAY: [MICHISHIO_R2,ARASHIO_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 2, 3],
+            consumes:{ID:  2,NUM:1}, //12.7cm連装砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 63,NUM:1}, //12.7cm連装砲B型改二*1
+        },
         upgrade:null,
     },
-    /** 10cm高角砲+高射装置 */
+    //#endregion
+    //#region 10cm高角砲+高射装置(2014/11/14)
     id_122:{
         MATERIAL:[ 10, 60,150, 50],
         helperShip:{
@@ -649,8 +682,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 中口径主砲 */
-    /** 14cm単装砲 */
+    //#endregion
+//#endregion
+//#region 中口径主砲
+    //#region 14cm単装砲(2014/10/24)
     id_4:{
         MATERIAL:[ 10, 50, 80,  0],
         helperShip:{
@@ -680,7 +715,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 14cm連装砲 */
+    //#endregion
+    //#region 14cm連装砲(2014/10/24)
     id_119:{
         MATERIAL:[ 10, 60,100,  0],
         helperShip:{
@@ -704,7 +740,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 15.2cm連装砲 */
+    //#endregion
+    //#region 15.2cm連装砲(2015/05/29)
     id_65:{
         MATERIAL:[ 10, 70,100,  0],
         helperShip:{
@@ -734,7 +771,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 15.2cm連装砲改 */
+    //#endregion
+    //#region 15.2cm連装砲改(2015/05/29)
     id_139:{
         MATERIAL:[ 20, 80,100, 30],
         helperShip:{
@@ -758,7 +796,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 15.5cm三連装砲 */
+    //#endregion
+    //#region 15.5cm三連装砲(2014/12/12)
     id_5:{
         MATERIAL:[ 10, 90,120,  0],
         helperShip:{
@@ -788,7 +827,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 15.5cm三連装砲改 */
+    //#endregion
+    //#region 15.5cm三連装砲改(2017/06/23)
     id_235:{
         MATERIAL:[ 15,120,150, 30],
         helperShip:{
@@ -818,7 +858,8 @@ var remodelItemData = {
             STAR:7,
         },
     },
-    /** 20.3cm連装砲 */
+    //#endregion
+    //#region 20.3cm連装砲(2014/10/24)
     id_6:{
         MATERIAL:[ 10, 90,120,  0],
         helperShip:{
@@ -848,7 +889,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 20.3cm(2号)連装砲 */
+    //#endregion
+    //#region 20.3cm(2号)連装砲(2014/10/24)
     id_90:{
         MATERIAL:[ 10,100,130,  0],
         helperShip:{
@@ -878,7 +920,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 20.3cm(3号)連装砲 */
+    //#endregion
+    //#region 20.3cm(3号)連装砲(2014/10/24)
     id_50:{
         MATERIAL:[ 10,110,140,  0],
         helperShip:{
@@ -902,7 +945,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 203mm／53 連装砲 */
+    //#endregion
+    //#region 203mm／53 連装砲(2017/02/28)
     id_162:{
         MATERIAL:[ 10,180,190,  0],
         helperShip:{
@@ -926,8 +970,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 大口径主砲 */
-    /** 35.6cm連装砲 */
+    //#endregion
+//#endregion
+//#region 大口径主砲
+    //#region 35.6cm連装砲(2014/10/24)
     id_7:{
         MATERIAL:[ 20,240,300,  0],
         helperShip:{
@@ -957,7 +1003,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 35.6cm連装砲(ダズル迷彩) */
+    //#endregion
+    //#region 35.6cm連装砲(ダズル迷彩)(2016/02/29)
     id_104:{
         MATERIAL:[ 30,250,300, 30],
         helperShip:{
@@ -981,7 +1028,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 試製35.6cm三連装砲 */
+    //#endregion
+    //#region 試製35.6cm三連装砲(2016/02/29)
     id_103:{
         MATERIAL:[ 30,330,390, 30],
         helperShip:{
@@ -1005,7 +1053,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 38cm連装砲 */
+    //#endregion
+    //#region 38cm連装砲(2015/02/23)
     id_76:{
         MATERIAL:[ 20,380,450, 20],
         helperShip:{
@@ -1035,7 +1084,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 38cm連装砲改 */
+    //#endregion
+    //#region 38cm連装砲改(2015/02/23)
     id_114:{
         MATERIAL:[ 30,390,470, 30],
         helperShip:{
@@ -1059,7 +1109,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 38.1cm Mk.I連装砲 */
+    //#endregion
+    //#region 38.1cm Mk.I連装砲(2016/09/16)
     id_190:{
         MATERIAL:[ 24,280,380,  0],
         helperShip:{
@@ -1089,7 +1140,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 38.1cm Mk.I／N連装砲改 */
+    //#endregion
+    //#region 38.1cm Mk.I／N連装砲改(2016/10/05)
     id_192:{
         MATERIAL:[ 28,320,420, 40],
         helperShip:{
@@ -1113,7 +1165,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 381mm/50 三連装砲 */
+    //#endregion
+    //#region 381mm/50 三連装砲(2015/04/28)
     id_133:{
         MATERIAL:[ 30,400,480, 20],
         helperShip:{
@@ -1143,7 +1196,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 381mm/50 三連装砲改 */
+    //#endregion
+    //#region 381mm/50 三連装砲改(2015/04/28)
     id_137:{
         MATERIAL:[ 40,440,500, 40],
         helperShip:{
@@ -1167,7 +1221,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 41cm連装砲 */
+    //#endregion
+    //#region 41cm連装砲(2014/12/01)
     id_8:{
         MATERIAL:[ 30,350,480,  0],
         helperShip:{
@@ -1197,7 +1252,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 試製41cm三連装砲 */
+    //#endregion
+    //#region 試製41cm三連装砲(2016/02/29)
     id_105:{
         MATERIAL:[ 40,440,620, 40],
         helperShip:{
@@ -1227,7 +1283,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 41cm三連装砲改 */
+    //#endregion
+    //#region 41cm三連装砲改(2017/05/29)
     id_236:{
         MATERIAL:[ 45,450,700, 45],
         helperShip:{
@@ -1251,7 +1308,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 16inch三連装砲 Mk.7 */
+    //#endregion
+    //#region 16inch三連装砲 Mk.7(2016/06/30)
     id_161:{
         MATERIAL:[ 45,450,750,100],
         helperShip:{
@@ -1281,7 +1339,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 16inch三連装砲Mk.7+GFCS */
+    //#endregion
+    //#region 16inch三連装砲Mk.7+GFCS(2016/06/30)
     id_183:{
         MATERIAL:[ 45,500,770,500],
         helperShip:{
@@ -1305,7 +1364,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 試製46cm連装砲 */
+    //#endregion
+    //#region 試製46cm連装砲(2015/02/23)
     id_117:{
         MATERIAL:[ 40,420,650, 40],
         helperShip:{
@@ -1335,7 +1395,8 @@ var remodelItemData = {
             STAR:5,
         },
     },
-    /** 46cm三連装砲 */
+    //#endregion
+    //#region 46cm三連装砲(2015/02/23)
     id_9:{
         MATERIAL:[ 50,480,800, 50],
         helperShip:{
@@ -1359,7 +1420,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 試製51cm連装砲 */
+    //#endregion
+    //#region 試製51cm連装砲(2015/05/18)
     id_128:{
         MATERIAL:[ 50,550,950, 80],
         helperShip:{
@@ -1383,8 +1445,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 副砲 */
-    /** 90mm単装高角砲 */
+    //#endregion
+//#endregion
+//#region 副砲
+    //#region 90mm単装高角砲(2015/04/28)
     id_135:{
         MATERIAL:[ 10, 20, 70, 10],
         helperShip:{
@@ -1408,7 +1472,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 15.2cm単装砲 */
+    //#endregion
+    //#region 15.2cm単装砲(2015/05/18)
     id_11:{
         MATERIAL:[ 10, 60, 90,  0],
         helperShip:{
@@ -1438,7 +1503,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 15.5cm三連装副砲 */
+    //#endregion
+    //#region 15.5cm三連装副砲(2017/06/23)
     id_12:{
         MATERIAL:[ 10, 90,120,  0],
         helperShip:{
@@ -1468,7 +1534,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 15.5cm三連装副砲改 */
+    //#endregion
+    //#region 15.5cm三連装副砲改(2017/06/23)
     id_234:{
         MATERIAL:[ 15,120,150, 30],
         helperShip:{
@@ -1498,7 +1565,8 @@ var remodelItemData = {
             STAR:7,
         },
     },
-    /** OTO 152mm三連装速射砲 */
+    //#endregion
+    //#region OTO 152mm三連装速射砲(2015/04/28)
     id_134:{
         MATERIAL:[ 10, 90,120,  0],
         helperShip:{
@@ -1522,7 +1590,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 15.2cm三連装砲 */
+    //#endregion
+    //#region 15.2cm三連装砲(2017/09/12)
     id_247:{
         MATERIAL:[ 15,150,150, 50],
         helperShip:{
@@ -1546,7 +1615,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 12.7cm連装高角砲 */
+    //#endregion
+    //#region 12.7cm連装高角砲(2017/03/17)
     id_10:{
         MATERIAL:[ 10, 40, 70, 20],
         helperShip:{
@@ -1576,7 +1646,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 8cm高角砲 */
+    //#endregion
+    //#region 8cm高角砲(2017/03/17)
     id_66:{
         MATERIAL:[ 10, 40, 80, 40],
         helperShip:{
@@ -1606,7 +1677,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 8cm高角砲改＋増設機銃 */
+    //#endregion
+    //#region 8cm高角砲改＋増設機銃(2017/04/05)
     id_220:{
         MATERIAL:[ 30, 70,100, 80],
         helperShip:{
@@ -1630,8 +1702,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 魚雷 */
-    /** 61cm三連装魚雷 */
+    //#endregion
+//#endregion
+//#region 魚雷
+    //#region 61cm三連装魚雷(2015/01/09)
     id_13:{
         MATERIAL:[ 50, 70, 60, 20],
         helperShip:{
@@ -1661,7 +1735,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 61cm三連装(酸素)魚雷 */
+    //#endregion
+    //#region 61cm三連装(酸素)魚雷(2015/01/09)
     id_125:{
         MATERIAL:[ 60, 90, 60, 20],
         helperShip:{
@@ -1691,7 +1766,8 @@ var remodelItemData = {
             STAR:5,
         },
     },
-    /** 61cm四連装魚雷 */
+    //#endregion
+    //#region 61cm四連装魚雷(2014/10/24)
     id_14:{
         MATERIAL:[ 70,100, 70, 20],
         helperShip:{
@@ -1721,7 +1797,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 61cm四連装(酸素)魚雷 */
+    //#endregion
+    //#region 61cm四連装(酸素)魚雷(2014/10/24)
     id_15:{
         MATERIAL:[ 80,120, 80, 20],
         helperShip:{
@@ -1751,7 +1828,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 61cm五連装(酸素)魚雷 */
+    //#endregion
+    //#region 61cm五連装(酸素)魚雷(2014/10/24)
     id_58:{
         MATERIAL:[100,150, 90, 30],
         helperShip:{
@@ -1775,7 +1853,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 試製61cm六連装(酸素)魚雷 */
+    //#endregion
+    //#region 試製61cm六連装(酸素)魚雷(2016/06/30)
     id_179:{
         MATERIAL:[120,180,120, 40],
         helperShip:{
@@ -1799,8 +1878,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 艦上戦闘機 */
-    /** 九六式艦戦 */
+    //#endregion
+//#endregion
+//#region 艦上戦闘機
+    //#region 九六式艦戦(2016/06/30)
     id_19:{
         MATERIAL:[ 70, 50,  0,170],
         helperShip:{
@@ -1830,7 +1911,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 零式艦戦21型 */
+    //#endregion
+    //#region 零式艦戦21型(2016/06/30)
     id_20:{
         MATERIAL:[100, 80,  0,250],
         helperShip:{
@@ -1860,7 +1942,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 零式艦戦21型(熟練) */
+    //#endregion
+    //#region 零式艦戦21型(熟練)(2016/06/30)
     id_96:{
         MATERIAL:[100, 80,  0,250],
         helperShip:{
@@ -1890,7 +1973,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 零式艦戦32型 */
+    //#endregion
+    //#region 零式艦戦32型(2016/06/30)
     id_181:{
         MATERIAL:[ 90,100,  0,260],
         helperShip:{
@@ -1920,7 +2004,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 零式艦戦32型(熟練) */
+    //#endregion
+    //#region 零式艦戦32型(熟練)(2016/06/30)
     id_182:{
         MATERIAL:[ 90,100,  0,260],
         helperShip:{
@@ -1950,7 +2035,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 零式艦戦52型 */
+    //#endregion
+    //#region 零式艦戦52型(2016/06/30)
     id_21:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -1974,7 +2060,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零式艦戦52型(熟練) */
+    //#endregion
+    //#region 零式艦戦52型(熟練)(2016/06/30)
     id_152:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -1998,7 +2085,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零戦52型丙(六〇一空) */
+    //#endregion
+    //#region 零戦52型丙(六〇一空)(2016/06/30)
     id_109:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2022,7 +2110,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零戦52型丙(付岩井小隊) */
+    //#endregion
+    //#region 零戦52型丙(付岩井小隊)(2016/07/15)
     id_153:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2046,7 +2135,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零戦52型甲(付岩本小隊) */
+    //#endregion
+    //#region 零戦52型甲(付岩本小隊)(2016/07/15)
     id_156:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2070,7 +2160,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零式艦戦53型(岩本隊) */
+    //#endregion
+    //#region 零式艦戦53型(岩本隊)(2016/07/15)
     id_157:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2094,7 +2185,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** F4F-3 */
+    //#endregion
+    //#region F4F-3(2016/12/09)
     id_197:{
         MATERIAL:[ 90, 90,  0,270],
         helperShip:{
@@ -2124,7 +2216,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** F4F-4 */
+    //#endregion
+    //#region F4F-4(2016/12/09)
     id_198:{
         MATERIAL:[100,120,  0,300],
         helperShip:{
@@ -2154,7 +2247,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** F6F-3 */
+    //#endregion
+    //#region F6F-3(2017/01/10)
     id_205:{
         MATERIAL:[160,180,  0,380],
         helperShip:{
@@ -2184,7 +2278,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** F6F-5 */
+    //#endregion
+    //#region F6F-5(2017/09/12)
     id_206:{
         MATERIAL:[200,250,  0,450],
         helperShip:{
@@ -2208,8 +2303,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 艦上爆撃機 */
-    /** 零式艦戦62型(爆戦) */
+    //#endregion
+//#endregion
+//#region 艦上爆撃機
+    //#region 零式艦戦62型(爆戦)(2016/07/15)
     id_60:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2239,7 +2336,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 零戦62型(爆戦/岩井隊) */
+    //#endregion
+    //#region 零戦62型(爆戦/岩井隊)(2016/07/15)
     id_154:{
         MATERIAL:[120,120,  0,280],
         helperShip:{
@@ -2263,7 +2361,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 零式艦戦63型(爆戦) */
+    //#endregion
+    //#region 零式艦戦63型(爆戦)(2017/04/05)
     id_219:{
         MATERIAL:[130,140,  0,290],
         helperShip:{
@@ -2287,8 +2386,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 艦上偵察機 */
-    /** 試製景雲(艦偵型) */
+    //#endregion
+//#endregion
+//#region 艦上偵察機
+    //#region 試製景雲(艦偵型)(2016/12/09)
     id_151:{
         MATERIAL:[250,100,700,650],
         helperShip:{
@@ -2318,8 +2419,10 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /* 水上偵察機 */
-    /** 零式水上偵察機 */
+    //#endregion
+//#endregion
+//#region 水上偵察機
+    //#region 零式水上偵察機(2016/03/11)
     id_25:{
         MATERIAL:[ 90, 20,  0,300],
         helperShip:{
@@ -2349,7 +2452,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 零式水上観測機 */
+    //#endregion
+    //#region 零式水上観測機(2016/02/29)
     id_59:{
         MATERIAL:[ 90, 40,  0,270],
         helperShip:{
@@ -2373,7 +2477,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 九八式水上偵察機(夜偵) */
+    //#endregion
+    //#region 九八式水上偵察機(夜偵)(2016/04/22)
     id_102:{
         MATERIAL:[100, 30,  0,480],
         helperShip:{
@@ -2397,7 +2502,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** Ro.43水偵 */
+    //#endregion
+    //#region Ro.43水偵(2016/02/29)
     id_163:{
         MATERIAL:[ 60, 30,  0,180],
         helperShip:{
@@ -2427,8 +2533,10 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /* 水上戦闘機 */
-    /** 二式水戦改 */
+    //#endregion
+//#endregion
+//#region 水上戦闘機
+    //#region 二式水戦改(2017/03/17)
     id_165:{
         MATERIAL:[110, 80,  0,360],
         helperShip:{
@@ -2458,7 +2566,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 二式水戦改(熟練) */
+    //#endregion
+    //#region 二式水戦改(熟練)(2017/03/17)
     id_216:{
         MATERIAL:[110,100,  0,390],
         helperShip:{
@@ -2482,7 +2591,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 強風改 */
+    //#endregion
+    //#region 強風改(2017/04/05)
     id_217:{
         MATERIAL:[130, 80,  0,300],
         helperShip:{
@@ -2506,7 +2616,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** Ro.44水上戦闘機 */
+    //#endregion
+    //#region Ro.44水上戦闘機(2017/03/17)
     id_164:{
         MATERIAL:[ 70, 50,  0,220],
         helperShip:{
@@ -2536,7 +2647,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** Ro.44水上戦闘機bis */
+    //#endregion
+    //#region Ro.44水上戦闘機bis(2017/03/17)
     id_215:{
         MATERIAL:[ 80, 60,  0,280],
         helperShip:{
@@ -2560,8 +2672,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 水上爆撃機 */
-    /** 瑞雲 */
+    //#endregion
+//#endregion
+//#region 水上爆撃機
+    //#region 瑞雲(2017/06/23)
     id_26:{
         MATERIAL:[160,160,  0,360],
         helperShip:{
@@ -2591,7 +2705,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 瑞雲(六三四空) */
+    //#endregion
+    //#region 瑞雲(六三四空)(2017/06/23)
     id_79:{
         MATERIAL:[180,180,  0,480],
         helperShip:{
@@ -2615,7 +2730,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 瑞雲(六三四空/熟練) */
+    //#endregion
+    //#region 瑞雲(六三四空/熟練)(2017/06/23)
     id_237:{
         MATERIAL:[190,190,  0,490],
         helperShip:{
@@ -2639,8 +2755,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 電探 */
-    /** 13号対空電探 */
+    //#endregion
+//#endregion
+//#region 電探
+    //#region 13号対空電探(2015/06/12)
     id_27:{
         MATERIAL:[ 10,  0, 20, 30],
         helperShip:{
@@ -2670,7 +2788,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 13号対空電探改 */
+    //#endregion
+    //#region 13号対空電探改(2015/06/12)
     id_106:{
         MATERIAL:[ 10,  0, 30, 40],
         helperShip:{
@@ -2694,7 +2813,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 22号対水上電探 */
+    //#endregion
+    //#region 22号対水上電探(2015/06/26)
     id_28:{
         MATERIAL:[ 10,  0, 30, 30],
         helperShip:{
@@ -2724,7 +2844,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 22号対水上電探改四 */
+    //#endregion
+    //#region 22号対水上電探改四(2015/06/26)
     id_88:{
         MATERIAL:[ 10,  0, 40, 40],
         helperShip:{
@@ -2748,7 +2869,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 21号対空電探 */
+    //#endregion
+    //#region 21号対空電探(2015/06/12)
     id_30:{
         MATERIAL:[ 10,  0, 40, 50],
         helperShip:{
@@ -2778,7 +2900,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 21号対空電探改 */
+    //#endregion
+    //#region 21号対空電探改(2015/06/12)
     id_89:{
         MATERIAL:[ 10,  0, 60, 70],
         helperShip:{
@@ -2802,7 +2925,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 32号対水上電探 */
+    //#endregion
+    //#region 32号対水上電探(2015/07/17)
     id_31:{
         MATERIAL:[ 10,  0, 60, 50],
         helperShip:{
@@ -2832,7 +2956,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 32号対水上電探改 */
+    //#endregion
+    //#region 32号対水上電探改(2015/07/17)
     id_141:{
         MATERIAL:[ 10,  0,100, 80],
         helperShip:{
@@ -2856,8 +2981,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* ソナー */
-    /** 九三式水中聴音機 */
+    //#endregion
+//#endregion
+//#region ソナー
+    //#region 九三式水中聴音機(2015/01/09)
     id_46:{
         helperShip:{
             SUNDAY:   [YUBARI,KATORI_R,SHIGURE_R2],
@@ -2927,7 +3054,8 @@ var remodelItemData = {
             },
         }],
     },
-    /** 三式水中探信儀 */
+    //#endregion
+    //#region 三式水中探信儀(2015/01/09)
     id_47:{
         MATERIAL:[ 10,  0, 30, 50],
         helperShip:{
@@ -2951,7 +3079,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 四式水中聴音機 */
+    //#endregion
+    //#region 四式水中聴音機(2015/09/25)
     id_149:{
         MATERIAL:[ 10,  0, 50, 60],
         helperShip:{
@@ -2975,8 +3104,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 爆雷 */
-    /** 九四式爆雷投射機 */
+    //#endregion
+//#endregion
+//#region 爆雷
+    //#region 九四式爆雷投射機(2014/10/24)
     id_44:{
         MATERIAL:[ 10, 60, 20, 20],
         helperShip:{
@@ -3006,7 +3137,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 三式爆雷投射機 */
+    //#endregion
+    //#region 三式爆雷投射機(2014/10/24)
     id_45:{
         MATERIAL:[ 10, 80, 20, 30],
         helperShip:{
@@ -3030,8 +3162,41 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 対艦強化弾 */
-    /** 九一式徹甲弾 */
+    //#endregion
+    //#region 九五式爆雷(2017/10/25)
+    id_226:{
+        MATERIAL:[ 10, 90, 10, 60],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [SHIMUSHU],
+            TUESDAY:  [SHIMUSHU],
+            WEDNESDAY:[SHIMUSHU,ETOROFU],
+            THURSDAY: [SHIMUSHU,ETOROFU],
+            FRIDAY:   [ETOROFU],
+            SATURDAY: [ETOROFU],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 1, 1],
+            consumes:null,
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 2, 3],
+            consumes:{ID:226,NUM:1}, //九五式爆雷*1
+        },
+        upgrade:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 3, 6],
+            consumes:{ID:226,NUM:2}, //九五式爆雷*2
+            ID:227, //二式爆雷
+            STAR:0,
+        },
+    },
+    //#endregion
+//#endregion
+//#region 対艦強化弾
+    //#region 九一式徹甲弾(2015/01/23)
     id_36:{
         MATERIAL:[ 30,150,310, 10],
         helperShip:{
@@ -3061,7 +3226,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 一式徹甲弾 */
+    //#endregion
+    //#region 一式徹甲弾(2015/01/23)
     id_116:{
         MATERIAL:[ 30,170,330, 20],
         helperShip:{
@@ -3085,8 +3251,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 対空機銃 */
-    /** 25mm単装機銃 */
+    //#endregion
+//#endregion
+//#region 対空機銃
+    //#region 25mm単装機銃(2016/03/11)
     id_49:{
         MATERIAL:[  0, 10, 10, 10],
         helperShip:{
@@ -3116,7 +3284,8 @@ var remodelItemData = {
             STAR:5,
         },
     },
-    /** 25mm連装機銃 */
+    //#endregion
+    //#region 25mm連装機銃(2014/11/14)
     id_39:{
         MATERIAL:[  0, 20, 10, 10],
         helperShip:{
@@ -3146,7 +3315,8 @@ var remodelItemData = {
             STAR:3,
         },
     },
-    /** 25mm三連装機銃 */
+    //#endregion
+    //#region 25mm三連装機銃(2014/11/14)
     id_40:{
         MATERIAL:[  0, 30, 20, 10],
         helperShip:{
@@ -3176,7 +3346,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 25mm三連装機銃 集中配備 */
+    //#endregion
+    //#region 25mm三連装機銃 集中配備(2016/11/04)
     id_131:{
         MATERIAL:[  0, 90, 90,150],
         helperShip:{
@@ -3200,8 +3371,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 高射装置 */
-    /** 91式高射装置 */
+    //#endregion
+//#endregion
+//#region 高射装置
+    //#region 91式高射装置(2014/11/14)
     id_120:{
         MATERIAL:[  0,  0, 60, 40],
         helperShip:{
@@ -3231,7 +3404,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 94式高射装置 */
+    //#endregion
+    //#region 94式高射装置(2014/11/14)
     id_121:{
         helperShip:{
             SUNDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2,MAYA_R2],
@@ -3301,8 +3475,10 @@ var remodelItemData = {
             },
         }],
     },
-    /* 上陸用舟艇 */
-    /** 大発動艇 */
+    //#endregion
+//#endregion
+//#region 上陸用舟艇
+    //#region 大発動艇(2016/03/19)
     id_68:{
         helperShip:{
             SUNDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU,KINU_R2],
@@ -3372,7 +3548,8 @@ var remodelItemData = {
             },
         }],
     },
-    /** 大発動艇(八九式中戦車＆陸戦隊) */
+    //#endregion
+    //#region 大発動艇(八九式中戦車＆陸戦隊)(2016/03/19)
     id_166:{
         MATERIAL:[ 70, 80,120, 30],
         helperShip:{
@@ -3402,7 +3579,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 特大発動艇 */
+    //#endregion
+    //#region 特大発動艇(2016/11/04)
     id_193:{
         MATERIAL:[ 70, 80,120, 30],
         helperShip:{
@@ -3426,7 +3604,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 特二式内火艇 */
+    //#endregion
+    //#region 特二式内火艇(2016/03/19)
     id_167:{
         MATERIAL:[ 80, 90,100, 70],
         helperShip:{
@@ -3450,8 +3629,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 探照灯 */
-    /** 探照灯 */
+    //#endregion
+//#endregion
+//#region 探照灯
+    //#region 探照灯(2015/05/29)
     id_74:{
         MATERIAL:[ 10,  0, 30, 20],
         helperShip:{
@@ -3481,7 +3662,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 96式150cm探照灯 */
+    //#endregion
+    //#region 96式150cm探照灯(2015/05/29)
     id_140:{
         MATERIAL:[ 20,  0, 70, 30],
         helperShip:{
@@ -3505,8 +3687,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* バルジ */
-    /** 増設バルジ(中型艦) */
+    //#endregion
+//#endregion
+//#region バルジ
+    //#region 増設バルジ(中型艦)(2017/02/28)
     id_72:{
         MATERIAL:[ 70,  0,770,  0],
         helperShip:{
@@ -3536,7 +3720,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 艦本新設計 増設バルジ(中型艦) */
+    //#endregion
+    //#region 艦本新設計 増設バルジ(中型艦)(2017/02/28)
     id_203:{
         MATERIAL:[170,  0,970, 70],
         helperShip:{
@@ -3560,7 +3745,8 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /** 増設バルジ(大型艦) */
+    //#endregion
+    //#region 増設バルジ(大型艦)(2016/12/22)
     id_73:{
         MATERIAL:[ 80,  0,880,  0],
         helperShip:{
@@ -3590,7 +3776,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 艦本新設計 増設バルジ(大型艦) */
+    //#endregion
+    //#region 艦本新設計 増設バルジ(大型艦)(2016/12/22)
     id_204:{
         MATERIAL:[180,  0,980, 80],
         helperShip:{
@@ -3614,8 +3801,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 機関部強化 */
-    /** 強化型艦本式缶 */
+    //#endregion
+//#endregion
+//#region 機関部強化
+    //#region 強化型艦本式缶(2017/01/10)
     id_34:{
         MATERIAL:[240,  0,600, 80],
         helperShip:{
@@ -3645,7 +3834,8 @@ var remodelItemData = {
             STAR:0,
         },
     },
-    /** 新型高温高圧缶 */
+    //#endregion
+    //#region 新型高温高圧缶(2017/01/10)
     id_87:{
         MATERIAL:[300,  0,750,100],
         helperShip:{
@@ -3669,8 +3859,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 潜水艦装備 */
-    /** 潜水艦搭載電探＆水防式望遠鏡 */
+    //#endregion
+//#endregion
+//#region 潜水艦装備
+    //#region 潜水艦搭載電探＆水防式望遠鏡(2017/02/28)
     id_210:{
         MATERIAL:[ 80, 90,100, 70],
         helperShip:{
@@ -3694,8 +3886,10 @@ var remodelItemData = {
         },
         upgrade:null,
     },
-    /* 戦闘糧食 */
-    /** 戦闘糧食 */
+    //#endregion
+//#endregion
+//#region 戦闘糧食
+    //#region 戦闘糧食(2017/07/14)
     id_145:{
         MATERIAL:[ 10,  0,  0,  5],
         helperShip:{
@@ -3725,7 +3919,10 @@ var remodelItemData = {
             STAR:0,
         },
     },
+    //#endregion
+//#endregion
 }
+
 
 function getDayOfWeek(dayOfWeek){
     switch(dayOfWeek){
