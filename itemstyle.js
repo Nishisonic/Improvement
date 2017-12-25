@@ -1,4 +1,4 @@
-//Ver:2.2.7
+//Ver:2.2.8
 //Author:Nishisonic
 
 //script読み込み
@@ -285,10 +285,11 @@ function getItemName(id){
         return Item.get(id).getName();
     } catch(e) {
         switch(id){
-            case NE_ENGINE    : return "ネ式エンジン";
-            case NEW_GUN_MOUNT: return "新型砲熕兵装資材";
-            case SKILLED      : return "熟練搭乗員";
-            default           : return id;
+            case NE_ENGINE        : return "ネ式エンジン";
+            case NEW_GUN_MOUNT    : return "新型砲熕兵装資材";
+            case SKILLED          : return "熟練搭乗員";
+            case NEW_MODEL_AERIAL : return "新型航空兵装資材";
+            default               : return id;
         }
     }
 }
@@ -297,10 +298,6 @@ function isItem(id){
     return Item.get(id) instanceof ItemInfoDto;
 }
 
-/**
- *
- * @param {*} prefix
- */
 function toFormatInfo(prefix,research,screw,consumes){
     var df = new DecimalFormat("000");
     var df2 = new DecimalFormat("00");
