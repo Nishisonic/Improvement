@@ -1,4 +1,4 @@
-//Ver:2.2.8
+//Ver:2.2.9
 //Author:Nishisonic
 //LastUpdate:2017/12/26
 
@@ -3967,7 +3967,7 @@ var remodelItemData = {
     },
     //#endregion
     //#region 一式戦 隼III型甲(2017/12/11)
-    id_221:{
+    id_222:{
         MATERIAL:[130,200, 20,330],
         helperShip:{
             SUNDAY:   [NONE],
