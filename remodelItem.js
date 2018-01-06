@@ -1,6 +1,6 @@
-//Ver:2.2.9
+//Ver:2.3.0
 //Author:Nishisonic
-//LastUpdate:2017/12/26
+//LastUpdate:2018/01/06
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -33,6 +33,8 @@ var NEW_GUN_MOUNT    = -9998;
 var SKILLED          = -9997;
 /** 新型航空兵装資材 */
 var NEW_MODEL_AERIAL = -9996;
+/** 戦闘詳報 */
+var ACTION_REPORT    = -9995;
 /*
  * 【艦娘リスト】
  * 艦これ内部IDに合わせています。
@@ -573,6 +575,7 @@ var SUZUTSUKI_R        = "涼月改";             //ID:537
 var UIT_25             = "UIT-25";             //ID:539
 var TSUSHIMA           = "対馬";               //ID:540
 var NAGATO_R2          = "長門改二";           //ID:541
+var NAGANAMI_R2        = "長波改二";           //ID:543
 var SARATOGA_R2        = "Saratoga Mk.II";     //ID:545
 var TAMA_R2            = "多摩改二";           //ID:547
 var SARATOGA_R2M2      = "Saratoga Mk.II Mod.2"; //ID:550
@@ -654,9 +657,9 @@ var remodelItemData = {
             MONDAY:   [MICHISHIO_R2],
             TUESDAY:  [MICHISHIO_R2],
             WEDNESDAY:[MICHISHIO_R2,ARASHIO_R2],
-            THURSDAY: [MICHISHIO_R2,ARASHIO_R2],
-            FRIDAY:   [MICHISHIO_R2,ARASHIO_R2],
-            SATURDAY: [MICHISHIO_R2,ARASHIO_R2],
+            THURSDAY: [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
+            FRIDAY:   [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
+            SATURDAY: [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
         },
         star0to6:{
             RESEARCH:[ 2, 3],
@@ -667,6 +670,37 @@ var remodelItemData = {
             RESEARCH:[ 3, 4],
             SCREW:   [ 3, 4],
             consumes:{ID: 63,NUM:1}, //12.7cm連装砲B型改二*1
+        },
+        upgrade:{
+            RESEARCH:[ 6,10],
+            SCREW:   [ 4, 8],
+            consumes:[{ID: 28,NUM:2},{ID:NEW_GUN_MOUNT,NUM:1},{ID:ACTION_REPORT,NUM:1}], //22号対水上電探*2、新型砲熕兵装資材*1、戦闘詳報*1
+            ID:267, //12.7cm連装砲D型改二
+            STAR:0,
+        },
+    },
+    //#endregion
+    //#region 12.7cm連装砲D型改二(2017/12/27)
+    id_267:{
+        MATERIAL:[ 20, 70, 90, 20],
+        helperShip:{
+            SUNDAY:   [NAGANAMI_R2],
+            MONDAY:   [NAGANAMI_R2],
+            TUESDAY:  [NAGANAMI_R2],
+            WEDNESDAY:[NAGANAMI_R2],
+            THURSDAY: [NAGANAMI_R2],
+            FRIDAY:   [NAGANAMI_R2],
+            SATURDAY: [NAGANAMI_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 5, 6],
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 7,10],
+            SCREW:   [ 6, 9],
+            consumes:{ID:266,NUM:1}, //12.7cm連装砲C型改二*1
         },
         upgrade:null,
     },
@@ -1680,7 +1714,7 @@ var remodelItemData = {
         star6toMax:{
             RESEARCH:[ 6, 8],
             SCREW:   [ 4, 5],
-            consumes:{ID:  3,NUM:1}, //10cm連装高角砲*2
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
         },
         upgrade:{
             RESEARCH:[ 8,16],

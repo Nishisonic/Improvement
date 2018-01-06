@@ -1,4 +1,4 @@
-//Ver:2.2.9
+//Ver:2.3.0
 //Author:Nishisonic
 
 //script読み込み
@@ -289,6 +289,7 @@ function getItemName(id){
             case NEW_GUN_MOUNT    : return "新型砲熕兵装資材";
             case SKILLED          : return "熟練搭乗員";
             case NEW_MODEL_AERIAL : return "新型航空兵装資材";
+            case ACTION_REPORT    : return "戦闘詳報";
             default               : return id;
         }
     }
