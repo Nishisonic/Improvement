@@ -1,6 +1,6 @@
-//Ver:2.3.0
+//Ver:2.3.1
 //Author:Nishisonic
-//LastUpdate:2018/01/06
+//LastUpdate:2018/01/25
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -531,7 +531,7 @@ var MATSUKAZE          = "松風";               //ID:474
 var HATAKAZE           = "旗風";               //ID:475
 var KAMIKAZE_R         = "神風改";             //ID:476
 //var NULL             = "NULL";               //ID:477
-//var NULL             = "NULL";               //ID:478
+var TATSUTA_R2         = "龍田改二";           //ID:478
 var AMAGIRI            = "天霧";               //ID:479
 var SAGIRI             = "狭霧";               //ID:480
 var MINAZUKI           = "水無月";             //ID:481
@@ -550,6 +550,7 @@ var I400               = "伊400";              //ID:493
 var I13                = "伊13";               //ID:494
 var I14                = "伊14";               //ID:495
 var ZARA_R2            = "Zara due";           //ID:496
+var MURASAME_R2        = "村雨改二";           //ID:498
 var KAMOI_R            = "神威改";             //ID:499
 var KAMOI_RM           = "神威改母";           //ID:500
 var SUZUYA_R2          = "鈴谷改二";           //ID:503
@@ -656,10 +657,10 @@ var remodelItemData = {
             SUNDAY:   [MICHISHIO_R2],
             MONDAY:   [MICHISHIO_R2],
             TUESDAY:  [MICHISHIO_R2],
-            WEDNESDAY:[MICHISHIO_R2,ARASHIO_R2],
-            THURSDAY: [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
-            FRIDAY:   [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
-            SATURDAY: [MICHISHIO_R2,ARASHIO_R2,YUKIKAZE_R],
+            WEDNESDAY:[MICHISHIO_R2,MURASAME_R2,ARASHIO_R2],
+            THURSDAY: [MICHISHIO_R2,MURASAME_R2,ARASHIO_R2,YUKIKAZE_R],
+            FRIDAY:   [MICHISHIO_R2,MURASAME_R2,ARASHIO_R2,YUKIKAZE_R],
+            SATURDAY: [MICHISHIO_R2,MURASAME_R2,ARASHIO_R2,YUKIKAZE_R],
         },
         star0to6:{
             RESEARCH:[ 2, 3],
@@ -1752,6 +1753,31 @@ var remodelItemData = {
     //#endregion
 //#endregion
 //#region 魚雷
+    //#region 53cm連装魚雷(2018/01/17)
+    id_174:{
+        MATERIAL:[ 40, 60, 40, 20],
+        helperShip:{
+            SUNDAY:   [KAMIKAZE_R,TATSUTA_R2],
+            MONDAY:   [TATSUTA_R2],
+            TUESDAY:  [TATSUTA_R2],
+            WEDNESDAY:[KAMIKAZE_R,TATSUTA_R2],
+            THURSDAY: [KAMIKAZE_R,TATSUTA_R2],
+            FRIDAY:   [KAMIKAZE_R,TATSUTA_R2],
+            SATURDAY: [KAMIKAZE_R,TATSUTA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 1, 2],
+            SCREW:   [ 1, 1],
+            consumes:{ID: 13,NUM:1}, //61cm三連装魚雷*1
+        },
+        star6toMax:{
+            RESEARCH:[ 2, 4],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 14,NUM:1}, //61cm四連装魚雷*1
+        },
+        upgrade:null,
+    },
+    //#endregion
     //#region 61cm三連装魚雷(2015/01/09)
     id_13:{
         MATERIAL:[ 50, 70, 60, 20],
@@ -3370,10 +3396,10 @@ var remodelItemData = {
             SUNDAY:   [MAYA_R2],
             MONDAY:   [MAYA_R2,ISUZU_R2,KINU_R2],
             TUESDAY:  [ONLY_R2_UPGRADE(MAYA),ISUZU_R2,KINU_R2],
-            WEDNESDAY:[ONLY_R2_UPGRADE(MAYA),ISUZU_R2,SATSUKI_R2],
-            THURSDAY: [ONLY_R2_UPGRADE(MAYA),SATSUKI_R2],
-            FRIDAY:   [NONE],
-            SATURDAY: [NONE],
+            WEDNESDAY:[ONLY_R2_UPGRADE(MAYA),ISUZU_R2,SATSUKI_R2,,MURASAME_R2],
+            THURSDAY: [ONLY_R2_UPGRADE(MAYA),SATSUKI_R2,,MURASAME_R2],
+            FRIDAY:   [MURASAME_R2],
+            SATURDAY: [MURASAME_R2],
         },
         star0to6:{
             RESEARCH:[ 1, 2],
@@ -3529,10 +3555,10 @@ var remodelItemData = {
     id_68:{
         helperShip:{
             SUNDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU,KINU_R2],
-            MONDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU],
-            TUESDAY:  [SATSUKI_R2,AKITSUMARU],
-            WEDNESDAY:[SATSUKI_R2,AKITSUMARU],
-            THURSDAY: [AKITSUMARU,KINU_R2],
+            MONDAY:   [ABUKUMA_R2,SATSUKI_R2,TATSUTA_R2],
+            TUESDAY:  [SATSUKI_R2,TATSUTA_R2],
+            WEDNESDAY:[SATSUKI_R2,AKITSUMARU,TATSUTA_R2],
+            THURSDAY: [AKITSUMARU,TATSUTA_R2,KINU_R2],
             FRIDAY:   [ABUKUMA_R2,AKITSUMARU,KINU_R2],
             SATURDAY: [ABUKUMA_R2,AKITSUMARU,KINU_R2],
         },
@@ -3540,8 +3566,8 @@ var remodelItemData = {
                 MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
                 SUNDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU],
-                MONDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU],
-                TUESDAY:  [SATSUKI_R2,AKITSUMARU],
+                MONDAY:   [ABUKUMA_R2,SATSUKI_R2],
+                TUESDAY:  [SATSUKI_R2],
                 WEDNESDAY:[SATSUKI_R2,AKITSUMARU],
                 THURSDAY: [AKITSUMARU],
                 FRIDAY:   [ABUKUMA_R2,AKITSUMARU],
@@ -3569,10 +3595,10 @@ var remodelItemData = {
                 MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
                 SUNDAY:   [KINU_R2],
-                MONDAY:   [NONE],
-                TUESDAY:  [NONE],
-                WEDNESDAY:[NONE],
-                THURSDAY: [KINU_R2],
+                MONDAY:   [TATSUTA_R2],
+                TUESDAY:  [TATSUTA_R2],
+                WEDNESDAY:[TATSUTA_R2],
+                THURSDAY: [TATSUTA_R2,KINU_R2],
                 FRIDAY:   [KINU_R2],
                 SATURDAY: [KINU_R2],
             },
