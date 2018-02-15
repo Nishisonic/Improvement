@@ -1,6 +1,6 @@
-//Ver:2.3.1
+//Ver:2.3.2
 //Author:Nishisonic
-//LastUpdate:2018/01/25
+//LastUpdate:2018/02/16
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -1448,7 +1448,7 @@ var remodelItemData = {
     id_9:{
         MATERIAL:[ 50,480,800, 50],
         helperShip:{
-            SUNDAY:   [MUSASHI],
+            SUNDAY:   [NOT_R(MUSASHI)],
             MONDAY:   [MUSASHI],
             TUESDAY:  [YAMATO],
             WEDNESDAY:[YAMATO],
@@ -1465,6 +1465,37 @@ var remodelItemData = {
             RESEARCH:[ 8,10],
             SCREW:   [ 5, 8],
             consumes:{ID:  9,NUM:2}, //46cm三連装砲*2
+        },
+        upgrade:{
+            RESEARCH:[18,36],
+            SCREW:   [12,16],
+            consumes:{ID:  9,NUM:4}, //46cm三連装砲*4
+            ID:276, //46cm三連装砲改
+            STAR:0,
+        },
+    },
+    //#endregion
+    //#region 46cm三連装砲改(2018/02/05)
+    id_276:{
+        MATERIAL:[ 50,490,860, 80],
+        helperShip:{
+            SUNDAY:   [MUSASHI_R],
+            MONDAY:   [YAMATO_R],
+            TUESDAY:  [YAMATO_R],
+            WEDNESDAY:[YAMATO_R],
+            THURSDAY: [NONE],
+            FRIDAY:   [MUSASHI_R],
+            SATURDAY: [MUSASHI_R],
+        },
+        star0to6:{
+            RESEARCH:[ 8, 9],
+            SCREW:   [ 5, 6],
+            consumes:{ID: 40,NUM:3}, //25mm三連装機銃*3
+        },
+        star6toMax:{
+            RESEARCH:[ 9,16],
+            SCREW:   [ 8, 9],
+            consumes:{ID:  9,NUM:3}, //46cm三連装砲*3
         },
         upgrade:null,
     },
@@ -3441,6 +3472,62 @@ var remodelItemData = {
             RESEARCH:[ 6, 9],
             SCREW:   [ 6, 9],
             consumes:{ID: 40,NUM:5}, //25mm三連装機銃*5
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 12cm30連装噴進砲(2018/02/05)
+    id_51:{
+        MATERIAL:[ 90,270, 50,180],
+        helperShip:{
+            SUNDAY:   [ISE_R],
+            MONDAY:   [HYUGA_R],
+            TUESDAY:  [HYUGA_R],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [ISE_R],
+            SATURDAY: [ISE_R],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 6],
+            SCREW:   [ 2, 3],
+            consumes:{ID:51,NUM:1}, //12cm30連装噴進砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 5, 9],
+            SCREW:   [ 3, 5],
+            consumes:{ID:51,NUM:2}, //12cm30連装噴進砲*2
+        },
+        upgrade:{
+            RESEARCH:[10,30],
+            SCREW:   [ 7,10],
+            consumes:[{ID: 40,NUM:2},{ID: ACTION_REPORT,NUM:1}], //25mm三連装機銃*2、戦闘詳報*1
+            ID:274, //12cm30連装噴進砲改二
+            STAR:0,
+        },
+    },
+    //#endregion
+    //#region 12cm30連装噴進砲改二(2018/02/05)
+    id_274:{
+        MATERIAL:[ 90,300, 90,150],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [ISE_R],
+            TUESDAY:  [ISE_R],
+            WEDNESDAY:[HYUGA_R],
+            THURSDAY: [HYUGA_R],
+            FRIDAY:   [NONE],
+            SATURDAY: [NONE],
+        },
+        star0to6:{
+            RESEARCH:[ 5, 7],
+            SCREW:   [ 4, 5],
+            consumes:{ID: 40,NUM:2}, //25mm三連装機銃*2
+        },
+        star6toMax:{
+            RESEARCH:[ 7,15],
+            SCREW:   [ 5, 7],
+            consumes:{ID: 51,NUM:2}, //12cm30連装噴進砲*2
         },
         upgrade:null,
     },
