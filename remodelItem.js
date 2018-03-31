@@ -1,6 +1,6 @@
-//Ver:2.3.2
+//Ver:2.3.3
 //Author:Nishisonic
-//LastUpdate:2018/02/16
+//LastUpdate:2018/03/31
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -19,6 +19,7 @@ var NOT_UPGRADE      = function(name){ return name + "(更新不可)"; };
 var ONLY_R2_UPGRADE  = function(name){ return name + "(改二のみ更新可)"; };
 var NOT_R2_UPGRADE   = function(name){ return name + "(改二は除く、また更新不可)"; };
 var ONLY_UPGRADE     = function(name){ return name + "(この艦のみ更新可)"; };
+var NOT_RO           = function(name){ return name + "(乙改は不可)"; };
 /** データなし(消費資材片方版) */
 var UNDEFINED        = "    ";
 /** 消費資材データなし */
@@ -451,6 +452,10 @@ var AMAGIRI_R          = "天霧改";             //ID:390
 var SAGIRI_R           = "狭霧改";             //ID:391
 var RICHELIEU_R        = "Richelieu改";        //ID:392
 var ARK_ROYAL_R        = "Ark Royal改";        //ID:393
+var JERVIS_R           = "Jervis改";           //ID:394
+var TASHKENT_R         = "Ташкент改";          //ID:395
+var GAMBIER_BAY_R      = "Gambier Bay改";      //ID:396
+var INTREPID_R         = "Intrepid改";         //ID:397
 var I168_R             = "伊168改";            //ID:398
 var I58_R              = "伊58改";             //ID:399
 var I8_R               = "伊8改";              //ID:400
@@ -537,7 +542,7 @@ var SAGIRI             = "狭霧";               //ID:480
 var MINAZUKI           = "水無月";             //ID:481
 //var NULL             = "NULL";               //ID:482
 var I26                = "伊26";               //ID:483
-//var NULL             = "NULL";               //ID:484
+var HAMANAMI           = "浜波";               //ID:484
 var FUJINAMI           = "藤波";               //ID:485
 var URANAMI            = "浦波";               //ID:486
 var KINU_R2            = "鬼怒改二";           //ID:487
@@ -561,8 +566,10 @@ var GANGUT             = "Гангут";             //ID:511
 var OKTIABR_SKAIA_REVOLIUTSIIA = "Октябрьская революция"; //ID:512
 var GANGUT_R2          = "Гангут два";         //ID:513
 var ARK_ROYAL          = "Ark Royal";          //ID:515
+var TASHKENT           = "Ташкент";            //ID:516
 var SHIMUSHU           = "占守";               //ID:517
 var KUNASHIRI          = "国後";               //ID:518
+var JERVIS             = "Jervis";             //ID:519
 var KASUGAMARU         = "春日丸";             //ID:521
 var ETOROFU            = "択捉";               //ID:524
 var MATSUWA            = "松輪";               //ID:525
@@ -577,11 +584,23 @@ var UIT_25             = "UIT-25";             //ID:539
 var TSUSHIMA           = "対馬";               //ID:540
 var NAGATO_R2          = "長門改二";           //ID:541
 var NAGANAMI_R2        = "長波改二";           //ID:543
+var GAMBIER_BAY        = "Gambier Bay";        //ID:544
 var SARATOGA_R2        = "Saratoga Mk.II";     //ID:545
+var MUSASHI_R2         = "武蔵改二";           //ID:546
 var TAMA_R2            = "多摩改二";           //ID:547
+var INTREPID           = "Intrepid";           //ID:549
 var SARATOGA_R2M2      = "Saratoga Mk.II Mod.2"; //ID:550
+var HIBURI             = "日振";               //ID:551
+var DAITO              = "大東";               //ID:552
+var ZUIHO_R2           = "瑞鳳改二";           //ID:555
+var ISOKAZE_RO         = "磯風乙改";           //ID:557
+var HAMAKAZE_RO        = "浜風乙改";           //ID:558
+var ZUIHO_R2O          = "瑞鳳改二乙";         //ID:560
 var LUIGI_TORELLI_R    = "Luigi Torelli改";    //ID:605
 var I400_R             = "伊400改";            //ID:606
+var HIBURI_R           = "日振改";             //ID:678
+var DAITO_R            = "大東改";             //ID:679
+var HAMANAMI_R         = "浜波改";             //ID:680
 
 var word = "id_";
 
@@ -727,6 +746,31 @@ var remodelItemData = {
             RESEARCH:[ 5, 8],
             SCREW:   [ 4, 7],
             consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region QF 4.7inch砲 Mk.XII改(2018/03/23)
+    id_280:{
+        MATERIAL:[ 20, 60, 80, 20],
+        helperShip:{
+            SUNDAY:   [JERVIS],
+            MONDAY:   [JERVIS],
+            TUESDAY:  [JERVIS],
+            WEDNESDAY:[JERVIS],
+            THURSDAY: [JERVIS],
+            FRIDAY:   [JERVIS],
+            SATURDAY: [JERVIS],
+        },
+        star0to6:{
+            RESEARCH:[ 6, 7],
+            SCREW:   [ 4, 5],
+            consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 7, 8],
+            SCREW:   [ 6, 7],
+            consumes:{ID: 63,NUM:2}, //12.7cm連装砲B型改二*2
         },
         upgrade:null,
     },
@@ -1505,9 +1549,9 @@ var remodelItemData = {
         MATERIAL:[ 50,550,950, 80],
         helperShip:{
             SUNDAY:   [NONE],
-            MONDAY:   [YAMATO_R,MUSASHI_R],
+            MONDAY:   [YAMATO_R,NOT_R2(MUSASHI_R)],
             TUESDAY:  [YAMATO_R],
-            WEDNESDAY:[MUSASHI_R],
+            WEDNESDAY:[NOT_R2(MUSASHI_R)],
             THURSDAY: [NONE],
             FRIDAY:   [NONE],
             SATURDAY: [NONE],
@@ -1521,6 +1565,31 @@ var remodelItemData = {
             RESEARCH:[10,15],
             SCREW:   [ 7,10],
             consumes:{ID:  9,NUM:3}, //46cm三連装砲*3
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 51cm連装砲(2018/03/23)
+    id_281:{
+        MATERIAL:[100,700,950,200],
+        helperShip:{
+            SUNDAY:   [MUSASHI_R2],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [NONE],
+            FRIDAY:   [MUSASHI_R2],
+            SATURDAY: [MUSASHI_R2],
+        },
+        star0to6:{
+            RESEARCH:[20,25],
+            SCREW:   [ 7, 8],
+            consumes:{ID:  8,NUM:4}, //41cm連装砲*4
+        },
+        star6toMax:{
+            RESEARCH:[25,50],
+            SCREW:   [10,13],
+            consumes:{ID:  9,NUM:4}, //46cm三連装砲*4
         },
         upgrade:null,
     },
@@ -1979,6 +2048,31 @@ var remodelItemData = {
             RESEARCH:[ 9,12],
             SCREW:   [ 6,12],
             consumes:{ID: 58,NUM:1}, //61cm五連装(酸素)魚雷*1
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 533mm 三連装魚雷(2018/03/23)
+    id_283:{
+        MATERIAL:[ 60, 90, 70, 30],
+        helperShip:{
+            SUNDAY:   [TASHKENT],
+            MONDAY:   [TASHKENT],
+            TUESDAY:  [TASHKENT],
+            WEDNESDAY:[TASHKENT],
+            THURSDAY: [TASHKENT],
+            FRIDAY:   [TASHKENT],
+            SATURDAY: [TASHKENT],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 13,NUM:1}, //61cm三連装魚雷*1
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 8],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 15,NUM:2}, //61cm四連装(酸素)魚雷*2
         },
         upgrade:null,
     },
@@ -2901,9 +2995,9 @@ var remodelItemData = {
             MONDAY:   [YUKIKAZE],
             TUESDAY:  [YUKIKAZE],
             WEDNESDAY:[YUKIKAZE],
-            THURSDAY: [ISOKAZE_R],
-            FRIDAY:   [HATSUSHIMO_R2,ISOKAZE_R],
-            SATURDAY: [HATSUSHIMO_R2,ISOKAZE_R],
+            THURSDAY: [NOT_RO(ISOKAZE_R)],
+            FRIDAY:   [HATSUSHIMO_R2,NOT_RO(ISOKAZE_R)],
+            SATURDAY: [HATSUSHIMO_R2,NOT_RO(ISOKAZE_R)],
         },
         star0to6:{
             RESEARCH:[ 5, 7],
@@ -3915,8 +4009,8 @@ var remodelItemData = {
             TUESDAY:  [NONE],
             WEDNESDAY:[MUTSU,YAMATO],
             THURSDAY: [NAGATO,MUTSU,YAMATO,MUSASHI],
-            FRIDAY:   [NAGATO,MUTSU,YAMATO,MUSASHI],
-            SATURDAY: [NAGATO,MUSASHI],
+            FRIDAY:   [NAGATO,MUTSU,YAMATO,NOT_R2(MUSASHI)],
+            SATURDAY: [NAGATO,NOT_R2(MUSASHI)],
         },
         star0to6:{
             RESEARCH:[ 8,10],
@@ -3941,7 +4035,7 @@ var remodelItemData = {
     id_204:{
         MATERIAL:[180,  0,980, 80],
         helperShip:{
-            SUNDAY:   [YAMATO,MUSASHI],
+            SUNDAY:   [YAMATO,NOT_R2(MUSASHI)],
             MONDAY:   [NONE],
             TUESDAY:  [MUSASHI],
             WEDNESDAY:[NONE],
