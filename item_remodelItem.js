@@ -1,4 +1,4 @@
-//Ver:2.3.3
+//Ver:2.3.4
 //Author:Nishisonic
 
 load("script/utils.js");
@@ -13,7 +13,7 @@ Paths = Java.type("java.nio.file.Paths")
 StandardOpenOption = Java.type("java.nio.file.StandardOpenOption")
 
 /** バージョン */
-var VERSION = 2.33
+var VERSION = 2.34
 /** バージョン確認URL */
 var UPDATE_CHECK_URL = "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/update.txt"
 /** ファイルの場所 */

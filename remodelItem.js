@@ -1,6 +1,6 @@
-//Ver:2.3.3
+//Ver:2.3.4
 //Author:Nishisonic
-//LastUpdate:2018/03/31
+//LastUpdate:2018/04/12
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -265,6 +265,7 @@ var HAGURO_R2          = "羽黒改二";           //ID:194
 var AYANAMI_R2         = "綾波改二";           //ID:195
 var HIRYU_R2           = "飛龍改二";           //ID:196
 var SORYU_R2           = "蒼龍改二";           //ID:197
+var ARARE_R2           = "霰改二";             //ID:198
 var OSHIO_R2           = "大潮改二";           //ID:199
 var ABUKUMA_R2         = "阿武隈改二";         //ID:200
 var FUBUKI_R           = "吹雪改";             //ID:201
@@ -771,6 +772,31 @@ var remodelItemData = {
             RESEARCH:[ 7, 8],
             SCREW:   [ 6, 7],
             consumes:{ID: 63,NUM:2}, //12.7cm連装砲B型改二*2
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 130mm B-13連装砲(2018/04/06)
+    id_282:{
+        MATERIAL:[ 40, 90,190, 50],
+        helperShip:{
+            SUNDAY:   [TASHKENT],
+            MONDAY:   [TASHKENT],
+            TUESDAY:  [TASHKENT],
+            WEDNESDAY:[TASHKENT],
+            THURSDAY: [TASHKENT],
+            FRIDAY:   [TASHKENT],
+            SATURDAY: [TASHKENT],
+        },
+        star0to6:{
+            RESEARCH:[ 8, 9],
+            SCREW:   [ 5, 6],
+            consumes:{ID:  2,NUM:3}, //12.7cm連装砲*3
+        },
+        star6toMax:{
+            RESEARCH:[ 9,13],
+            SCREW:   [ 7, 9],
+            consumes:{ID:  4,NUM:4}, //14cm単装砲*4
         },
         upgrade:null,
     },
@@ -1847,6 +1873,31 @@ var remodelItemData = {
             RESEARCH:[ 8,15],
             SCREW:   [ 6, 8],
             consumes:{ID: 49,NUM:2}, //25mm単装機銃*2
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 10cm連装高角砲改＋増設機銃(2018/04/06)
+    id_275:{
+        MATERIAL:[ 10, 90,170, 80],
+        helperShip:{
+            SUNDAY:   [OYODO_R],
+            MONDAY:   [OYODO_R],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [MUSASHI_R2],
+            FRIDAY:   [OYODO_R,MUSASHI_R2],
+            SATURDAY: [OYODO_R,MUSASHI_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 7, 8],
+            SCREW:   [ 4, 5],
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
+        },
+        star6toMax:{
+            RESEARCH:[10,16],
+            SCREW:   [ 6, 8],
+            consumes:{ID: 40,NUM:2}, //25mm三連装機銃*2
         },
         upgrade:null,
     },
@@ -4046,12 +4097,12 @@ var remodelItemData = {
         star0to6:{
             RESEARCH:[20,30],
             SCREW:   [ 6, 9],
-            consumes:{ID:204,NUM:1}, //増設バルジ(大型艦)*1
+            consumes:{ID: 73,NUM:1}, //増設バルジ(大型艦)*1
         },
         star6toMax:{
             RESEARCH:[32,48],
             SCREW:   [ 8,12],
-            consumes:{ID:204,NUM:2}, //増設バルジ(大型艦)*2
+            consumes:{ID: 73,NUM:2}, //増設バルジ(大型艦)*2
         },
         upgrade:null,
     },
