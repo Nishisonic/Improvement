@@ -1,6 +1,6 @@
-//Ver:2.3.4
+//Ver:2.3.5
 //Author:Nishisonic
-//LastUpdate:2018/04/12
+//LastUpdate:2018/04/30
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -594,14 +594,18 @@ var SARATOGA_R2M2      = "Saratoga Mk.II Mod.2"; //ID:550
 var HIBURI             = "日振";               //ID:551
 var DAITO              = "大東";               //ID:552
 var ZUIHO_R2           = "瑞鳳改二";           //ID:555
+var URAKAZE_RT         = "浦風丁改";           //ID:556
 var ISOKAZE_RO         = "磯風乙改";           //ID:557
 var HAMAKAZE_RO        = "浜風乙改";           //ID:558
 var ZUIHO_R2O          = "瑞鳳改二乙";         //ID:560
+var SAMUEL_B_ROBERTS   = "Samuel B.Roberts";   //ID:561
+var KAGERO_R2          = "陽炎改二";           //ID:566
 var LUIGI_TORELLI_R    = "Luigi Torelli改";    //ID:605
 var I400_R             = "伊400改";            //ID:606
 var HIBURI_R           = "日振改";             //ID:678
 var DAITO_R            = "大東改";             //ID:679
 var HAMANAMI_R         = "浜波改";             //ID:680
+var SAMUEL_B_ROBERTS_R = "Samuel B.Roberts改"; //ID:681
 
 var word = "id_";
 
@@ -801,6 +805,30 @@ var remodelItemData = {
         upgrade:null,
     },
     //#endregion
+    //#region 5inch単装砲 Mk.30(2018/04/23)
+    id_122:{
+        MATERIAL:[ 30, 80,180,160],
+        helperShip:{
+            SUNDAY:   [SAMUEL_B_ROBERTS],
+            MONDAY:   [SAMUEL_B_ROBERTS],
+            TUESDAY:  [SAMUEL_B_ROBERTS],
+            WEDNESDAY:[SAMUEL_B_ROBERTS],
+            THURSDAY: [SAMUEL_B_ROBERTS],
+            FRIDAY:   [SAMUEL_B_ROBERTS],
+            SATURDAY: [SAMUEL_B_ROBERTS],
+        },
+        star0to6:{
+            RESEARCH:[10,12],
+            SCREW:   [ 6, 7],
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
+        },
+        star6toMax:{
+            RESEARCH:[12,18],
+            SCREW:   [ 8,10],
+            consumes:{ID: 91,NUM:2}, //12.7cm連装高角砲(後期型)*2
+        },
+        upgrade:null,
+    },
 //#endregion
 //#region 中口径主砲
     //#region 14cm単装砲(2014/10/24)
