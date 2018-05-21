@@ -1,6 +1,6 @@
-//Ver:2.3.5
+//Ver:2.3.6
 //Author:Nishisonic
-//LastUpdate:2018/04/30
+//LastUpdate:2018/05/22
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -599,13 +599,16 @@ var ISOKAZE_RO         = "磯風乙改";           //ID:557
 var HAMAKAZE_RO        = "浜風乙改";           //ID:558
 var ZUIHO_R2O          = "瑞鳳改二乙";         //ID:560
 var SAMUEL_B_ROBERTS   = "Samuel B.Roberts";   //ID:561
+var FUKAE              = "福江";               //ID:565
 var KAGERO_R2          = "陽炎改二";           //ID:566
+var SIRANUI_R2         = "不知火改二";         //ID:567
 var LUIGI_TORELLI_R    = "Luigi Torelli改";    //ID:605
 var I400_R             = "伊400改";            //ID:606
 var HIBURI_R           = "日振改";             //ID:678
 var DAITO_R            = "大東改";             //ID:679
 var HAMANAMI_R         = "浜波改";             //ID:680
 var SAMUEL_B_ROBERTS_R = "Samuel B.Roberts改"; //ID:681
+var FUKAE_R            = "福江改";             //ID:685
 
 var word = "id_";
 
@@ -2152,6 +2155,56 @@ var remodelItemData = {
             RESEARCH:[ 6, 8],
             SCREW:   [ 3, 4],
             consumes:{ID: 15,NUM:2}, //61cm四連装(酸素)魚雷*2
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 61cm三連装(酸素)魚雷後期型(2018/05/15)
+    id_285:{
+        MATERIAL:[120,180, 90, 60],
+        helperShip:{
+            SUNDAY:   [AYANAMI_R2],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[NONE],
+            THURSDAY: [HATSUSHIMO_R2],
+            FRIDAY:   [AYANAMI_R2,HATSUSHIMO_R2],
+            SATURDAY: [AYANAMI_R2,HATSUSHIMO_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 5, 6],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 13,NUM:3}, //61cm三連装魚雷*3
+        },
+        star6toMax:{
+            RESEARCH:[ 6, 9],
+            SCREW:   [ 5, 7],
+            consumes:{ID:125,NUM:1}, //61cm三連装(酸素)魚雷*1
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 61cm四連装(酸素)魚雷後期型(2018/05/15)
+    id_286:{
+        MATERIAL:[160,240,120, 80],
+        helperShip:{
+            SUNDAY:   [KAGERO_R2],
+            MONDAY:   [SHIGURE_R2],
+            TUESDAY:  [SHIGURE_R2],
+            WEDNESDAY:[SHIGURE_R2],
+            THURSDAY: [NAGANAMI_R2],
+            FRIDAY:   [KAGERO_R2,NAGANAMI_R2],
+            SATURDAY: [KAGERO_R2,NAGANAMI_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 7, 8],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 14,NUM:3}, //61cm四連装魚雷*3
+        },
+        star6toMax:{
+            RESEARCH:[ 8,12],
+            SCREW:   [ 5, 7],
+            consumes:{ID: 15,NUM:3}, //61cm四連装(酸素)魚雷*3
         },
         upgrade:null,
     },
