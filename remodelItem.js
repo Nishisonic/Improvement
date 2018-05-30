@@ -1,6 +1,6 @@
-//Ver:2.3.6
+//Ver:2.3.6 fix.1
 //Author:Nishisonic
-//LastUpdate:2018/05/22
+//LastUpdate:2018/05/30
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -809,7 +809,7 @@ var remodelItemData = {
     },
     //#endregion
     //#region 5inch単装砲 Mk.30(2018/04/23)
-    id_122:{
+    id_284:{
         MATERIAL:[ 30, 80,180,160],
         helperShip:{
             SUNDAY:   [SAMUEL_B_ROBERTS],
