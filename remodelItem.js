@@ -1,6 +1,6 @@
-//Ver:2.3.6 fix.1
+//Ver:2.3.7
 //Author:Nishisonic
-//LastUpdate:2018/05/30
+//LastUpdate:2018/08/01
 
 Calendar = Java.type("java.util.Calendar");
 
@@ -536,7 +536,7 @@ var HARUKAZE           = "春風";               //ID:473
 var MATSUKAZE          = "松風";               //ID:474
 var HATAKAZE           = "旗風";               //ID:475
 var KAMIKAZE_R         = "神風改";             //ID:476
-//var NULL             = "NULL";               //ID:477
+var TENRYU_R2          = "天龍改二";           //ID:477
 var TATSUTA_R2         = "龍田改二";           //ID:478
 var AMAGIRI            = "天霧";               //ID:479
 var SAGIRI             = "狭霧";               //ID:480
@@ -584,6 +584,7 @@ var SUZUTSUKI_R        = "涼月改";             //ID:537
 var UIT_25             = "UIT-25";             //ID:539
 var TSUSHIMA           = "対馬";               //ID:540
 var NAGATO_R2          = "長門改二";           //ID:541
+var YUGUMO_R2          = "夕雲改二";           //ID:542
 var NAGANAMI_R2        = "長波改二";           //ID:543
 var GAMBIER_BAY        = "Gambier Bay";        //ID:544
 var SARATOGA_R2        = "Saratoga Mk.II";     //ID:545
@@ -593,6 +594,7 @@ var INTREPID           = "Intrepid";           //ID:549
 var SARATOGA_R2M2      = "Saratoga Mk.II Mod.2"; //ID:550
 var HIBURI             = "日振";               //ID:551
 var DAITO              = "大東";               //ID:552
+var ISE_R2             = "伊勢改二";           //ID:553
 var ZUIHO_R2           = "瑞鳳改二";           //ID:555
 var URAKAZE_RT         = "浦風丁改";           //ID:556
 var ISOKAZE_RO         = "磯風乙改";           //ID:557
@@ -601,7 +603,8 @@ var ZUIHO_R2O          = "瑞鳳改二乙";         //ID:560
 var SAMUEL_B_ROBERTS   = "Samuel B.Roberts";   //ID:561
 var FUKAE              = "福江";               //ID:565
 var KAGERO_R2          = "陽炎改二";           //ID:566
-var SIRANUI_R2         = "不知火改二";         //ID:567
+var SHIRANUI_R2        = "不知火改二";         //ID:567
+var KUROSHIO_R2        = "黒潮改二";           //ID:568
 var LUIGI_TORELLI_R    = "Luigi Torelli改";    //ID:605
 var I400_R             = "伊400改";            //ID:606
 var HIBURI_R           = "日振改";             //ID:678
@@ -612,38 +615,135 @@ var FUKAE_R            = "福江改";             //ID:685
 
 var word = "id_";
 
+// 12.7cmと3式爆雷が残ってる
 
 var remodelItemData = {
 //#region 小口径主砲
+    //#region 12cm単装砲(2018/07/12)
+    id_294:{
+        MATERIAL:[ 10, 20, 40,  0],
+        helperShip:{
+            SUNDAY:   [MUTSUKI,KISARAGI],
+            MONDAY:   [MUTSUKI,KISARAGI],
+            TUESDAY:  [MUTSUKI,KISARAGI],
+            WEDNESDAY:[MUTSUKI,KISARAGI],
+            THURSDAY: [MUTSUKI,KISARAGI],
+            FRIDAY:   [MUTSUKI,KISARAGI],
+            SATURDAY: [MUTSUKI,KISARAGI],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 2],
+            SCREW:   [ 1, 2],
+            consumes:{ID:  1,NUM:1}, //12cm単装砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 1, 2],
+            consumes:{ID:  1,NUM:2}, //12cm単装砲*2
+        },
+        upgrade:{
+            RESEARCH:[ 2, 4],
+            SCREW:   [ 2, 6],
+            consumes:{ID: 28,NUM:1}, //22号対水上電探*1
+            ID:293, //12cm単装砲改二
+            STAR:0,
+        },
+    },
+    //#endregion
     //#region 12.7cm連装砲(2014/10/24)
     id_2:{
-        MATERIAL:[ 10, 30, 60,  0],
         helperShip:{
-            SUNDAY:   [DEFAULT],
-            MONDAY:   [DEFAULT],
+            SUNDAY:   [DEFAULT,URANAMI,ISONAMI_R],
+            MONDAY:   [DEFAULT,URANAMI,ISONAMI_R],
             TUESDAY:  [DEFAULT],
             WEDNESDAY:[DEFAULT],
             THURSDAY: [DEFAULT],
-            FRIDAY:   [DEFAULT],
-            SATURDAY: [DEFAULT],
+            FRIDAY:   [DEFAULT,URANAMI,ISONAMI_R],
+            SATURDAY: [DEFAULT,URANAMI,ISONAMI_R],
+        },
+        upgrade:[{
+            MATERIAL:[ 10, 30, 60,  0],
+            helperShip:{
+                SUNDAY:   [DEFAULT],
+                MONDAY:   [DEFAULT],
+                TUESDAY:  [DEFAULT],
+                WEDNESDAY:[DEFAULT],
+                THURSDAY: [DEFAULT],
+                FRIDAY:   [DEFAULT],
+                SATURDAY: [DEFAULT],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:null,
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID:  2,NUM:1}, //12.7cm連装砲*1
+            },
+            upgrade:{
+                RESEARCH:[ 2, 3],
+                SCREW:   [ 3, 6],
+                consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
+                ID:63, //12.7cm連装砲B型改二
+                STAR:0,
+            },
+        },
+        {
+            MATERIAL:[ 10, 30, 60,  0],
+            helperShip:{
+                SUNDAY:   [URANAMI,ISONAMI_R],
+                MONDAY:   [URANAMI,ISONAMI_R],
+                TUESDAY:  [NONE],
+                WEDNESDAY:[NONE],
+                THURSDAY: [NONE],
+                FRIDAY:   [URANAMI,ISONAMI_R],
+                SATURDAY: [URANAMI,ISONAMI_R],
+            },
+            star0to6:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:null,
+            },
+            star6toMax:{
+                RESEARCH:[ 1, 2],
+                SCREW:   [ 1, 2],
+                consumes:{ID:  2,NUM:1}, //12.7cm連装砲*1
+            },
+            upgrade:{
+                RESEARCH:[ 4, 8],
+                SCREW:   [ 3, 6],
+                consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
+                ID:294, //12.7cm連装砲A型改二
+                STAR:0,
+            },
+        }],
+    },
+    //#endregion
+    //#region 12.7cm連装砲A型改二(2018/06/29)
+    id_294:{
+        MATERIAL:[ 10, 40, 70,  0],
+        helperShip:{
+            SUNDAY:   [FUBUKI_R2],
+            MONDAY:   [FUBUKI_R2],
+            TUESDAY:  [FUBUKI_R2],
+            WEDNESDAY:[FUBUKI_R2],
+            THURSDAY: [FUBUKI_R2],
+            FRIDAY:   [FUBUKI_R2],
+            SATURDAY: [FUBUKI_R2],
         },
         star0to6:{
-            RESEARCH:[ 1, 2],
-            SCREW:   [ 1, 2],
-            consumes:null,
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 2, 2],
+            consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
         },
         star6toMax:{
-            RESEARCH:[ 1, 2],
-            SCREW:   [ 1, 2],
-            consumes:{ID:  2,NUM:1}, //12.7cm連装砲*1
+            RESEARCH:[ 3, 4],
+            SCREW:   [ 3, 5],
+            consumes:{ID:  3,NUM:2}, //10cm連装高角砲*2
         },
-        upgrade:{
-            RESEARCH:[ 2, 3],
-            SCREW:   [ 3, 6],
-            consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
-            ID:63, //12.7cm連装砲B型改二
-            STAR:0,
-        },
+        upgrade:null,
     },
     //#endregion
     //#region 12.7cm連装砲B型改二(2014/10/24)
@@ -712,11 +812,11 @@ var remodelItemData = {
     id_267:{
         MATERIAL:[ 20, 70, 90, 20],
         helperShip:{
-            SUNDAY:   [NAGANAMI_R2],
+            SUNDAY:   [YUGUMO_R,NAGANAMI_R2],
             MONDAY:   [NAGANAMI_R2],
             TUESDAY:  [NAGANAMI_R2],
-            WEDNESDAY:[NAGANAMI_R2],
-            THURSDAY: [NAGANAMI_R2],
+            WEDNESDAY:[NOT_R2(YUGUMO_R),NAGANAMI_R2],
+            THURSDAY: [YUGUMO_R,NAGANAMI_R2],
             FRIDAY:   [NAGANAMI_R2],
             SATURDAY: [NAGANAMI_R2],
         },
@@ -729,6 +829,31 @@ var remodelItemData = {
             RESEARCH:[ 7,10],
             SCREW:   [ 6, 9],
             consumes:{ID:266,NUM:1}, //12.7cm連装砲C型改二*1
+        },
+        upgrade:null,
+    },
+    //#endregion
+    //#region 12.7cm連装高角砲(後期型)(2018/07/12)
+    id_91:{
+        MATERIAL:[ 10, 50, 80, 30],
+        helperShip:{
+            SUNDAY:   [TENRYU_R2,NAKA_R2],
+            MONDAY:   [TENRYU_R2],
+            TUESDAY:  [TENRYU_R2],
+            WEDNESDAY:[TENRYU_R2],
+            THURSDAY: [TENRYU_R2,NAKA_R2],
+            FRIDAY:   [TENRYU_R2,NAKA_R2],
+            SATURDAY: [TENRYU_R2,NAKA_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 3, 3],
+            SCREW:   [ 2, 3],
+            consumes:{ID: 10,NUM:1}, //12.7cm連装高角砲*1
+        },
+        star6toMax:{
+            RESEARCH:[ 4, 5],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 91,NUM:1}, //12.7cm連装高角砲(後期型)*1
         },
         upgrade:null,
     },
@@ -829,6 +954,30 @@ var remodelItemData = {
             RESEARCH:[12,18],
             SCREW:   [ 8,10],
             consumes:{ID: 91,NUM:2}, //12.7cm連装高角砲(後期型)*2
+        },
+        upgrade:null,
+    },
+    //#region 12.7cm単装高角砲(後期型)(2018/06/13)
+    id_229:{
+        MATERIAL:[ 10, 50, 40, 20],
+        helperShip:{
+            SUNDAY:   [YURA_R2],
+            MONDAY:   [ETOROFU_R],
+            TUESDAY:  [ETOROFU_R],
+            WEDNESDAY:[YURA_R2,ETOROFU_R,HIBURI_R],
+            THURSDAY: [YURA_R2,ETOROFU_R,HIBURI_R],
+            FRIDAY:   [YURA_R2,HIBURI_R],
+            SATURDAY: [YURA_R2,HIBURI_R],
+        },
+        star0to6:{
+            RESEARCH:[ 2, 3],
+            SCREW:   [ 2, 2],
+            consumes:{ID:  2,NUM:2}, //12.7cm連装砲*2
+        },
+        star6toMax:{
+            RESEARCH:[ 3, 5],
+            SCREW:   [ 3, 4],
+            consumes:{ID:229,NUM:2}, //12.7cm単装高角砲(後期型)*1
         },
         upgrade:null,
     },
@@ -1455,6 +1604,37 @@ var remodelItemData = {
             SCREW:   [ 7,10],
             consumes:{ID:  9,NUM:2}, //46cm三連装砲*2
         },
+        upgrade:{
+            RESEARCH:[30,48],
+            SCREW:   [14,20],
+            consumes:[{ID:105,NUM:1},{ID:NEW_GUN_MOUNT,NUM:3},{ID:ACTION_REPORT,NUM:1}], //試製41cm三連装砲*1、新型砲熕兵装資材*3、戦闘詳報*1
+            ID:290, //41cm三連装砲改二
+            STAR:0,
+        },
+    },
+    //#endregion
+    //#region 41cm三連装砲改二(2018/06/13)
+    id_290:{
+        MATERIAL:[ 45,460,720, 50],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [NONE],
+            TUESDAY:  [NONE],
+            WEDNESDAY:[ISE_R2],
+            THURSDAY: [ISE_R2],
+            FRIDAY:   [ISE_R2],
+            SATURDAY: [ISE_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 8,10],
+            SCREW:   [ 7, 7],
+            consumes:{ID:  8,NUM:3}, //41cm連装砲*3
+        },
+        star6toMax:{
+            RESEARCH:[14,41],
+            SCREW:   [10,13],
+            consumes:{ID:105,NUM:1}, //試製41cm三連装砲*1
+        },
         upgrade:null,
     },
     //#endregion
@@ -1718,8 +1898,8 @@ var remodelItemData = {
             TUESDAY:  [NONE],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
-            FRIDAY:   [YAMATO,MUSASHI],
-            SATURDAY: [YAMATO,MUSASHI],
+            FRIDAY:   [YAMATO,NOT_R2(MUSASHI)],
+            SATURDAY: [YAMATO,NOT_R2(MUSASHI)],
         },
         star0to6:{
             RESEARCH:[ 2, 2],
@@ -1744,8 +1924,8 @@ var remodelItemData = {
     id_234:{
         MATERIAL:[ 15,120,150, 30],
         helperShip:{
-            SUNDAY:   [MUSASHI_R],
-            MONDAY:   [MUSASHI_R],
+            SUNDAY:   [NOT_R2(MUSASHI_R)],
+            MONDAY:   [NOT_R2(MUSASHI_R)],
             TUESDAY:  [NONE],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
@@ -2792,8 +2972,8 @@ var remodelItemData = {
             TUESDAY:  [MIZUHO],
             WEDNESDAY:[MIZUHO],
             THURSDAY: [MUSASHI],
-            FRIDAY:   [MUSASHI],
-            SATURDAY: [MUSASHI],
+            FRIDAY:   [NOT_R(MUSASHI)],
+            SATURDAY: [NOT_R(MUSASHI)],
         },
         star0to6:{
             RESEARCH:[ 4, 6],
@@ -3153,8 +3333,8 @@ var remodelItemData = {
             TUESDAY:  [YUGUMO],
             WEDNESDAY:[NONE],
             THURSDAY: [SHIMAKAZE],
-            FRIDAY:   [NOT_R(HYUGA),YUGUMO,SHIMAKAZE],
-            SATURDAY: [NOT_R(HYUGA),YUGUMO,SHIMAKAZE],
+            FRIDAY:   [NOT_R(HYUGA),NOT_R2(YUGUMO),SHIMAKAZE],
+            SATURDAY: [NOT_R(HYUGA),NOT_R2(YUGUMO),SHIMAKAZE],
         },
         star0to6:{
             RESEARCH:[ 4, 5],
@@ -3200,17 +3380,42 @@ var remodelItemData = {
         upgrade:null,
     },
     //#endregion
+    //#region 33号対水上電探(2018/06/13)
+    id_29:{
+        MATERIAL:[ 10,  0, 40, 50],
+        helperShip:{
+            SUNDAY:   [NONE],
+            MONDAY:   [YUBARI],
+            TUESDAY:  [YUBARI],
+            WEDNESDAY:[YUBARI,KUROSHIO_R2],
+            THURSDAY: [YUBARI,KUROSHIO_R2],
+            FRIDAY:   [KUROSHIO_R2],
+            SATURDAY: [KUROSHIO_R2],
+        },
+        star0to6:{
+            RESEARCH:[ 7, 8],
+            SCREW:   [ 3, 4],
+            consumes:{ID: 28,NUM:1}, //22号対水上電探*1
+        },
+        star6toMax:{
+            RESEARCH:[ 8,12],
+            SCREW:   [ 4, 6],
+            consumes:{ID: 29,NUM:1}, //33号対水上電探*1
+        },
+        upgrade:null,
+    },
+    //#endregion
     //#region 21号対空電探(2015/06/12)
     id_30:{
         MATERIAL:[ 10,  0, 40, 50],
         helperShip:{
-            SUNDAY:   [NOT_R(ISE)],
+            SUNDAY:   [NOT_R(ISE),ISE_R2],
             MONDAY:   [ISE],
             TUESDAY:  [NONE],
             WEDNESDAY:[HYUGA],
             THURSDAY: [HYUGA],
-            FRIDAY:   [NOT_R(ISE),NOT_R(HYUGA)],
-            SATURDAY: [NOT_R(ISE),NOT_R(HYUGA)],
+            FRIDAY:   [NOT_R(ISE),ISE_R2,NOT_R(HYUGA)],
+            SATURDAY: [NOT_R(ISE),ISE_R2,NOT_R(HYUGA)],
         },
         star0to6:{
             RESEARCH:[ 5, 6],
@@ -3265,8 +3470,8 @@ var remodelItemData = {
             TUESDAY:  [HYUGA],
             WEDNESDAY:[ISE],
             THURSDAY: [ISE],
-            FRIDAY:   [ISE],
-            SATURDAY: [ISE],
+            FRIDAY:   [NOT_R(ISE),ISE_R2],
+            SATURDAY: [NOT_R(ISE),ISE_R2],
         },
         star0to6:{
             RESEARCH:[ 6,10],
@@ -3291,7 +3496,7 @@ var remodelItemData = {
     id_141:{
         MATERIAL:[ 10,  0,100, 80],
         helperShip:{
-            SUNDAY:   [ISE],
+            SUNDAY:   [NOT_R(ISE),ISE_R2],
             MONDAY:   [ISE],
             TUESDAY:  [ISE],
             WEDNESDAY:[HYUGA],
@@ -3326,7 +3531,7 @@ var remodelItemData = {
             SATURDAY: [YUBARI,KATORI_R,SHIGURE_R2],
         },
         upgrade:[{
-                MATERIAL:[ 10,  0, 30, 30],
+            MATERIAL:[ 10,  0, 30, 30],
             helperShip:{
                 SUNDAY:   [YUBARI],
                 MONDAY:   [ISUZU_R2],
@@ -3355,7 +3560,7 @@ var remodelItemData = {
             },
         },
         {
-                MATERIAL:[ 10,  0, 30, 30],
+            MATERIAL:[ 10,  0, 30, 30],
             helperShip:{
                 SUNDAY:   [KATORI_R,SHIGURE_R2],
                 MONDAY:   [NONE],
@@ -3472,13 +3677,13 @@ var remodelItemData = {
     id_45:{
         MATERIAL:[ 10, 80, 20, 30],
         helperShip:{
-            SUNDAY:   [NONE],
-            MONDAY:   [NONE],
-            TUESDAY:  [NONE],
-            WEDNESDAY:[ISUZU_R2],
-            THURSDAY: [ISUZU_R2],
-            FRIDAY:   [NONE],
-            SATURDAY: [NONE],
+            SUNDAY:   [DAITO],
+            MONDAY:   [HIBURI],
+            TUESDAY:  [HIBURI],
+            WEDNESDAY:[ISUZU_R2,KUROSHIO_R2,HIBURI],
+            THURSDAY: [ISUZU_R2,KUROSHIO_R2,HIBURI],
+            FRIDAY:   [KUROSHIO_R2,DAITO],
+            SATURDAY: [KUROSHIO_R2,DAITO],
         },
         star0to6:{
             RESEARCH:[ 3, 3],
@@ -3706,13 +3911,13 @@ var remodelItemData = {
     id_51:{
         MATERIAL:[ 90,270, 50,180],
         helperShip:{
-            SUNDAY:   [ISE_R],
+            SUNDAY:   [NOT_R2(ISE_R)],
             MONDAY:   [HYUGA_R],
             TUESDAY:  [HYUGA_R],
             WEDNESDAY:[NONE],
             THURSDAY: [NONE],
-            FRIDAY:   [ISE_R],
-            SATURDAY: [ISE_R],
+            FRIDAY:   [NOT_R2(ISE_R)],
+            SATURDAY: [NOT_R2(ISE_R)],
         },
         star0to6:{
             RESEARCH:[ 3, 6],
@@ -3737,7 +3942,7 @@ var remodelItemData = {
     id_274:{
         MATERIAL:[ 90,300, 90,150],
         helperShip:{
-            SUNDAY:   [NONE],
+            SUNDAY:   [ISE_R2],
             MONDAY:   [ISE_R],
             TUESDAY:  [ISE_R],
             WEDNESDAY:[HYUGA_R],
@@ -3803,7 +4008,7 @@ var remodelItemData = {
             SATURDAY: [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2,MAYA_R2],
         },
         upgrade:[{
-                MATERIAL:[  0,  0, 80, 70],
+            MATERIAL:[  0,  0, 80, 70],
             helperShip:{
                 SUNDAY:   [AKIZUKI,TERUZUKI,HATSUZUKI,FUBUKI_R2],
                 MONDAY:   [AKIZUKI,TERUZUKI],
@@ -3832,7 +4037,7 @@ var remodelItemData = {
             },
         },
         {
-                MATERIAL:[  0,  0, 80, 70],
+            MATERIAL:[  0,  0, 80, 70],
             helperShip:{
                 SUNDAY:   [MAYA_R2],
                 MONDAY:   [NONE],
@@ -3876,7 +4081,7 @@ var remodelItemData = {
             SATURDAY: [ABUKUMA_R2,AKITSUMARU,KINU_R2],
         },
         upgrade:[{
-                MATERIAL:[ 50, 30, 30, 10],
+            MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
                 SUNDAY:   [ABUKUMA_R2,SATSUKI_R2,AKITSUMARU],
                 MONDAY:   [ABUKUMA_R2,SATSUKI_R2],
@@ -3905,7 +4110,7 @@ var remodelItemData = {
             },
         },
         {
-                MATERIAL:[ 50, 30, 30, 10],
+            MATERIAL:[ 50, 30, 30, 10],
             helperShip:{
                 SUNDAY:   [KINU_R2],
                 MONDAY:   [TATSUTA_R2],
@@ -4284,8 +4489,8 @@ var remodelItemData = {
             TUESDAY:  [NAGANAMI],
             WEDNESDAY:[NAGANAMI],
             THURSDAY: [NAGANAMI],
-            FRIDAY:   [NAGANAMI],
-            SATURDAY: [NAGANAMI],
+            FRIDAY:   [AGANO,NAGANAMI],
+            SATURDAY: [AGANO,NAGANAMI],
         },
         star0to6:{
             RESEARCH:[ 1, 2],
