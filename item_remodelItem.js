@@ -1,4 +1,4 @@
-//Ver:2.3.7
+//Ver:2.3.8
 //Author:Nishisonic
 
 load("script/utils.js");
@@ -13,7 +13,7 @@ Paths = Java.type("java.nio.file.Paths")
 StandardOpenOption = Java.type("java.nio.file.StandardOpenOption")
 
 /** バージョン */
-var VERSION = 2.37
+var VERSION = 2.38
 /** バージョン確認URL */
 var UPDATE_CHECK_URL = "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/update.txt"
 /** ファイルの場所 */
@@ -29,27 +29,27 @@ var EXECUTABLE_FILE = [
     "script/remodelItem.js",
 ]
 
-function header(){
-    return [ "二番艦" ];
+function header() {
+    return ["二番艦"];
 }
 
-function begin(){
+function begin() {
     updateFile()
 }
 
-function body(data){
+function body(data) {
     var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK);
-    return toComparable([ getSecondShip( dayOfWeek, data.getInfo().getId()) ]);
+    return toComparable([getSecondShip(dayOfWeek, data.getInfo().getId())]);
 }
 
-function end(){ }
+function end() {}
 
 //2番艦を取得します
-function getSecondShip(dayOfWeek, itemId){
-    try{
+function getSecondShip(dayOfWeek, itemId) {
+    try {
         //安定のリフレクション
         return remodelItemData[String(word + itemId)].helperShip[getDayOfWeek(dayOfWeek)].join(SEP);
-    }catch(e){
+    } catch (e) {
         return "\n改修不可";
     }
 }
@@ -60,7 +60,7 @@ function getSecondShip(dayOfWeek, itemId){
 function updateFile() {
     try {
         if (VERSION < Number(IOUtils.toString(URI.create(UPDATE_CHECK_URL), StandardCharsets.UTF_8))) {
-            FILE_URL.forEach(function(file,i){
+            FILE_URL.forEach(function (file, i) {
                 IOUtils.write(IOUtils.toString(URI.create(file), StandardCharsets.UTF_8), Files.newOutputStream(Paths.get(EXECUTABLE_FILE[i]), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING), StandardCharsets.UTF_8)
             });
         }
