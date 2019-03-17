@@ -1,4 +1,4 @@
-// Ver:3.0.0
+// Ver:3.0.1
 // Author:Nishisonic
 
 // script読み込み
@@ -25,7 +25,7 @@ Ship = Java.type("logbook.internal.Ship")
 
 data_prefix = "improvement_"
 
-var VERSION = 3.00
+var VERSION = 3.01
 var UPDATE_CHECK_URL = "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/update3.txt"
 var FILE_URL_LIST = [
     "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/item_improvement.js",
@@ -33,7 +33,7 @@ var FILE_URL_LIST = [
 ]
 /** 保存場所 */
 var EXECUTABLE_FILE_LIST = [
-    "script/item_remodelItem.js",
+    "script/item_improvement.js",
     "script/itemstyle.js",
 ]
 

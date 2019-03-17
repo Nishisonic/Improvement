@@ -1,4 +1,4 @@
-// Ver:3.0.0
+// Ver:3.0.1
 // Author:Nishisonic
 
 // script読み込み
@@ -21,6 +21,7 @@ Shell = Java.type("org.eclipse.swt.widgets.Shell")
 TableItem = Java.type("org.eclipse.swt.widgets.TableItem")
 SWTResourceManager = Java.type("org.eclipse.wb.swt.SWTResourceManager")
 AppConstants = Java.type("logbook.constants.AppConstants")
+GlobalContext = Java.type("logbook.data.context.GlobalContext")
 ReportUtils = Java.type("logbook.util.ReportUtils")
 SwtUtils = Java.type("logbook.util.SwtUtils")
 Item = Java.type("logbook.internal.Item")
@@ -115,14 +116,14 @@ function create(table, data, index) {
                                 shipNamesComposite.pack()
 
                                 var resourceComposite = new Composite(tip, SWT.NULL)
-                                resourceComposite.setLayoutData(new GridData(GridData.FILL_BOTH))
-                                resourceComposite.setLayout(SwtUtils.makeGridLayout(10, 0, 0, 0, 0))
+                                resourceComposite.setLayoutData(new GridData(GridData.FILL_VERTICAL))
+                                resourceComposite.setLayout(SwtUtils.makeGridLayout(11, 0, 0, 0, 0))
                                 resourceComposite.setFont(SWTResourceManager.getFont("Meiryo UI", 8, SWT.NORMAL))
                                 var materialTextLabel = new Label(resourceComposite, SWT.NONE)
                                 materialTextLabel.setText("必要資材")
                                 var materialLabel = new Label(resourceComposite, SWT.NONE)
                                 var gridData = new GridData(GridData.FILL_BOTH)
-                                gridData.horizontalSpan = 9
+                                gridData.horizontalSpan = 10
                                 materialLabel.setLayoutData(gridData)
                                 var materialNames = ["燃", "弾", "鋼", "ボ"]
                                 materialLabel.setText(materialNames.map(function (text, i) {
@@ -139,7 +140,7 @@ function create(table, data, index) {
                                         var none = new Label(resourceComposite, SWT.NONE)
                                         none.setText("-")
                                         var gridData = new GridData(GridData.FILL_BOTH)
-                                        gridData.horizontalSpan = 9
+                                        gridData.horizontalSpan = 10
                                         none.setLayoutData(gridData)
                                     } else {
                                         var developmentTitle = new Label(resourceComposite, SWT.NONE)
@@ -173,7 +174,22 @@ function create(table, data, index) {
                                         itemLabelComposite.setLayout(SwtUtils.makeGridLayout(1, 0, 0, 6, 0))
                                         var itemLabel = new Label(itemLabelComposite, SWT.NONE)
                                         itemLabel.setText(toResourceItem(data.resource[i + 1]).map(function (array) {
-                                            return array[0] + " x" + array[1]
+                                            if (isNaN(array[0])) {
+                                                return array[0] + " x" + array[1]
+                                            }
+                                            return Item.get(array[0]).name + " x" + array[1]
+                                        }).join("\n"))
+                                        var possessionComposite = new Composite(resourceComposite, SWT.NULL)
+                                        possessionComposite.setLayoutData(new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.HORIZONTAL_ALIGN_BEGINNING))
+                                        possessionComposite.setLayout(SwtUtils.makeGridLayout(1, 0, 0, 0, 0))
+                                        var possessionLabel = new Label(possessionComposite, SWT.NONE)
+                                        possessionLabel.setText(toResourceItem(data.resource[i + 1]).map(function (array) {
+                                            if (isNaN(array[0])) {
+                                                return ""
+                                            }
+                                            return "(所持: " + GlobalContext.getItemMap().values().stream().filter(function (item) {
+                                                return item.slotitemId === array[0] && item.level === 0
+                                            }).count() + " )"
                                         }).join("\n"))
                                     }
                                 })
@@ -221,7 +237,7 @@ function toResourceItem(array) {
     if (array.length === 6) {
         if (array[4] !== null && array[4] > 0) {
             return [
-                [Item.get(array[4]).name, array[5]]
+                [array[4], array[5]]
             ]
         }
     } else if (array.length === 5) {
@@ -231,7 +247,7 @@ function toResourceItem(array) {
             } else if (String(value[0]).indexOf("consumable_") > -1) {
                 return [toMasterItemString(Number(value[0].replace("consumable_", ""))), value[1]]
             }
-            return [Item.get(value[0]).name, value[1]]
+            return [value[0], value[1]]
         }).filter(function (value) {
             return value !== null
         })
