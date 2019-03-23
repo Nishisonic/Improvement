@@ -1,4 +1,4 @@
-// Ver:3.0.1
+// Ver:3.0.2
 // Author:Nishisonic
 
 // script読み込み
@@ -99,7 +99,7 @@ function create(table, data, index) {
                                     updateNameLabel.setText(Item.get(upgrade[0]).name)
                                     updateNameLabel.setFont(SWTResourceManager.getFont("Meiryo UI", 11, SWT.NORMAL))
                                 }
-                                var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK)
+                                var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK) - 1
 
                                 var shipNamesComposite = new Composite(tip, SWT.NULL)
                                 shipNamesComposite.setLayoutData(new GridData(GridData.FILL_BOTH))

@@ -1,4 +1,4 @@
-// Ver:3.0.1
+// Ver:3.0.2
 // Author:Nishisonic
 
 // script読み込み
@@ -25,7 +25,8 @@ Ship = Java.type("logbook.internal.Ship")
 
 data_prefix = "improvement_"
 
-var VERSION = 3.01
+var VERSION = 3.02
+var LOAD_FILE_URL = "https://raw.githubusercontent.com/TeamFleet/WhoCallsTheFleet-DB/master/db/items.nedb"
 var UPDATE_CHECK_URL = "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/update3.txt"
 var FILE_URL_LIST = [
     "https://raw.githubusercontent.com/Nishisonic/RemodelItem/master/item_improvement.js",
@@ -55,7 +56,7 @@ function begin() {
             }
         } catch (e) {}
 
-        var url = new URL("https://raw.githubusercontent.com/TeamFleet/WhoCallsTheFleet-DB/master/db/items.nedb")
+        var url = new URL(LOAD_FILE_URL)
         var connection = HttpsURLConnection.class.cast(url.openConnection())
         connection.setRequestMethod("HEAD")
         connection.connect()
@@ -76,7 +77,7 @@ function begin() {
 }
 
 function body(data) {
-    var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK)
+    var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK) - 1
     var items = getData("items")
     if (items.containsKey(data.info.id)) {
         var item = items.get(data.info.id)[0]
