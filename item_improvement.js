@@ -1,4 +1,4 @@
-// Ver:3.0.2
+// Ver:3.0.3
 // Author:Nishisonic
 
 // script読み込み
@@ -86,7 +86,8 @@ function body(data) {
                 return Array.isArray(c) ? a.concat(flatten(c)) : a.concat(c)
             }, [])
         }
-        return toComparable([flatten(item.improvement.map(function (improvement) {
+
+        var shipNames = flatten(item.improvement.map(function (improvement) {
             return Array.prototype.concat.apply([], improvement.req.filter(function (data) {
                 return data[0][dayOfWeek]
             }).map(function (data) {
@@ -94,7 +95,31 @@ function body(data) {
             }))
         })).map(function (id) {
             return id === false ? "任意二番艦" : Ship.get(id).fullName
-        }).join(" / ")])
+        }).join(" / ")
+        if (shipNames) {
+            return toComparable([shipNames])
+        }
+
+        var nextDayOfWeek = Array.apply(null, new Array(7)).map(function (_, i) {
+            return (i + dayOfWeek + 1) % 7
+        }).filter(function (d) {
+            return item.improvement.some(function (improvement) {
+                return improvement.req.some(function (data) {
+                    return data[0][d]
+                })
+            })
+        })[0]
+        var nextShipNames = flatten(item.improvement.map(function (improvement) {
+            return Array.prototype.concat.apply([], improvement.req.filter(function (data) {
+                return data[0][nextDayOfWeek]
+            }).map(function (data) {
+                return data[1]
+            }))
+        })).map(function (id) {
+            return id === false ? "任意二番艦" : Ship.get(id).fullName
+        }).join(" / ")
+        var dayOfWeekString = ["日", "月", "火", "水", "木", "金", "土"]
+        return toComparable([String("次回(" + dayOfWeekString[nextDayOfWeek] + "):" + nextShipNames)])
     }
     return toComparable([""])
 }

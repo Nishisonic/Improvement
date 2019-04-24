@@ -1,4 +1,4 @@
-// Ver:3.0.2
+// Ver:3.0.3
 // Author:Nishisonic
 
 // script読み込み
@@ -49,6 +49,9 @@ function create(table, data, index) {
         item.setBackground(SWTResourceManager.getColor(AppConstants.ROW_BACKGROUND))
     }
     item.setText(ReportUtils.toStringArray(data))
+    if (ReportUtils.toStringArray(data)[secondShipIndex].indexOf("次回") >= 0) {
+        item.setForeground(secondShipIndex, SWTResourceManager.getColor(128, 128, 128))
+    }
 
     var TableListener = new Listener({
         handleEvent: function (event) {
@@ -99,6 +102,7 @@ function create(table, data, index) {
                                     updateNameLabel.setText(Item.get(upgrade[0]).name)
                                     updateNameLabel.setFont(SWTResourceManager.getFont("Meiryo UI", 11, SWT.NORMAL))
                                 }
+
                                 var dayOfWeek = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).get(Calendar.DAY_OF_WEEK) - 1
 
                                 var shipNamesComposite = new Composite(tip, SWT.NULL)
@@ -113,6 +117,27 @@ function create(table, data, index) {
                                     return id === false ? "任意二番艦" : Ship.get(id).fullName
                                 }).join(" / "))
                                 shipNames.setFont(SWTResourceManager.getFont("Meiryo UI", 9, SWT.NORMAL))
+
+                                var nextShipNames = new Label(shipNamesComposite, SWT.NONE)
+                                var nextDayOfWeek = Array.apply(null, new Array(7)).map(function (_, i) {
+                                    return (i + dayOfWeek + 1) % 7
+                                }).filter(function (d) {
+                                    return data.req.some(function (req) {
+                                        return req[0][d]
+                                    })
+                                })[0]
+                                var dayOfWeekString = ["日", "月", "火", "水", "木", "金", "土"]
+                                var nextDate = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"))
+                                nextDate.add(Calendar.DAY_OF_MONTH, (nextDayOfWeek - dayOfWeek))
+                                nextShipNames.setText("次回(" + dayOfWeekString[nextDayOfWeek] + "):" + flatten(Array.prototype.concat.apply([], data.req.filter(function (req) {
+                                    return req[0][nextDayOfWeek]
+                                }).map(function (req) {
+                                    return req[1]
+                                }))).map(function (id) {
+                                    return id === false ? "任意二番艦" : Ship.get(id).fullName
+                                }).join(" / "))
+                                nextShipNames.setFont(SWTResourceManager.getFont("Meiryo UI", 9, SWT.NORMAL))
+                                nextShipNames.setForeground(SWTResourceManager.getColor(128, 128, 128))
                                 shipNamesComposite.pack()
 
                                 var resourceComposite = new Composite(tip, SWT.NULL)
